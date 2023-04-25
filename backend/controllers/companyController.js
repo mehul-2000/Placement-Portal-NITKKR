@@ -30,57 +30,61 @@ exports.getOne = catchAsyncErrors(async (req, res, next) => {
 });
 
 // Add new company
-exports.add = catchAsyncErrors(async (req, res, next) => {
-    const company = await Company.create(req.body);
-
-    // Getting batch
-    const batch = Number(req.body.passout_batch);
-
-    // Getting courses eligible and adding emails
-    let emails = [];
-    for(let course in req.body.eligibility){
-        if(course === "UG"){
-            emails.push("nitkkr_"+(batch-4)+"_btech@googlegroups.com");
-        } else if(course === "MTech"){
-            emails.push("NITKKR_"+(batch-2)+"_MTECH@googlegroups.com");
-        } else if(course === "MCA"){
-            emails.push("NITKKR_"+(batch-2)+"_MCA@googlegroups.com");
-        }
-    }
-
-    //package details
-    if(!req.body.package){
-        req.body.package = {
-            UG: {ctc: 'NA'},
-            MTech: {ctc: 'NA'},
-            MCA: {ctc: 'NA'}
-        };
-    }
-    if(!req.body.package.UG || !req.body.package.UG.ctc) req.body.package.UG = {ctc: 'NA'};
-    if(!req.body.package.MTech || !req.body.package.MTech.ctc) req.body.package.MTech = {ctc: 'NA'};
-    if(!req.body.package.MCA || !req.body.package.MCA.ctc) req.body.package.MCA = {ctc: 'NA'};
-    
-    company.package = req.body.package;
-    company.emails = emails;
-    company.apply_url = `${req.protocol}://${req.get("host")}/api/company/${company._id}`;
-
+exports.add = async (req, res, next) => {
     try {
-        // await sendEmail(company, 'companyAdded');
-        res.status(200).json({
-            success: true,
-            company,
-            message: "Company added and communicated via email"
-        })
-    } catch(error) {
-        // Email service not working
-        try {
-            await company.remove();
-        } catch {
-            return next(new ErrorHandler("Company added but failed to communicate via email.", 500));
+        const company = await Company.create(req.body);
+    
+        // Getting batch
+        const batch = Number(req.body.passout_batch);
+    
+        // Getting courses eligible and adding emails
+        let emails = [];
+        for(let course in req.body.eligibility){
+            if(course === "UG"){
+                emails.push("nitkkr_"+(batch-4)+"_btech@googlegroups.com");
+            } else if(course === "MTech"){
+                emails.push("NITKKR_"+(batch-2)+"_MTECH@googlegroups.com");
+            } else if(course === "MCA"){
+                emails.push("NITKKR_"+(batch-2)+"_MCA@googlegroups.com");
+            }
         }
-        return next(new ErrorHandler("Failed to add new company (Internal Server Error).", 500));
+    
+        //package details
+        if(!req.body.package){
+            req.body.package = {
+                UG: {ctc: 'NA'},
+                MTech: {ctc: 'NA'},
+                MCA: {ctc: 'NA'}
+            };
+        }
+        if(!req.body.package.UG || !req.body.package.UG.ctc) req.body.package.UG = {ctc: 'NA'};
+        if(!req.body.package.MTech || !req.body.package.MTech.ctc) req.body.package.MTech = {ctc: 'NA'};
+        if(!req.body.package.MCA || !req.body.package.MCA.ctc) req.body.package.MCA = {ctc: 'NA'};
+        
+        company.package = req.body.package;
+        company.emails = emails;
+        company.apply_url = `${req.protocol}://${req.get("host")}/api/company/${company._id}`;
+    
+        try {
+            // await sendEmail(company, 'companyAdded');
+            res.status(200).json({
+                success: true,
+                company,
+                message: "Company added and communicated via email"
+            })
+        } catch(error) {
+            // Email service not working
+            try {
+                await company.remove();
+            } catch {
+                return next(new ErrorHandler("Company added but failed to communicate via email.", 500));
+            }
+            return next(new ErrorHandler("Failed to add new company (Internal Server Error).", 500));
+        }
+    } catch(err) {
+        res.status(400).json({ success : false, message : 'Something went wrong! Did you miss Company Name, Passout Batch, Job Profile or Deadline date?'})
     }
-});
+};
 
 // Update Company
 exports.update = catchAsyncErrors(async (req, res, next) => {

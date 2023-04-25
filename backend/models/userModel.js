@@ -106,6 +106,7 @@ var userSchema = new mongoose.Schema({
         type : Boolean,
         default : true
     },
+    // ToDo : Add active Backlogs
     reset_password_token: String,
     reset_password_expire: Date,
     login_otp: String,

@@ -82,9 +82,9 @@ exports.sendOTP = catchAsyncErrors(async(req, res, next) => {
                 message: `Email sent to ${user.college_email} successfully`
             })
         } catch(error) {
-            user.login_otp = undefined;
-            await user.save({ validateBeforeSave: false });
-            return next(new ErrorHandler(error.message, 500));
+            // user.login_otp = undefined;
+            // await user.save({ validateBeforeSave: false });
+            return next(new ErrorHandler("Some error occured. Please try again later.", 500));
         }
     }
 });
@@ -174,7 +174,7 @@ exports.getUserDetails = catchAsyncErrors(async(req, res, next) => {
 
 // Get User Profile
 exports.getProfile = catchAsyncErrors(async(req, res, next) => {
-    const user = await User.findById(req.user.id).select('-active -status -permission -program').lean();
+    const user = await User.findById(req.user.id).select('-active -status -program').lean();
     // No need of if(!user) because it is accessible only if user is logged in
     res.status(200).json({
         success: true,
