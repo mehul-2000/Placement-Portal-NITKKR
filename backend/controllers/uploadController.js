@@ -18,7 +18,7 @@ exports.resume = catchAsyncErrors(async (req, res, next) => {
                 return next(new ErrorHandler('File is missing.', 400));
             }
             else {
-                user = await User.findByIdAndUpdate(req.user.id, {resume_url: req.file.filename});
+                await User.findByIdAndUpdate(req.user.id, {resume_url: req.file.filename});
                 res.status(200).json({
                     success: true,
                     message: 'Resume successfully uploaded.'

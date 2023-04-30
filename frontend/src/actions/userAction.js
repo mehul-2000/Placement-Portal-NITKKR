@@ -14,6 +14,15 @@ import {
     RESET_PASSWORD_FAIL,
     RESET_PASSWORD_REQUEST,
     RESET_PASSWORD_SUCCESS,
+    UPDATE_PROFILE_FAIL,
+    UPDATE_PROFILE_REQUEST,
+    UPDATE_PROFILE_SUCCESS,
+    UPDATE_RESUME_FAIL,
+    UPDATE_RESUME_REQUEST,
+    UPDATE_RESUME_SUCCESS,
+    UPDATE_BATCH_FAIL,
+    UPDATE_BATCH_REQUEST,
+    UPDATE_BATCH_SUCCESS,
     CLEAR_ERRORS
 } from "../constants/userConstants";
 import axios from "axios";
@@ -86,6 +95,66 @@ export const loadUser = () => async (dispatch) => {
         });
     }
 };
+
+// Update user profile
+export const updateProfile = (profileData) => async (dispatch) => {
+    try {
+        dispatch({ type: UPDATE_PROFILE_REQUEST });
+
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+            }
+        };
+        const { data } = await axios.post("/api/user/updateProfile", profileData, config);
+        dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data });
+    } catch (error) {
+        dispatch({
+            type: UPDATE_PROFILE_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+
+// Update resume
+export const updateResume = (resume) => async (dispatch) => {
+    try {
+        dispatch({ type: UPDATE_RESUME_REQUEST });
+
+        const config = {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        };
+        const { data } = await axios.post("/api/upload/resume", resume, config);
+        dispatch({ type: UPDATE_RESUME_SUCCESS, payload: data });
+    } catch (error) {
+        dispatch({
+            type: UPDATE_RESUME_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+
+// Update Batch
+export const updateAdminBatch = (batch) => async (dispatch) => {
+    try {
+        dispatch({ type: UPDATE_BATCH_REQUEST });
+
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+            }
+        };
+        const { data } = await axios.post("/api/user/updateBatch", {batch}, config);
+        dispatch({ type: UPDATE_BATCH_SUCCESS, payload: data });
+    } catch (error) {
+        dispatch({
+            type: UPDATE_BATCH_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
 
 // Forgot Password
 export const forgotPassword = (college_id) => async (dispatch) => {

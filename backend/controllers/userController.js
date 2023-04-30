@@ -237,6 +237,10 @@ exports.updateBatch = catchAsyncErrors(async(req, res, next) => {
 
 // Get User's profile
 exports.getOne = catchAsyncErrors(async(req, res, next) => {
+    console.log("Heeelo");
+    if(!req.params.college_id) {
+        return next(new ErrorHandler("Field can't be empty.", 400));
+    }
     const user = await User.findOne({ college_id : req.params.college_id.toUpperCase() });
     if(!user) {
         return next(new ErrorHandler('Incorrect College ID. Please try again.', 404));

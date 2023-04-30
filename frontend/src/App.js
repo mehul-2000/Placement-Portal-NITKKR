@@ -12,6 +12,13 @@ import AddNewCompany from './component/Company/Admin/AddNewCompany';
 import ForgotPassword from './component/User/ForgotPassword';
 import ResetPassword from './component/User/ResetPassword';
 import UserProfile from './component/Profile/UserProfile';
+import CompanyRegistration from './component/Company/Student/CompanyRegistration';
+import AdminManagement from './component/Management/AdminManagement';
+import CoordinatorManagement from './component/Management/CoordinatorManagement';
+import StudentsManagement from './component/Management/StudentsManagement';
+import InterviewExperiences from './component/InterviewExperiences/InterviewExperiences';
+import Compose from './component/InterviewExperiences/Compose';
+import Experience from './component/InterviewExperiences/Experience';
 
 function App() {
   useEffect(() => {
@@ -27,6 +34,13 @@ function App() {
         <Route exact path="/forgot-password" element={<ForgotPassword />} />
         <Route exact path="/reset-password/:token" element={<ResetPassword />} />
         <Route exact path="/profile" element={<UserProfile />} />
+        <Route exact path="/company-registration" element={<CompanyRegistration />} />
+        <Route exact path="/admin-management" element={<AdminManagement />} />
+        <Route exact path="/coordinator-management" element={<CoordinatorManagement />} />
+        <Route exact path="/students-management" element={<StudentsManagement />} />
+        <Route exact path="/interview-experiences" element={<InterviewExperiences />} />
+        <Route exact path="/experience/:experience_id" element={<Experience />} />
+        <Route exact path="/compose" element={<Compose />} />
       </Routes>
       <Footer />
     </Router>

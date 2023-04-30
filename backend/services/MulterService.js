@@ -5,8 +5,9 @@ const fs = require('fs')
 let resumeStorage = multer.diskStorage({
     destination: function (req, file, cb) {
         // ToDo : Set path accordingly to server.js
+        // const path = __basedir + '/resumes/';
         // const path = __basedir + '/frontend/public/assets/uploads/resumes/';
-        const path = __basedir + '/resumes/';
+        const path = __basedir + '/frontend/resumes/';
         fs.mkdirSync(path, { recursive: true })
         cb(null, path)
     },

@@ -9,11 +9,14 @@ const sendEmail = require("../services/EmailService");
 exports.getAll = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.user.id);
     const opts = { deadline_date : { $lt: new Date() } };
-    if(req.body.active) opts.deadline_date = { $gte: new Date() -1 };
+    if(req.body.active) {
+        opts.deadline_date = { $gte: new Date() - 1 };
+    }
     const companies = await Company.find({ passout_batch: user.passout_batch, ...opts }).select('company_name job_profile package deadline_date').lean();
     res.status(200) .json({
         success: true,
-        companies
+        companies,
+        numCompanies: companies.length
     })
 });
 
