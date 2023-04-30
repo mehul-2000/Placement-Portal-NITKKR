@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 import Footer from "./component/layout/Footer";
 // import Header from './component/layout/Header';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Navigate } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import store from "./store";
 import { loadUser } from "./actions/userAction";
@@ -14,6 +14,8 @@ import ForgotPassword from "./component/User/ForgotPassword";
 import ResetPassword from "./component/User/ResetPassword";
 import UserProfile from "./component/Profile/UserProfile";
 import Developer from "./component/Developer/Developer";
+import ContactUs from "./component/ContactUs/ContactUs";
+import LandingPage from "./component/Home/Home";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -25,8 +27,6 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -119,9 +119,12 @@ function App() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
-          </Typography>
+          <div style={{ display: "flex", margin: "0 auto" }}>
+            <img alt="logo-img" src="https://res.cloudinary.com/djik7nh4k/image/upload/v1682878276/NIT-Kurukshetra-Logo_dakhsx.png" height="40" width="45" style={{ marginRight: "0.5rem" }} />
+            {!open && <Typography variant="h6" noWrap component="div">
+              Placement Portal
+            </Typography>}
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -182,12 +185,17 @@ function App() {
         <Router id="main-wrapper" className="App">
           {/* <Header /> */}
           <Routes>
+
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/team" element={<Team />} />
             <Route exact path="/add-new-company" element={<AddNewCompany />} />
             <Route exact path="/forgot-password" element={<ForgotPassword />} />
             <Route exact path="/reset-password/:token" element={<ResetPassword />} />
             <Route exact path="/profile" element={<UserProfile />} />
+            <Route exact path="/developer" element={<Developer />} />
+            <Route exact path="/contactus" element={<ContactUs />} />
+            <Route exact path="/landingPage" element={<LandingPage />} />
+            <Route path="/" element={<Navigate to="/landingPage" />} />
           </Routes>
           <Footer />
         </Router>
