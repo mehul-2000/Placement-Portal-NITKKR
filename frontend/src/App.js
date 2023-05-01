@@ -8,10 +8,12 @@ import store from './store';
 import { loadUser } from './actions/userAction';
 import Login from './component/User/Login';
 import Team from './component/Team/Team';
+import Contact from './component/Contact/Contact'
 import AddNewCompany from './component/Company/Admin/AddNewCompany';
 import ForgotPassword from './component/User/ForgotPassword';
 import ResetPassword from './component/User/ResetPassword';
 import UserProfile from './component/Profile/UserProfile';
+import Announcement from './component/Announcement/Announcement';
 
 function App() {
   useEffect(() => {
@@ -27,6 +29,8 @@ function App() {
         <Route exact path="/forgot-password" element={<ForgotPassword />} />
         <Route exact path="/reset-password/:token" element={<ResetPassword />} />
         <Route exact path="/profile" element={<UserProfile />} />
+        <Route exact path="/contact" element={<Contact/>} />
+        <Route exact path="/announcement" element={<Announcement/>} />
       </Routes>
       <Footer />
     </Router>
