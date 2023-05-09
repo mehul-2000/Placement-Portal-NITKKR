@@ -14,7 +14,7 @@ router.route("/profile").get(isAuthenticatedUser, getProfile)
 router.route("/updateProfile").post(isAuthenticatedUser, updateProfile)
 router.route("/permission").get(isAuthenticatedUser, getPermission)
 router.route("/password/update").put(isAuthenticatedUser, updatePassword)
-router.route("/logout").get(logout);
+router.route("/logout").get(isAuthenticatedUser, logout);
 // Only admin can update its batch
 router.route("/updateBatch").post(isAuthenticatedUser, ensureOfficialPlacementTeam, updateBatch);
 router.route("/getOne/:college_id").get(isAuthenticatedUser, ensureOfficialPlacementTeam, getOne)

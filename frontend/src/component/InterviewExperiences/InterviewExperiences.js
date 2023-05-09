@@ -118,8 +118,8 @@ const InterviewExperiences = () => {
                                     </div>
                                 </div>
                                 <div class="d-flex no-block flex-row m-t-20 cc-details interview">
-                                <div dangerouslySetInnerHTML={{ __html: TruncHtml(filterInterview.experience, 100).html }} />
-                                    <div ng-bind-html="experience.experience | limitHtml : 230"></div>
+                                    <div dangerouslySetInnerHTML={{ __html: TruncHtml(filterInterview.experience, 230).html }} />
+                                    {/* <div ng-bind-html="experience.experience | limitHtml : 230"></div> */}
                                 </div>
                                 <br />
                                 <div>

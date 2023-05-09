@@ -28,7 +28,7 @@ const Login = () => {
 
     const redirect = location.search ? location.search.split('=')[1] : "account";
     useEffect(() => {
-        if(error_code!==404 && error) {
+        if(error) {
             alert.error(error);
             dispatch(clearErrors());
         }

@@ -26,11 +26,16 @@ const CompanyRegistration = () => {
             return packageObj;
         } else {
             if(packageObj) {
-                let programs = Object.keys(packageObj);
-                return packageObj[programs[0]].ctc.toUpperCase();
-            } else {
+                let programs = Object.keys(packageObj);	
+                if(packageObj[programs[0]] && packageObj[programs[0]].ctc) {
+                    return packageObj[programs[0]].ctc.toUpperCase();
+                } else {
+                    return 'TO BE UPDATED.'
+                }
+            }else {
                 return 'TO BE UPDATED.'
             }
+            
         }
     }
 
@@ -68,7 +73,7 @@ const CompanyRegistration = () => {
             </div>
 
             {/* Visible to ADMIN,SPC,FACULTY */}
-            {user.permission==="spc" && <div className="row">
+            {(user.permission==="spc" || user.permission==="admin") && <div className="row">
                 <div className="col-12">
                     <div className="form-group">
                         <select className="form-control" value={passout_batch} onChange={updateBatch}>

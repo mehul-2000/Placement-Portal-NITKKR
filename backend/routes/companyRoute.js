@@ -8,7 +8,7 @@ router.route("/getAll").post(isAuthenticatedUser, getAll);
 router.route("/getOne/:company_id").get(isAuthenticatedUser, getOne);
 router.route("/add").post(isAuthenticatedUser, ensureOfficialPlacementTeam, add);
 router.route("/update").put(isAuthenticatedUser, ensureOfficialPlacementTeam, update);
-router.route("/remove").delete(isAuthenticatedUser, ensureOfficialPlacementTeam, remove);
+router.route("/remove").post(isAuthenticatedUser, ensureOfficialPlacementTeam, remove);
 router.route("/applied/:company_id").get(isAuthenticatedUser, appliedStudents);
 
 module.exports = router

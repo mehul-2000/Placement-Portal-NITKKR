@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, addNewCompany } from "../../../actions/companyAction";
 import { useAlert } from 'react-alert';
+import { CREATE_COMPANY_RESET } from '../../../constants/companyConstants';
 
 
 const AddNewCompany = () => {
@@ -118,6 +119,14 @@ const AddNewCompany = () => {
         dispatch(addNewCompany(newCompanyData));
     };
 
+    useEffect(() => {
+        if(successMsg) {
+            alert.success(successMsg);
+            navigate("/company-registration");
+            dispatch({type:CREATE_COMPANY_RESET});
+        }
+    }, [dispatch, alert, successMsg, navigate])
+
     return (
         <>
             <div className="row page-titles">
@@ -125,21 +134,7 @@ const AddNewCompany = () => {
                     <h4 className="text-themecolor">Add New Company</h4>
                 </div>
             </div>
-
-            {/* Company Added Div */}
-            {successMsg && <div className="row">
-                <div className="col-lg-12">
-                    <div className="card">
-                        <div className="card-body">
-                            <div className="text-md-center">
-                                <i className="icon-check large-success-icon"></i>
-                                <h3 className="success-text">Successfully Posted.</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> }
-
+            
             {/* Add New Company Form */}
             {!successMsg && <form onSubmit={postCompanyDetails}>
                 <div className="row">

@@ -237,7 +237,6 @@ exports.updateBatch = catchAsyncErrors(async(req, res, next) => {
 
 // Get User's profile
 exports.getOne = catchAsyncErrors(async(req, res, next) => {
-    console.log("Heeelo");
     if(!req.params.college_id) {
         return next(new ErrorHandler("Field can't be empty.", 400));
     }

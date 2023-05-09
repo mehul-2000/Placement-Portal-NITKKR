@@ -23,7 +23,6 @@ exports.getAll_admin = catchAsyncErrors(async (req, res, next) => {
 
 // Get One Interview Experiences
 exports.getOne = catchAsyncErrors(async (req, res, next) => {
-    console.log(req.params.experience_id)
     const interview = await Interview.findById(req.params.experience_id).lean();
     if(!interview) {
         return next(new ErrorHandler("No such interview experience exists", 400));
@@ -87,7 +86,6 @@ exports.changeStatus = catchAsyncErrors(async (req, res, next) => {
     } else {
         interview.status = 'pending';
         await interview.save();
-        console.log(interview)
         res.status(200).json({
             success: true,
             message : 'Interview experience has been updated.',

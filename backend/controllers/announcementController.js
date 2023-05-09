@@ -5,10 +5,18 @@ const ErrorHandler = require("../utils/errorhandler");
 
 // Get All Announcements
 exports.getAll = catchAsyncErrors(async (req, res, next) => {
-    const user = await User.findById(req.user.id).select('passout_batch')
-    const announcements = await Announcement.find({
-        passout_batch : user.passout_batch
-    });
+    const user = await User.findById(req.user.id).select('passout_batch');
+    var announcements;
+    if(req.body.passout_batch) {
+        announcements = await Announcement.find({
+            passout_batch : req.body.passout_batch
+        });
+    }
+    else {
+        announcements = await Announcement.find({
+            passout_batch : user.passout_batch
+        }).sort({ timestamp : -1 });
+    }
     res.status(200).json({
         success: true,
         announcements

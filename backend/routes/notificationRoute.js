@@ -4,7 +4,7 @@ const { isAuthenticatedUser, ensureOfficialPlacementTeam } = require("../middlew
 
 const router = express.Router();
 
-router.route("/getAll").get(isAuthenticatedUser, getAll);
+router.route("/getAll").post(isAuthenticatedUser, getAll);
 router.route("/add").post(isAuthenticatedUser, ensureOfficialPlacementTeam, add);
 router.route("/wipe").put(isAuthenticatedUser, wipe);
 

@@ -2,6 +2,9 @@ import {
     CREATE_INTERVIEW_FAIL,
     CREATE_INTERVIEW_REQUEST,
     CREATE_INTERVIEW_SUCCESS,
+    EDIT_INTERVIEW_FAIL,
+    EDIT_INTERVIEW_REQUEST,
+    EDIT_INTERVIEW_SUCCESS,
     GET_INTERVIEWS_FAIL,
     GET_INTERVIEWS_REQUEST,
     GET_INTERVIEWS_SUCCESS,
@@ -35,6 +38,26 @@ export const addNewInterview = (interview) => async (dispatch) => {
     }
 }
 
+// Edit Interview Experience
+export const editInterview = (interview) => async (dispatch) => {
+    try {
+        dispatch({ type: EDIT_INTERVIEW_REQUEST });
+
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+            }
+        };
+        const { data } = await axios.post("/api/interview/edit", interview, config);
+        dispatch({ type: EDIT_INTERVIEW_SUCCESS, payload: data });
+    } catch (error) {
+        dispatch({
+            type: EDIT_INTERVIEW_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+
 // Get All Interview Experiences
 export const getAllInterviews = () => async (dispatch) => {
     try{
@@ -49,11 +72,24 @@ export const getAllInterviews = () => async (dispatch) => {
     }
 };
 
+// Get All Interview Experiences Admin
+export const getAllAdminInterviews = () => async (dispatch) => {
+    try{
+        dispatch({type:GET_INTERVIEWS_REQUEST});
+        const {data} = await axios.get('/api/interview/getAll_admin');
+        dispatch({ type: GET_INTERVIEWS_SUCCESS, payload: data });
+    } catch(error) {
+        dispatch({
+            type: GET_INTERVIEWS_FAIL,
+            payload: error.response.data.message,
+        });
+    }
+};
+
 // Get One Interview Experiences
 export const getInterviewDetails = (interview_id) => async (dispatch) => {
     try{
         dispatch({type:INTERVIEW_DETAILS_REQUEST});
-        console.log("Me")
         const {data} = await axios.get(`/api/interview/getOne/${interview_id}`);
         dispatch({ type: INTERVIEW_DETAILS_SUCCESS, payload: data });
     } catch(error) {

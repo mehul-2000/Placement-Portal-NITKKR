@@ -43,12 +43,14 @@ exports.add = async (req, res, next) => {
         // Getting courses eligible and adding emails
         let emails = [];
         for(let course in req.body.eligibility){
-            if(course === "UG"){
-                emails.push("nitkkr_"+(batch-4)+"_btech@googlegroups.com");
-            } else if(course === "MTech"){
-                emails.push("NITKKR_"+(batch-2)+"_MTECH@googlegroups.com");
-            } else if(course === "MCA"){
-                emails.push("NITKKR_"+(batch-2)+"_MCA@googlegroups.com");
+            if(Object.keys(req.body.eligibility[course]).length > 0) {
+                if(course === "UG"){
+                    emails.push("nitkkr_"+(batch-4)+"_btech@googlegroups.com");
+                } else if(course === "MTech"){
+                    emails.push("NITKKR_"+(batch-2)+"_MTECH@googlegroups.com");
+                } else if(course === "MCA"){
+                    emails.push("NITKKR_"+(batch-2)+"_MCA@googlegroups.com");
+                }
             }
         }
     
@@ -97,13 +99,14 @@ exports.update = catchAsyncErrors(async (req, res, next) => {
     }
     res.status(200).json({
         success: true,
-        company
+        company,
+        message : 'Company updated successfully.'
     });
 });
 
 // Remove Company
 exports.remove = catchAsyncErrors(async (req, res, next) => {
-    await Company.findByIdAndRemove(req.body.company_id);
+    const company = await Company.findByIdAndRemove(req.body.company_id);
     if(!company) {
         return next(new ErrorHandler('Incorrect Company ID. Please try again.', 400));
     }
@@ -138,7 +141,7 @@ exports.appliedStudents = catchAsyncErrors(async (req, res, next) => {
                 "company_name" : true,
                 "registered_candidates.name" : true,
                 "registered_candidates.college_id" : true,
-                "registered_candidates.alternate_contact_no" : true,
+                "registered_candidates.contact_no" : true,
                 "registered_candidates.college_email" : true,
                 "registered_candidates.program" : true,
                 "registered_candidates.degree" : true,

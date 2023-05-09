@@ -3,6 +3,10 @@ import {
     CREATE_INTERVIEW_REQUEST,
     CREATE_INTERVIEW_RESET,
     CREATE_INTERVIEW_SUCCESS,
+    EDIT_INTERVIEW_FAIL,
+    EDIT_INTERVIEW_REQUEST,
+    EDIT_INTERVIEW_RESET,
+    EDIT_INTERVIEW_SUCCESS,
     GET_INTERVIEWS_FAIL,
     GET_INTERVIEWS_REQUEST,
     GET_INTERVIEWS_SUCCESS,
@@ -18,21 +22,25 @@ import {
 export const newInterviewReducer = (state = {}, action) => {
     switch(action.type) {
         case CREATE_INTERVIEW_REQUEST:
+        case EDIT_INTERVIEW_REQUEST:
             return {
                 ...state,
                 loading: true,
             };
         case CREATE_INTERVIEW_SUCCESS:
+        case EDIT_INTERVIEW_SUCCESS:
             return {
                 loading: false,
                 success: true
             };
         case CREATE_INTERVIEW_RESET:
+        case EDIT_INTERVIEW_RESET:
             return {
                 loading: false,
                 success: false
             };
         case CREATE_INTERVIEW_FAIL:
+        case EDIT_INTERVIEW_FAIL:
             return {
                 loading: false,
                 error: action.payload

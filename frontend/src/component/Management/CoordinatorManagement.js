@@ -51,7 +51,7 @@ const CoordinatorManagement = () => {
             </div>
             {/* <!-- Add Coordinator Model Box --> */}
             {/* ToDo : Make it to admin */}
-            {user.permission==="spc" && <div class="col-md-7 align-self-center text-right">
+            {(user.permission==="spc" || user.permission==="admin") && <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
                     <button type="button" class="btn btn-primary d-none d-lg-block m-l-15" data-bs-toggle="modal" data-bs-target="#addNewCoordinator"><i class="ti-plus"></i> Add Coordinator</button>
                 </div>
