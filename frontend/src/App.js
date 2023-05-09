@@ -20,6 +20,7 @@ import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
+import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -33,7 +34,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-const drawerWidth = 240;
+const drawerWidth = 260;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -96,8 +97,13 @@ function App() {
     store.dispatch(loadUser());
   }, []);
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
+  const [openDropdown, setDropdown] = React.useState(false);
 
+  const handle = () => {
+    if (!openDropdown) setDropdown(true);
+    else setDropdown(false);
+  }
   const handleDrawerOpen = () => {
     if (!open) setOpen(true);
     else setOpen(false);
@@ -129,56 +135,34 @@ function App() {
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader></DrawerHeader>
+        <nav class="sidebar-nav">
+          <ul id="sidebarnav">
+            <li> <a class="nav-toggler waves-effect waves-dark" href="/" aria-expanded="false"><i class="ti-home"></i>{open && <span class="hide-menu">Home</span>}</a></li>
+            <li> <a class="nav-toggler waves-effect waves-dark" href="/login" aria-expanded="false"><i class="icon-login"></i>{open && <span class="hide-menu">Login </span>}</a></li>
+            <li> <a class="nav-toggler waves-effect waves-dark" href="/company-registration" aria-expanded="false"><i class="icon-briefcase"></i>{open && <span class="hide-menu">Company Registration</span>}</a></li>
+            <li> <a class="nav-toggler waves-effect waves-dark" href="/interview-experiences" aria-expanded="false"><i class="icon-rocket"></i>{open && <span class="hide-menu">Interview Experiences </span>}</a></li>
+            <li> <a class="nav-toggler waves-effect waves-dark" href="/add-new-company" aria-expanded="false"><i class="icon-briefcase"></i>{open && <span class="hide-menu">Add New Company</span>}</a></li>
+            <li> <a class="nav-toggler waves-effect waves-dark" href="/admin-management" aria-expanded="false"><i class="icon-fire"></i>{open && <span class="hide-menu">Admin Management</span>}</a></li>
+            <li> <a class="nav-toggler waves-effect waves-dark" href="/announcements" aria-expanded="false"><i class="ti-announcement"></i>{open && <span class="hide-menu">Announcements </span>}</a></li>
+            <li> <a class="waves-effect waves-dark" href="javascript:void(0)" onClick={handle} aria-expanded="false"><i class="icon-user"></i>{open && <span class="hide-menu">User Profile</span>}{open && <ArrowForwardIosOutlinedIcon style={{ fontSize: "0.9rem" }} />}</a>
+              {openDropdown && open && <ul aria-expanded="false">
+                <li><a class="nav-toggler" href="/profile" class="hide-menu">Profile Page <i class="ti-user text-success"></i></a></li>
+                <li><a class="nav-toggler" href="/red-flag-history" class="hide-menu">Red Flag History <i class="ti-alert text-danger"></i></a></li>
+                <li><a class="nav-toggler" href="/timeline" class="hide-menu">Timeline <i class="ti-stats-up text-info"></i></a></li>
+                <li><a class="nav-toggler" href="/notifications" class="hide-menu">Notifications <i class="ti-bell text-info"></i></a></li>
+                <li><a class="nav-toggler" href="/achievement" class="hide-menu">Achievement <i class="ti-medall text-danger"></i></a></li>
+                <li><a class="nav-toggler" href="/contributions" class="hide-menu">Contributions <i class="ti-crown text-success"></i></a></li>
+                <li><a class="nav-toggler" href="/settings" class="hide-menu">Account Settings <i class="ti-settings text-success"></i></a></li>
+              </ul>}
+            </li>
+            <li> <a class="nav-toggler waves-effect waves-dark" href="/team" aria-expanded="false"><i class="icon-people"></i>{open && <span class="hide-menu">Team</span>}</a></li>
+            <li> <a class="nav-toggler waves-effect waves-dark" href="/technical" aria-expanded="false"><i class="icon-screen-desktop"></i>{open && <span class="hide-menu">Developer</span>}</a></li>
+            <li> <a class="nav-toggler waves-effect waves-dark" href="/contact" aria-expanded="false"><i class="icon-phone"></i>{open && <span class="hide-menu">Contact Us </span>}</a></li>
+            <li> <a class="nav-toggler waves-effect waves-dark" href="/placements" aria-expanded="false"><i class="ti-crown"></i>{open && <span class="hide-menu">Hall of Fame </span>}</a></li>
 
-        <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+          </ul>
+        </nav>
+
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />

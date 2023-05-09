@@ -1,0 +1,23 @@
+::-webkit-scrollbar {
+  width: 5px; /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: white; /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(161, 159, 159); /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid rgb(155, 155, 155); /* creates padding around scroll thumb */
+}
+html {
+  overflow: scroll;
+}
+
+.hide-menu {
+  font-family: "Rubik", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1rem;
+}
