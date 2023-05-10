@@ -17,6 +17,7 @@ const Login = () => {
     const [login_otp, setLoginOTP] = useState("");
 
     const sendOTPSubmit = (e) => {
+        console.log("heloo");
         e.preventDefault();
         dispatch(sendOTP(college_id, password));
     };

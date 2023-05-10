@@ -23,13 +23,14 @@ exports.getAll_admin = catchAsyncErrors(async (req, res, next) => {
 
 // Get One Interview Experiences
 exports.getOne = catchAsyncErrors(async (req, res, next) => {
-    const experience = await Interview.findById(req.params.experience_id).lean();
-    if(!experience) {
+    console.log(req.params.experience_id)
+    const interview = await Interview.findById(req.params.experience_id).lean();
+    if(!interview) {
         return next(new ErrorHandler("No such interview experience exists", 400));
     }
     res.status(200).json({
         success: true,
-        experience: experience
+        interview
     })
 });
 
@@ -64,7 +65,7 @@ exports.edit = catchAsyncErrors(async (req, res, next) => {
 
 // Change status of interview experience
 exports.changeStatus = catchAsyncErrors(async (req, res, next) => {
-    const interview = await Interview.findById(req.body.experience_id).select('status author_id author_name author_email title');
+    const interview = await Interview.findById(req.body.experience_id).select('status author_id author_name author_email title experience');
     if(interview.status === 'pending') {
         interview.status = 'approved';
         await interview.save();
@@ -74,19 +75,23 @@ exports.changeStatus = catchAsyncErrors(async (req, res, next) => {
         } catch {
             return res.status(200).json({
                 success: true,
-                message : 'Interview experience has been updated but failed to notify the author.'
+                message : 'Interview experience has been updated but failed to notify the author.',
+                interview
             })
         }
         res.status(200).json({
             success: true,
-            message : 'Interview experience has been updated. Author will be notified.'
+            message : 'Interview experience has been updated. Author will be notified.',
+            interview
         })
     } else {
         interview.status = 'pending';
         await interview.save();
+        console.log(interview)
         res.status(200).json({
             success: true,
-            message : 'Interview experience has been updated.'
+            message : 'Interview experience has been updated.',
+            interview
         })
     }
 });

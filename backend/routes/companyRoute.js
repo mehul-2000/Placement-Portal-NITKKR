@@ -4,7 +4,7 @@ const { isAuthenticatedUser, authorizePermissions, ensureOfficialPlacementTeam }
 
 const router = express.Router();
 
-router.route("/getAll").get(isAuthenticatedUser, getAll);
+router.route("/getAll").post(isAuthenticatedUser, getAll);
 router.route("/getOne/:company_id").get(isAuthenticatedUser, getOne);
 router.route("/add").post(isAuthenticatedUser, ensureOfficialPlacementTeam, add);
 router.route("/update").put(isAuthenticatedUser, ensureOfficialPlacementTeam, update);

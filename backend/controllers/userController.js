@@ -54,7 +54,7 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 // Send OTP
 exports.sendOTP = catchAsyncErrors(async(req, res, next) => {
     const {college_id, password} = req.body;
-
+    
     // checking if user has given password and email both
     if(!college_id || !password) {
         return next(new ErrorHandler("Please Enter College ID & Password", 400));
@@ -67,7 +67,7 @@ exports.sendOTP = catchAsyncErrors(async(req, res, next) => {
     }
     
     const isPasswordMatch = await user.comparePassword(password);
-    
+
     if(!isPasswordMatch) {
         // We can also write invalid password only but it will be risky because any unknown user will gwt to know if a particular email exists or not
         return next(new ErrorHandler("Invalid college ID or password", 401));
@@ -237,6 +237,10 @@ exports.updateBatch = catchAsyncErrors(async(req, res, next) => {
 
 // Get User's profile
 exports.getOne = catchAsyncErrors(async(req, res, next) => {
+    console.log("Heeelo");
+    if(!req.params.college_id) {
+        return next(new ErrorHandler("Field can't be empty.", 400));
+    }
     const user = await User.findOne({ college_id : req.params.college_id.toUpperCase() });
     if(!user) {
         return next(new ErrorHandler('Incorrect College ID. Please try again.', 404));
