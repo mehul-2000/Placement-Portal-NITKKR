@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearErrors, sendOTP, login } from "../../actions/userAction";
+import { clearErrors, sendOTP, login, loadUser } from "../../actions/userAction";
 import { useAlert } from 'react-alert';
 
 const Login = () => {
@@ -38,6 +38,7 @@ const Login = () => {
         // To avoid access to login page afte login
         if(isAuthenticated) {
             alert.success("User authenticated");
+            dispatch(loadUser());
             navigate("/" + redirect);
         }
     }, [dispatch, error, alert, isAuthenticated, navigate, redirect, error_code, message])

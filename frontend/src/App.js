@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
-import './App.css';
-import Footer from './component/layout/Footer';
-// import Header from './component/layout/Header';
-import {  BrowserRouter as Router,Route } from "react-router-dom"
+// @ts-nocheck
+import React, { useEffect } from "react";
+import "./App.css";
+import Footer from "./component/layout/Footer";
+import Header from './component/layout/Header';
+import { BrowserRouter as Router, Route, Navigate } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import store from './store';
 import { loadUser } from './actions/userAction';
@@ -36,47 +37,75 @@ import Settings from './component/Profile/Settings';
 import Announcement from './component/Announcement/Announcement';
 import CompanyNotification from './component/Company/Admin/CompanyNotification';
 import Notifications from './component/Profile/Notifications';
+import Developer from "./component/Developer/Developer";
+import ContactUs from "./component/ContactUs/ContactUs";
+import LandingPage from "./component/Home/Home";
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import ProtectedRoute from "./component/Route/ProtectedRoute";
+// import CssBaseline from "@mui/material/CssBaseline";
+
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+}));
 
 function App() {
   useEffect(() => {
     store.dispatch(loadUser());
-  }, [])
+  }, []);
+
   return (
-    <Router id="main-wrapper" className="App">
-      {/* <Header /> */}
-      <Routes>
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/logout" element={<Logout />} />
-        <Route exact path="/team" element={<Team />} />
-        <Route exact path="/add-new-company" element={<AddNewCompany />} />
-        <Route exact path="/forgot-password" element={<ForgotPassword />} />
-        <Route exact path="/reset-password/:token" element={<ResetPassword />} />
-        <Route exact path="/profile" element={<UserProfile />} />
-        <Route exact path="/timeline" element={<Timeline />} />
-        <Route exact path="/achievement" element={<Achievement />} />
-        <Route exact path="/contributions" element={<Contributions />} />
-        <Route exact path="/settings" element={<Settings />} />
-        <Route exact path="/company-registration" element={<CompanyRegistration />} />
-        <Route exact path="/previous-companies" element={<PreviousCompanies />} />
-        <Route exact path="/company/:company_id" element={<Company />} />
-        <Route exact path="/editCompany/:company_id" element={<EditCompany />} />
-        <Route exact path="/registeredStudents/:company_id" element={<RegisteredStudents />} />
-        <Route exact path="/admin-management" element={<AdminManagement />} />
-        <Route exact path="/coordinator-management" element={<CoordinatorManagement />} />
-        <Route exact path="/students-management" element={<StudentsManagement />} />
-        <Route exact path="/interviews-management" element={<InterviewsManagaement />} />
-        <Route exact path="/placement-management" element={<PlacementManagement />} />
-        <Route exact path="/add-placement" element={<AddPlacement />} />
-        <Route exact path="/edit-placement/:placement_id" element={<EditPlacement />} />
-        <Route exact path="/interview-experiences" element={<InterviewExperiences />} />
-        <Route exact path="/experience/:experience_id" element={<Experience />} />
-        <Route exact path="/editExperience/:experience_id" element={<EditExperience />} />
-        <Route exact path="/compose" element={<Compose />} />
-        <Route exact path="/announcements" element={<Announcement />} />
-        <Route exact path="/notifications" element={<Notifications />} />
-        <Route exact path="/company-notification/:company_id" element={<CompanyNotification />} />
-      </Routes>
-      <Footer />
+    <Router>
+      <Box sx={{ display: "flex" }}>
+        {/* <CssBaseline /> */}
+        <Header />
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <DrawerHeader />
+            <Routes>
+              <Route path="/" element={<Navigate to="/landingPage" />} />
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/team" element={<Team />} />
+              <Route exact path="/technical" element={<Developer />} />
+              <Route exact path="/contact" element={<ContactUs />} />
+              
+              <Route exact path="/company-registration" element={<ProtectedRoute />}>
+                <Route exact path="/company-registration" element={<CompanyRegistration />} />
+              </Route>
+
+              <Route exact path="/company-registration" element={<ProtectedRoute />}>
+                <Route exact path="/company-registration" element={<CompanyRegistration />} />
+              </Route>
+
+              <Route exact path="/profile" element={<ProtectedRoute />}>
+                <Route exact path="/profile" element={<UserProfile />} />
+              </Route>
+
+              <Route exact path="/company-registration" element={<CompanyRegistration />} />
+              <Route exact path="/previous-companies" element={<PreviousCompanies />} />
+              <Route exact path="/company/:company_id" element={<Company />} />
+              <Route exact path="/admin-management" element={<AdminManagement />} />
+              <Route exact path="/interviews-management" element={<InterviewsManagaement />} />
+              <Route exact path="/experience/:experience_id" element={<Experience />} />
+              <Route exact path="/students-management" element={<StudentsManagement />} />
+              <Route exact path="/achievement" element={<Achievement />} />
+              <Route exact path="/announcements" element={<Announcement />} />
+              <Route exact path="/team" element={<Team />} />
+              <Route exact path="/add-new-company" element={<AddNewCompany />} />
+              <Route exact path="/forgot-password" element={<ForgotPassword />} />
+              <Route exact path="/reset-password/:token" element={<ResetPassword />} />
+              <Route exact path="/profile" element={<UserProfile />} />
+              <Route exact path="/developer" element={<Developer />} />
+              <Route exact path="/contactus" element={<ContactUs />} />
+              <Route exact path="/" element={<LandingPage />} />
+            </Routes>
+            <Footer />
+        </Box>
+      </Box>
     </Router>
   );
 }
