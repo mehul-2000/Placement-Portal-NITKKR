@@ -180,9 +180,7 @@ function App() {
               <Route exact path="/contactus" element={<ContactUs />} />
               <Route exact path="/visitors" element={<Visitors />} />
             </Routes>
-            <footer style={{botton:"0",marginLeft:"0rem",marginTop:"0.5rem"}} className="footer text-center">
-          © 2023  Placement & Training Cell, NIT Kurukshetra
-      </footer>
+            
         </Box>
         
       </Box>

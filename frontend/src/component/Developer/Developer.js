@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Developer() {
     return (
-        <>
+        <div style={{marginBottom:"3.5rem"}}>
             {/* <!-- Row - If User is not logged In.--> */}
             <div style={{ display: 'flex', flexDirection: 'row' }} ng-show="!main.isLoggedIn">
                 {/* <!-- Column --> */}
@@ -110,7 +110,7 @@ function Developer() {
 
 
 
-        </>);
+        </div>);
 }
 
 export default Developer;

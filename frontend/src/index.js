@@ -23,6 +23,9 @@ root.render(
   <Provider store={store}>
     <AlertProvider template={AlertTemplate} {...options}>
       <App />
+      <footer style={{botton:"0",marginBottom:"0rem"}} className="footer text-center">
+          © 2023  Placement & Training Cell, NIT Kurukshetra
+      </footer>
     </AlertProvider>
   </Provider>
 );

@@ -2,7 +2,7 @@ import React from 'react'
 
 function ContactUs() {
     return (
-        <div>
+        <div style={{marginBottom:"2rem"}}>
             <div className="row page-titles">
                 <div className="col-md-5 align-self-center">
                     <h4 className="text-themecolor">Contact Details</h4>

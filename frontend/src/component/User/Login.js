@@ -43,7 +43,7 @@ const Login = () => {
     }, [dispatch, error, alert, isAuthenticated, navigate, error_code, message])
 
     return (
-        <>
+        <div style={{marginBottom:"9rem"}}>
             <div className="row page-titles">
             <div className="col-md-5 align-self-center">
                 <h4 className="text-themecolor">Welcome to NIT Kurukshetra Placement Portal</h4>
@@ -160,7 +160,7 @@ const Login = () => {
                 </div>
             </div>
             </div>
-        </>
+        </div>
     )
 }
 
