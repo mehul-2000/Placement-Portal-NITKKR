@@ -156,8 +156,11 @@ exports.resetPassword = catchAsyncErrors(async(req, res, next) => {
     user.reset_password_expire = undefined;
 
     await user.save();
-
-    sendToken(user, 200, res);
+    res.status(200).json({
+        success: true,
+        message: "Password updated successfully"
+    });
+    
 });
 
 // Get User details
