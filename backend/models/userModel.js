@@ -102,10 +102,10 @@ var userSchema = new mongoose.Schema({
         minLength: [8, "Password should be greater than 8 characters"],
         select: false // Password should not be shown on doing a eg. find() query
     },
-    active : {
-        type : Boolean,
-        default : true
-    },
+    // active : {
+    //     type : Boolean,
+    //     default : true
+    // },
     // ToDo : Add active Backlogs
     reset_password_token: String,
     reset_password_expire: Date,
