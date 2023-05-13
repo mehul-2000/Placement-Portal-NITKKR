@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, forgotPassword } from "../../actions/userAction";
 import { useAlert } from 'react-alert';
@@ -7,8 +7,6 @@ import { useAlert } from 'react-alert';
 const ForgotPassword = () => {
     const dispatch = useDispatch();
     const alert = useAlert();
-    const navigate = useNavigate();
-    const location = useLocation();
 
     const { error, message, loading } = useSelector(state => state.forgotPassword);
 
@@ -57,19 +55,9 @@ const ForgotPassword = () => {
                                 />
                             </div>
 
-                            {/* {message && <div class="alert alert-success alert-rounded">
-                                <i class="icon-check"></i>
-                                <strong> Yay!</strong> { message }
-                            </div>} */}
-
                             {loading && <div className="alert alert-primary alert-rounded">
                                 <strong> Loading!</strong> Hold on! Sending reset password email...
                             </div>}
-
-                            {/* {error && <div class="alert alert-danger alert-rounded">
-                                <i class="icon-close"></i>
-                                <strong>Oops! </strong> { error }
-                            </div>} */}
 
                             <button  disabled={loading} type="submit" class="btn btn-success btn-rounded">Submit</button>
                             <Link to="/login" class="text-danger p-l-5">Login ?</Link>

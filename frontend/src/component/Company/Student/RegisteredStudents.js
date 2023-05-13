@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getRegisteredStudents, clearErrors } from "../../../actions/companyAction"
 import { withdrawRegistrationAdmin, clearErrors as clearApplyErrors } from "../../../actions/applyAction"
 import { WITHDRAW_RESET } from "../../../constants/applyConstants";
@@ -6,7 +6,6 @@ import {useSelector, useDispatch} from "react-redux";
 import { useAlert } from 'react-alert';
 import { Link, useParams } from 'react-router-dom';
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
-// import {} from "assert/js/saveAsExcel";
 
 const RegisteredStudents = () => {
     const alert = useAlert();

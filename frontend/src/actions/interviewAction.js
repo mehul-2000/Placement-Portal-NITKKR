@@ -20,7 +20,6 @@ import axios from "axios";
 
 // Add new Interview Experience
 export const addNewInterview = (interview) => async (dispatch) => {
-    console.log(interview.get("tags"))
     try {
         dispatch({ type: CREATE_INTERVIEW_REQUEST });
 
@@ -103,7 +102,6 @@ export const getInterviewDetails = (interview_id) => async (dispatch) => {
 
 // Change Experiences status
 export const changeStatus = (experience_id) => async (dispatch) => {
-    console.log("Ishant Goyal")
     try{
         dispatch({type:UPDATE_STATUS_REQUEST});
         const config = {
@@ -112,7 +110,6 @@ export const changeStatus = (experience_id) => async (dispatch) => {
             }
         };
         const {data} = await axios.post('/api/interview/changeStatus', {experience_id}, config);
-        console.log(data);
         dispatch({ type: UPDATE_STATUS_SUCCESS, payload: data });
     } catch(error) {
         dispatch({

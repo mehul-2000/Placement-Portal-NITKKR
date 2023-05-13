@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { clearErrors, getContributions } from "../../actions/userAction";
@@ -12,8 +12,8 @@ const Contributions = () => {
     const alert = useAlert();
 
 
-    const { user, isAuthenticated } = useSelector((state) => state.user);
-    const { loading, error, interviews } = useSelector((state) => state.info);
+    const { isAuthenticated } = useSelector((state) => state.user);
+    const { error, interviews } = useSelector((state) => state.info);
 
     useEffect(() => {
         if(isAuthenticated === false) {

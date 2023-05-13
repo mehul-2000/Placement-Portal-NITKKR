@@ -1,9 +1,8 @@
 // @ts-nocheck
 import React, { useEffect } from "react";
 import "./App.css";
-import Footer from "./component/layout/Footer";
 import Header from './component/layout/Header';
-import { BrowserRouter as Router, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import store from './store';
 import { loadUser } from './actions/userAction';
@@ -44,7 +43,6 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ProtectedRoute from "./component/Route/ProtectedRoute";
 import Visitors from "./component/Visitors/Visitors";
-// import CssBaseline from "@mui/material/CssBaseline";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -61,7 +59,7 @@ function App() {
   }, []);
 
   return (
-    <div style={{display:"flex",flexDirection:"column"}}>
+    <div style={{minHeight:"90vh"}}>
     <Router>
       <Box sx={{ display: "flex"}}>
         {/* <CssBaseline /> */}
@@ -142,6 +140,10 @@ function App() {
 
               <Route element={<ProtectedRoute isAdmin={true}/>}>
                 <Route exact path="/add-placement" element={<AddPlacement />} />
+              </Route>
+
+              <Route element={<ProtectedRoute isAdmin={true}/>}>
+                <Route exact path="/edit-placement/:placement_id" element={<EditPlacement />} />
               </Route>
 
               <Route element={<ProtectedRoute/>}>

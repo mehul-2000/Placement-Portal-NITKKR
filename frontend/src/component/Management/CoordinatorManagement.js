@@ -1,8 +1,7 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getAllCoordinators, clearErrors, addNewCoordinator } from "../../actions/coordinatorAction"
 import {useSelector, useDispatch} from "react-redux";
 import { useAlert } from 'react-alert';
-import { Link } from 'react-router-dom';
 import { CREATE_COORDINATOR_RESET } from "../../constants/coordinatorConstants"
 
 const CoordinatorManagement = () => {
@@ -75,12 +74,6 @@ const CoordinatorManagement = () => {
                                     <input type="text" class="form-control" placeholder="Enter Student ID" value={college_id} onChange={(e) => setCollegeId(e.target.value)} required />
                                 </div>
 
-                                {/* Error Message */}
-                                {/* <div class="alert alert-danger alert-rounded" ng-show="coordinator.errorMsg">
-                                    <i class="ti-face-sad"></i>
-                                    <strong>Oops! </strong> {{ coordinator.errorMsg }}
-                                </div> */}
-                                {/* Loading Message */}
                                 {addCoordinatorLoading && <div class="alert alert-primary alert-rounded">
                                     <strong>Please Wait! </strong>Adding new coordinator...
                                 </div>}
@@ -93,21 +86,6 @@ const CoordinatorManagement = () => {
                             </div>
                         </form>
                     </div>
-                    {/* <!-- Success Message -->
-                    <div class="modal-content" ng-show="coordinator.successMsg">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Success</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="modal-body">
-                                <div class="text-md-center">
-                                    <i class="icon-check large-success-icon"></i>
-                                    <h3 class="success-text">{{ coordinator.successMsg }}</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </div>
@@ -119,25 +97,17 @@ const CoordinatorManagement = () => {
                     <div class="d-flex">
                         <div>
                             <h5 class="card-title">Placement Cell Coordinators </h5>
-                            <h6 class="card-subtitle">MNIT Jaipur</h6>
+                            <h6 class="card-subtitle">NIT Kurukshetra</h6>
                         </div>
-                        {/* <div class="ml-auto">
-                            <select class="custom-select b-0" ng-model="selectedRole">
-                                <option value="spc">Student Placement Coordinators</option>
-                                <option value="faculty-coordinator">Faculty Coordinators</option>
-                            </select>
-                        </div> */}
                     </div>
                 </div>
                 <div class="card-body bg-light">
                     <div class="row">
                         <div class="col-6">
                             <h3 ng-show="selectedRole==='spc'">Student Placement Coordinators</h3>
-                            {/* <h3 ng-show="selectedRole==='faculty-coordinator'">Faculty Coordinators Coordinators</h3> */}
 
-                            <h5 class="font-light m-t-0">MNIT Jaipur</h5></div>
+                            <h5 class="font-light m-t-0">NIT Kurukshetra</h5></div>
                         <div class="col-6 align-self-center display-6 text-right">
-                            {/* <h2 class="text-success">{{ filteredCoordinators.length }} {{ selectedRole.toUpperCase() }}s</h2> */}
                             <h2 class="text-success">{ numCoordinators } SPC's</h2>
                         </div>
                     </div>

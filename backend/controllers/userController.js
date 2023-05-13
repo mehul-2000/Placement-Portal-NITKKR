@@ -82,8 +82,6 @@ exports.sendOTP = catchAsyncErrors(async(req, res, next) => {
                 message: `Email sent to ${user.college_email} successfully`
             })
         } catch(error) {
-            // user.login_otp = undefined;
-            // await user.save({ validateBeforeSave: false });
             return next(new ErrorHandler("Some error occured. Please try again later.", 500));
         }
     }
@@ -252,7 +250,6 @@ exports.getOne = catchAsyncErrors(async(req, res, next) => {
 
 // Update User's Profile
 exports.updateOne = catchAsyncErrors(async(req, res, next) => {
-    // let user = await User.findOne({ college_id : req.body.college_id });
     const user = await User.findOneAndUpdate({ college_id : req.body.college_id }, req.body, {
         new: true,
         runValidators: true,

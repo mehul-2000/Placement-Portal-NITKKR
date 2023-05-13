@@ -1,16 +1,15 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getAllAdminInterviews, clearErrors } from "../../actions/interviewAction"
 import {useSelector, useDispatch} from "react-redux";
 import { useAlert } from 'react-alert';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const TruncHtml = require('trunc-html');
 
 const InterviewsManagaement = () => {
     const alert = useAlert();
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
-    const { loading, error, interviews } = useSelector((state) => state.interviews);
+    const { error, interviews } = useSelector((state) => state.interviews);
 
     const [status, setStatus] = useState("");
     const [filterInterviews, setFilterInterviews] = useState([]);

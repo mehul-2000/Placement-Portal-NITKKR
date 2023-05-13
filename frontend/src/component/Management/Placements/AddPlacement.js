@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
 import { getStudent, clearErrors as clearStudentErrors } from '../../../actions/studentAction';
@@ -46,7 +46,6 @@ const AddPlacement = () => {
             myForm.set(key, newPlacementData[key]);
         }
         myForm.set("candidates", JSON.stringify(candidates));
-        console.log(myForm.get("candidates"))
         dispatch(addNewPlacement(myForm));
     };
 
@@ -109,20 +108,6 @@ const AddPlacement = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Placement Added Div */}
-            {/* <div class="row" ng-show="addNewPlacement.successMsg">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="text-md-center">
-                                <i class="icon-check large-success-icon"></i>
-                                <h3 class="success-text">Placements Successfully Added.</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
 
             {/* Add New Placement Form */}
             <form onSubmit={postPlacementDetails}>
@@ -294,11 +279,6 @@ const AddPlacement = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* <!--Error Message -->
-                <div class="alert alert-danger alert-rounded text-center" ng-show="addNewPlacement.errorMsg">
-                    <strong> Oops!</strong> {{ addNewPlacement.errorMsg }}
-                </div> */}
 
                 {/* Loading */}
                 {loading && <div class="alert alert-primary alert-rounded text-center" ng-show="addNewPlacement.loading">

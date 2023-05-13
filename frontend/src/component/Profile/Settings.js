@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, changePassword } from "../../actions/userAction";
@@ -110,16 +110,6 @@ const Settings = () => {
                                             <i class="ti-time"></i>
                                             <strong> &nbsp;Loading.....</strong> Updating password details, please wait!
                                         </div>}
-
-                                        {/* <div class="alert alert-success alert-rounded" ng-show="settings.successMsg">
-                                            <i class="ti-face-smile"></i>
-                                            <strong> Yay!</strong> {{ settings.successMsg }}
-                                        </div>
-
-                                        <div class="alert alert-danger alert-rounded" ng-show="settings.errorMsg">
-                                            <i class="ti-face-sad"></i>
-                                            <strong>Oops! </strong> {{ settings.errorMsg }}
-                                        </div> */}
 
                                         <div class="form-group">
                                             <div class="col-sm-12">

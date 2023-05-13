@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import Menu from '@mui/material/Menu';
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -12,10 +12,8 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 const drawerWidth = 260;
 
 const openedMixin = (theme) => ({
@@ -79,7 +77,6 @@ const Drawer = styled(MuiDrawer, {
 const Header = () => {
 
     const {isAuthenticated, user} = useSelector(state => state.user);
-    // const theme = useTheme();
     const [open, setOpen] = React.useState(true);
     const [openDropdown, setDropdown] = React.useState(false);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -183,8 +180,7 @@ const Header = () => {
                     <li> <Link class="nav-toggler waves-effect waves-dark" to="/team" aria-expanded="false"><i class="icon-people"></i>{open && <span class="hide-menu">Team</span>}</Link></li>
                     <li> <Link class="nav-toggler waves-effect waves-dark" to="/technical" aria-expanded="false"><i class="icon-screen-desktop"></i>{open && <span class="hide-menu">Developer</span>}</Link></li>
                     <li> <Link class="nav-toggler waves-effect waves-dark" to="/contact" aria-expanded="false"><i class="icon-phone"></i>{open && <span class="hide-menu">Contact Us </span>}</Link></li>
-                    <li> <Link class="nav-toggler waves-effect waves-dark" to="/visitors" aria-expanded="false"><i class="icon-phone"></i>{open && <span class="hide-menu">Companies Visited </span>}</Link></li>
-                    {/* <li> <Link class="nav-toggler waves-effect waves-dark" to="/placements" aria-expanded="false"><i class="ti-crown"></i>{open && <span class="hide-menu">Hall of Fame </span>}</Link></li> */}
+                    <li> <Link class="nav-toggler waves-effect waves-dark" to="/visitors" aria-expanded="false"><i class="icon-briefcase"></i>{open && <span class="hide-menu">Companies Visited </span>}</Link></li>
                 </ul>
                 </nav>
                 

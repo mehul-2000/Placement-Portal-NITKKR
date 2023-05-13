@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, addNewCompany } from "../../../actions/companyAction";
 import { useAlert } from 'react-alert';
@@ -10,9 +10,8 @@ const AddNewCompany = () => {
     const dispatch = useDispatch();
     const alert = useAlert();
     const navigate = useNavigate();
-    const location = useLocation();
 
-    const {error, loading, company, successMsg} = useSelector(state => state.company)
+    const {error, successMsg} = useSelector(state => state.company)
 
     const programs = ["UG", "MTech", "MCA", "MBA"];
 
@@ -118,6 +117,13 @@ const AddNewCompany = () => {
         e.preventDefault();
         dispatch(addNewCompany(newCompanyData));
     };
+
+    useEffect(() => {
+        if(error) {
+            alert.error(error);
+            dispatch(clearErrors());
+        }
+    }, [dispatch, error, alert])
 
     useEffect(() => {
         if(successMsg) {
@@ -602,7 +608,6 @@ const AddNewCompany = () => {
                     </div>
                 </div>
 
-                {error && <p className="text-danger text-center"> { error }</p>}
                 {/* Submit Buttom- */}
                 <div style={{textAlign: "center"}}>
                     <button type="submit" className="btn btn-primary btn-rounded"><i className="ti-check-box"></i> &nbsp; Submit Details</button>

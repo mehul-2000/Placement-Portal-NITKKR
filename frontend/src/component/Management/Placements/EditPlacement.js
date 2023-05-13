@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
 import { EDIT_PLACEMENT_RESET } from "../../../constants/placementConstants"
@@ -13,7 +13,7 @@ const EditPlacement = () => {
 
     const {placement_id} = useParams();
 
-    const { loading, error, placements } = useSelector((state) => state.placements);
+    const { error, placements } = useSelector((state) => state.placements);
     const { error:editError, loading:editLoading, message} = useSelector(state => state.placement);
 
     const [newPlacementData, setNewPlacementData] = useState({
@@ -203,12 +203,7 @@ const EditPlacement = () => {
                         </div>
                     </div>}
                 </div>
-
-                {/* <!--Error Message -->
-                <div className="alert alert-danger alert-rounded text-center" ng-show="addNewPlacement.errorMsg">
-                    <strong> Oops!</strong> {{ addNewPlacement.errorMsg }}
-                </div> */}
-
+                
                 {/* Loading */}
                 {editLoading && <div className="alert alert-primary alert-rounded text-center" ng-show="addNewPlacement.loading">
                     <strong> Hold on!</strong> Please wait, while we update data...

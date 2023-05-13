@@ -4,7 +4,7 @@ const { isAuthenticatedUser, ensureAdmin, ensureOfficialPlacementTeam } = requir
 
 const router = express.Router();
 
-router.route("/add").post(isAuthenticatedUser, ensureOfficialPlacementTeam, add);
+router.route("/add").post(isAuthenticatedUser, ensureAdmin, add);
 router.route("/getAll").get(isAuthenticatedUser, ensureOfficialPlacementTeam, getAll);
 router.route("/remove").delete(isAuthenticatedUser, ensureAdmin, remove);
 

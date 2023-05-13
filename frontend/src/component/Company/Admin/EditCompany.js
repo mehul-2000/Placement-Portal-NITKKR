@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearErrors, addNewCompany, getCompanyDetails, editCompany } from "../../../actions/companyAction";
+import { clearErrors, getCompanyDetails, editCompany } from "../../../actions/companyAction";
 import { useAlert } from 'react-alert';
 import { EDIT_COMPANY_RESET } from "../../../constants/companyConstants"
 
@@ -9,11 +9,10 @@ const EditCompany = () => {
     const dispatch = useDispatch();
     const alert = useAlert();
     const navigate = useNavigate();
-    const location = useLocation();
 
     const {company_id} = useParams();
 
-    const {error, loading, successMsg} = useSelector(state => state.company);
+    const {error, successMsg} = useSelector(state => state.company);
     const {error:detailsError, company} = useSelector(state => state.companyDetails);
 
     const programs = ["UG", "MTech", "MCA", "MBA"];
@@ -103,7 +102,6 @@ const EditCompany = () => {
     });
 
     const handleCompanyDataChange = (e) => {
-        console.log(e.target.value)
         const splitVals = e.target.name.split(".");
         if(splitVals.length === 1) {
             setNewCompanyData({ ...newCompanyData, [e.target.name]: (e.target.type==='checkbox' ? e.target.checked : e.target.value)});
@@ -134,13 +132,7 @@ const EditCompany = () => {
     }, [dispatch, company_id])
 
     useEffect(() => {
-        console.log(programsDiv)
-    }, [programsDiv])
-
-
-    useEffect(() => {
         if(company) {
-            console.log(company)
             const programs = ["UG", "MTech", "MCA", "MBA"];
             programs.forEach(program => {
                 if(company.eligibility) {
@@ -170,10 +162,10 @@ const EditCompany = () => {
         }
         if(successMsg) {
             alert.success(successMsg);
-            navigate("/company-registration");
+            navigate(`/company/${company_id}`);
             dispatch({type:EDIT_COMPANY_RESET});
         }
-    }, [dispatch, error, detailsError, alert, successMsg, navigate])
+    }, [dispatch, error, detailsError, alert, successMsg, navigate, company_id])
 
 
 

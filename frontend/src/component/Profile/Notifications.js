@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useAlert } from 'react-alert';
 import Moment from 'moment';
@@ -10,7 +10,7 @@ const Notifications = () => {
     const dispatch = useDispatch();
     Moment.locale('en');
 
-    const { loading, error, notifications } = useSelector((state) => state.notifications);
+    const { error, notifications } = useSelector((state) => state.notifications);
 
     useEffect(() => {
         if(error) {

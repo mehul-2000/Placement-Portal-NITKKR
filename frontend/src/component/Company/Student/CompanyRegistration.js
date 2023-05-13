@@ -1,7 +1,5 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { getAllUpcomingCompanies, clearErrors } from "../../../actions/companyAction"
-import { updateAdminBatch, clearErrors as clearUpdateBatchErrors, loadUser } from "../../../actions/userAction"
-import { UPDATE_BATCH_RESET } from "../../../constants/userConstants";
+import React, { useEffect, useState } from 'react';
+import { getAllUpcomingCompanies, clearErrors, getAllUpcomingCompaniesAdmin } from "../../../actions/companyAction"
 import {useSelector, useDispatch} from "react-redux";
 import { useAlert } from 'react-alert';
 import { Link } from 'react-router-dom';
@@ -13,7 +11,6 @@ const CompanyRegistration = () => {
 
     const { user } = useSelector((state) => state.user);
     const {loading, error, companies, numCompanies} = useSelector(state => state.companies);
-    const {error:updateBatchError, isUpdated} = useSelector(state => state.batch);
 
     const [passout_batch, setPassoutBatch] = useState("2023");
 
@@ -41,40 +38,27 @@ const CompanyRegistration = () => {
 
     const getDateString = (rawDate) => {
         Moment.locale('en');
-        return Moment(rawDate).format('d MMM')
+        return Moment(rawDate).format('D MMM')
     }
-
-    useEffect(() => {
-        if(user && user.permission !== "student")
-            dispatch(updateAdminBatch(passout_batch));
-    }, [dispatch, passout_batch, user])
 
     useEffect(() => {
         if(error) {
             alert.error(error);
             dispatch(clearErrors());
         }
-        if(updateBatchError) {
-            alert.error(updateBatchError);
-            dispatch(clearUpdateBatchErrors());
-        }
-        if(isUpdated) {
-            dispatch(getAllUpcomingCompanies())
-            dispatch({
-                type: UPDATE_BATCH_RESET
-            })
-        }
-    }, [dispatch, error, updateBatchError, alert, isUpdated])
+    }, [dispatch, error, alert])
 
     useEffect(() => {
-        dispatch(getAllUpcomingCompanies())
-        dispatch({
-            type: UPDATE_BATCH_RESET
-        })
-    }, [dispatch])
+        if(user) {
+            if(user.permission === "student")
+                dispatch(getAllUpcomingCompanies())
+            else 
+                dispatch(getAllUpcomingCompaniesAdmin(passout_batch))
+        }
+    }, [dispatch, user, passout_batch])
 
     return (
-        <>
+        <div style={{marginBottom:"12rem"}}>
             <div className="row page-titles" id="upcomingCompanies">
                 <div className="col-md-5 align-self-center">
                     <h4 className="text-themecolor">Company Registration</h4>
@@ -168,7 +152,7 @@ const CompanyRegistration = () => {
                     <Link to="/previous-companies" className="btn btn-block btn-rounded btn-primary"><i className="icon-eye"></i> &nbsp; View Previous Companies</Link>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

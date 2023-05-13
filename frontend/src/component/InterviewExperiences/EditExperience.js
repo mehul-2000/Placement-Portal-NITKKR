@@ -1,8 +1,8 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { editInterview, clearErrors, getInterviewDetails } from "../../actions/interviewAction"
 import {useSelector, useDispatch} from "react-redux";
 import { useAlert } from 'react-alert';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { EDIT_INTERVIEW_RESET } from "../../constants/interviewConstants"
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState,convertToRaw } from 'draft-js';
@@ -18,7 +18,7 @@ const EditExperience = () => {
     const {experience_id} = useParams();
 
     const { loading, error, interview } = useSelector((state) => state.interviewDetails);
-    const { loading:editLoading, error:editError, success } = useSelector((state) => state.interview);
+    const { error:editError, success } = useSelector((state) => state.interview);
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [title, setTitle] = useState("");
@@ -29,7 +29,6 @@ const EditExperience = () => {
     const addTag = () => {
         if(tag) {
             if(tags.indexOf(tag.toLowerCase()) === -1) {
-                // setTags([...tags, tag.toLowerCase()])
                 const temp = [...tags];
                 temp.push(tag);
                 setTags(temp)
@@ -161,7 +160,6 @@ const EditExperience = () => {
                                     </div>
                                 </div>
                                 <div style={{textAlign: "center"}} className="text-center">
-                                    {/* <p className="text-danger" ng-show="compose.errorMsg">{{ compose.errorMsg }}</p> */}
                                     {loading && <p className="text-primary"> Editing experience... Please wait!</p>}
                                     {!loading && <button type="submit" className="btn btn-primary btn-rounded"><i className="ti-check-box"></i> &nbsp; Post Interview Experience</button>}
                                 </div>
@@ -170,20 +168,6 @@ const EditExperience = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Experience Add Div */}
-            {/* <div className="row" ng-show="compose.successMsg">
-                <div className="col-lg-12">
-                    <div className="card">
-                        <div className="card-body">
-                            <div className="text-md-center">
-                                <i className="icon-check large-success-icon"></i>
-                                <h3 className="success-text">{{ compose.successMsg }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
 
             {/* Preview Modal */}
             <div className="modal fade" id="previewExperienceModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
@@ -195,7 +179,6 @@ const EditExperience = () => {
                         </div>
                         <div className="modal-body">
                             <div> { ReactHtmlParser(experience) } </div>
-                            {/* <div ng-bind-html="compose.experienceData.experience"></div> */}
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-default" data-bs-dismiss="modal">Close</button>

@@ -11,9 +11,9 @@ function ContactUs() {
 
             <div className="row">
                 <div className="col-lg-12">
-                    <div className="card"> <img className="card-img" src="https://res.cloudinary.com/djik7nh4k/image/upload/v1682875261/24131961_285405678647849_426967072086000359_o_jqga6l.jpg" height="456" alt="Card image" />
+                    <div className="card"> <img className="card-img" src="https://res.cloudinary.com/djik7nh4k/image/upload/v1682875261/24131961_285405678647849_426967072086000359_o_jqga6l.jpg" height="456" alt="Card" />
                         <div className="card-img-overlay card-inverse text-white social-profile d-flex justify-content-center" style={{ borderRadius: "15px" }}>
-                            <div className="align-self-center"> <img src="https://res.cloudinary.com/djik7nh4k/image/upload/v1682875404/National_Institute_of_Technology_2C_Kurukshetra_Logo_lrwo06.png" className="img-circle" width="100" style={{ backgroundColor: "white" }} />
+                            <div className="align-self-center"> <img src="https://res.cloudinary.com/djik7nh4k/image/upload/v1682875404/National_Institute_of_Technology_2C_Kurukshetra_Logo_lrwo06.png" className="img-circle" width="100" style={{ backgroundColor: "white" }} alt="abc"/>
                                 <br />
                                 <br />
                                 <h4 className="card-title">Placement & Training Cell</h4>

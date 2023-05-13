@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getAllPlacements, clearErrors } from "../../../actions/placementAction"
 import {useSelector, useDispatch} from "react-redux";
 import { useAlert } from 'react-alert';

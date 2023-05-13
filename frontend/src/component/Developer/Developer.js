@@ -15,7 +15,7 @@ function Developer() {
                                 <h4 className="card-title m-t-10">Mehul Kumar</h4>
                                 {/* <h6 className="card-subtitle">Node.Js Developer, Full time Freelancer.</h6> */}
                                 <div className="row text-center">
-                                    <div className="col-12"><Link className="link"><i className="ti-crown"></i> CSE'23 MNIT Kurukshetra</Link></div>
+                                    <div className="col-12"><Link className="link"><i className="ti-crown"></i> CSE'23 NIT Kurukshetra</Link></div>
                                 </div>
                             </center>
                         </div>
@@ -98,18 +98,6 @@ function Developer() {
                 </div>
                 {/* <!-- Column --> */}
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
         </div>);
 }
 

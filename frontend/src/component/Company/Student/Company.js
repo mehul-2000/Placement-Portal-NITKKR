@@ -1,7 +1,6 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { getCompanyDetails, deleteCompany, clearErrors } from "../../../actions/companyAction"
 import { getApplicationStatus, apply, withdrawRegistrationStudent, clearErrors as applyClearErrors } from "../../../actions/applyAction"
-// import { UPDATE_BATCH_RESET } from "../../../constants/compaConstants";
 import {useSelector, useDispatch} from "react-redux";
 import { useAlert } from 'react-alert';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -19,10 +18,10 @@ const Company = () => {
     const {company_id} = useParams();
 
     const { user } = useSelector((state) => state.user);
-    const {loading, error, company} = useSelector(state => state.companyDetails);
+    const {loading, company} = useSelector(state => state.companyDetails);
     const { message:status } = useSelector(state => state.applicationStatus);
     const { loading:applyLoading, error:applyError, message } = useSelector(state => state.apply);
-    const { loading:deleteLoading, error:deleteError, successMsg } = useSelector(state => state.company);
+    const { error:deleteError, successMsg } = useSelector(state => state.company);
     const { error:withdrawError, message:withdrawMessage} = useSelector(state => state.withdraw);
 
     const oneClickApply = () => {
@@ -73,9 +72,6 @@ const Company = () => {
     function checkDateDifference(deadline) {
         let deadline_date = new Date(deadline);
         let today = new Date();
-
-        //console.log(deadline_date.getTime());
-        //console.log(today.getTime());
 
         if(deadline_date.getTime() <= today.getTime()) {
             return true;
@@ -423,7 +419,7 @@ const Company = () => {
 
                     <div class="row">
 
-                        {user.permission==="admin" && <div class="col-lg-12">
+                        {(user.permission==="admin" || user.permission==="spc") && <div class="col-lg-12">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="card">
@@ -526,12 +522,6 @@ const Company = () => {
                     </div>
                 </div>
 
-
-                {/* Error Message
-                <div class="alert alert-danger alert-rounded text-center" ng-show="company.errorMsg">
-                    <strong> Oops!</strong> {{ company.errorMsg }}
-                </div> */}
-
                 {(!checkDateDifference(company.deadline_date) && (user.permission==='student' || user.permission==='spc')) && <div style={{textAlign: "center", marginBottom: "20px"}}>
                     <button disabled={status==="Applied" || applyLoading} type="button" id="oneClickApplyButton" class="btn btn-success btn-rounded" data-bs-toggle="modal" data-bs-target="#applyNowCompanyModal"> {applyLoading ? "Applying.....Please wait!!" : "One Click Apply"}</button>
                 </div>}
@@ -544,19 +534,6 @@ const Company = () => {
                     <button disabled type="button" class="btn btn-danger btn-rounded" data-bs-toggle="modal"><i class="ti-close"></i> &nbsp; Oops! You missed it.</button>
                 </div>}
             </div>}
-
-            {/* <div ng-show="company.deleteSuccessMsg" style={{marginTop: "20px"}}>
-                <div class="col-lg-12 text-center">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="text-md-center">
-                                <i class="icon-check large-success-icon text-center"></i>
-                                <h3 class="success-text">Successfully deleted.</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
 
             {loading && <div class="card-body text-center" ng-show="!company.fetchedCompanyDetails">
                 <div class="spinner-grow" role="status">

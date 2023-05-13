@@ -410,11 +410,6 @@ const Team = () => {
                                         </div>
                                     </center>
                                 </div>
-
-
-
-                                
-
                             </div>
                         </div>
                     </div>

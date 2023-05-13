@@ -40,16 +40,7 @@ const reducer = combineReducers({
     notification: newNotificationReducer
 });
 
-let initialState = {
-    // cart: {
-    //     cartItems: localStorage.getItem("cartItems")
-    //         ? JSON.parse(localStorage.getItem("cartItems"))
-    //         : [],
-    //     shippingInfo: localStorage.getItem("shippingInfo")
-    //         ? JSON.parse(localStorage.getItem("shippingInfo"))
-    //         : {},
-    // }
-};
+let initialState = {};
 
 const middleware = [thunk];
 

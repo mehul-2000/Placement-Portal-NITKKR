@@ -1,14 +1,13 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { getInterviewDetails, clearErrors, changeStatus } from "../../actions/interviewAction"
 import {useSelector, useDispatch} from "react-redux";
 import { useAlert } from 'react-alert';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { UPDATE_STATUS_RESET } from "../../constants/interviewConstants"
 
 const Experience = () => {
     const alert = useAlert();
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const {experience_id} = useParams();
 
     const { loading, error, interview, updateLoading, message } = useSelector((state) => state.interviewDetails);
@@ -72,10 +71,8 @@ const Experience = () => {
                                 </div>
                                 <div className="col-12">
                                     <div dangerouslySetInnerHTML={{ __html: interview.experience }} />
-                                    {/* <div ng-bind-html="experience.experience.experience"></div> */}
                                     <br />
                                     <div>
-                                        {/* {interview.tags.map(tag => {return (<span className="label label-success" style={{marginRight: "10px"}}>{ tag }</span>)})} */}
                                     </div>
                                 </div>
                             </div>
@@ -97,8 +94,6 @@ const Experience = () => {
                                 <br />
                                 <div className="col-12 text-center">
                                     {updateLoading && <p className="text-primary">Updating status... Please wait!</p>}
-                                    {/* <p className="text-danger" ng-show="experience.errorMsg">{{ experience.errorMsg }}</p>
-                                    <p className="text-primary" ng-show="experience.successMsg">{{ experience.successMsg }}</p> */}
                                     {interview.status==='pending' && <button className="btn btn-block btn-success" onClick={() => {dispatch(changeStatus(experience_id))}}> &nbsp; Approve Interview Experience</button>}
                                     {interview.status==='approved' && <button className="btn btn-block btn-danger" onClick={() => {dispatch(changeStatus(experience_id))}}> &nbsp; Disapprove Interview Experience</button>}
                                 </div>

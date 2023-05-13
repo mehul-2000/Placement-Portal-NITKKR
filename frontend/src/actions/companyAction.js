@@ -83,6 +83,28 @@ export const getAllUpcomingCompanies = () => async (dispatch) => {
     }
 };
 
+// Get All Upcoming companies (Admin)
+export const getAllUpcomingCompaniesAdmin = (passout_batch) => async (dispatch) => {
+    try{
+        dispatch({type:UPCOMING_COMPANIES_REQUEST});
+        const config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }
+        const {data} = await axios.post('/api/company/getAll_admin', {active:true, passout_batch}, config);
+        dispatch({
+            type: UPCOMING_COMPANIES_SUCCESS,
+            payload:data,
+        });
+    } catch(error) {
+        dispatch({
+            type: UPCOMING_COMPANIES_FAIL,
+            payload: error.response.data.message,
+        });
+    }
+};
+
 // Get All Previous companies
 export const getAllPreviousCompanies = () => async (dispatch) => {
     try{
@@ -93,6 +115,28 @@ export const getAllPreviousCompanies = () => async (dispatch) => {
             }
         }
         const {data} = await axios.post('/api/company/getAll', {active:false}, config);
+        dispatch({
+            type: UPCOMING_COMPANIES_SUCCESS,
+            payload:data,
+        });
+    } catch(error) {
+        dispatch({
+            type: UPCOMING_COMPANIES_FAIL,
+            payload: error.response.data.message,
+        });
+    }
+};
+
+// Get All Previous companies (Admin)
+export const getAllPreviousCompaniesAdmin = (passout_batch) => async (dispatch) => {
+    try{
+        dispatch({type:UPCOMING_COMPANIES_REQUEST});
+        const config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }
+        const {data} = await axios.post('/api/company/getAll_admin', {active:false, passout_batch}, config);
         dispatch({
             type: UPCOMING_COMPANIES_SUCCESS,
             payload:data,

@@ -1,7 +1,5 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { getAllPreviousCompanies, clearErrors } from "../../../actions/companyAction"
-import { updateAdminBatch, clearErrors as clearUpdateBatchErrors, loadUser } from "../../../actions/userAction"
-import { UPDATE_BATCH_RESET } from "../../../constants/userConstants";
+import React, { useEffect, useState } from 'react';
+import { getAllPreviousCompanies, clearErrors, getAllPreviousCompaniesAdmin } from "../../../actions/companyAction"
 import {useSelector, useDispatch} from "react-redux";
 import { useAlert } from 'react-alert';
 import { Link } from 'react-router-dom';
@@ -13,7 +11,6 @@ const PreviousCompanies = () => {
 
     const { user } = useSelector((state) => state.user);
     const {loading, error, companies, numCompanies} = useSelector(state => state.companies);
-    const {error:updateBatchError, isUpdated} = useSelector(state => state.batch);
 
     const [passout_batch, setPassoutBatch] = useState("2023");
     const [search_term, setSearchTerm] = useState("");
@@ -56,33 +53,20 @@ const PreviousCompanies = () => {
     }, [search_term, companies])
 
     useEffect(() => {
-        if(user && user.permission !== "student")
-            dispatch(updateAdminBatch(passout_batch));
-    }, [dispatch, passout_batch, user])
-
-    useEffect(() => {
         if(error) {
             alert.error(error);
             dispatch(clearErrors());
         }
-        if(updateBatchError) {
-            alert.error(updateBatchError);
-            dispatch(clearUpdateBatchErrors());
-        }
-        if(isUpdated) {
-            dispatch(getAllPreviousCompanies())
-            dispatch({
-                type: UPDATE_BATCH_RESET
-            })
-        }
-    }, [dispatch, error, updateBatchError, alert, isUpdated])
+    }, [dispatch, error, alert])
 
     useEffect(() => {
-        dispatch(getAllPreviousCompanies())
-        dispatch({
-            type: UPDATE_BATCH_RESET
-        })
-    }, [dispatch])
+        if(user) {
+            if(user.permission === "student")
+                dispatch(getAllPreviousCompanies())
+            else 
+                dispatch(getAllPreviousCompaniesAdmin(passout_batch))
+        }
+    }, [dispatch, user, passout_batch])
 
     return (
         <>

@@ -50,7 +50,6 @@ export const userReducer = (state = { user:{} }, action) => {
         case SEND_OTP_REQUEST:
         case LOGIN_REQUEST:
             return {
-                ...state,
                 loading: true,
                 isAuthenticated: false
             };

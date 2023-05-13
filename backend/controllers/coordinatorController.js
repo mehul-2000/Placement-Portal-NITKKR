@@ -17,10 +17,6 @@ exports.add = catchAsyncErrors(async (req, res, next) => {
     }
     user.permission = 'spc';
     await user.save();
-    // res.status(200).json({
-    //     success: true,
-    //     message : 'Coordinator added successfully.'
-    // })
     try {
         await sendEmail(user, 'addCoordinator');
     } catch {

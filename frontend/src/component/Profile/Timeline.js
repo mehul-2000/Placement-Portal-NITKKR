@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, {useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { clearErrors, getTimeline } from "../../actions/userAction";
@@ -64,7 +64,7 @@ const Timeline = () => {
                                         return (<div class="profiletimeline">
                                         <div class="sl-item">
                                             <div class="sl-left">
-                                                <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1593682008/timeline/timeline_j8jzub.png" alt="Timeline Icon" class="img-circle" />
+                                                <img src="assets/images/timeline.png" alt="Timeline Icon" class="img-circle" />
                                             </div>
                                             <div class="sl-right">
                                                 <div><Link class="link">{registration.company_name}</Link>

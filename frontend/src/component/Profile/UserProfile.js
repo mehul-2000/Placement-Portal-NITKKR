@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { clearErrors, updateProfile, loadUser, updateResume } from "../../actions/userAction";
@@ -37,15 +37,6 @@ const UserProfile = () => {
     }
 
     const handleResumeDataChange = (e) => {
-        // const reader = new FileReader();
-        // reader.onload = () => {
-        //     if(reader.readyState === 2) { //0->Initial 1->Processing 2->Done
-        //         setResume(reader.result);
-        //     }
-        // }
-
-        // // // Onload will only be called when file is addded
-        // reader.readAsDataURL(e.target.files[0]);
         setResume(e.target.files[0]);
     };
 
@@ -176,16 +167,6 @@ const UserProfile = () => {
                                         <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
                                     </div>
 
-                                    {/* Resume Upload Success Message Modal Body */}
-                                    <div className="modal-body" ng-show="profile.resumeUploadSuccessMsg">
-                                        {/* Success Message */}
-                                        {/* <div className="alert alert-success alert-rounded">
-                                            <i className="ti-face-smile"></i>
-                                            <strong> Yay!</strong> {{ profile.resumeUploadSuccessMsg }}
-                                        </div> */}
-                                        {/* <span className="ml-3 text-primary">*Refresh page to upload new resume</span> */}
-                                    </div>
-
                                     {/* Resume is not uploaded yet! */}
                                     <form onSubmit={updateUserResume}>
                                         <div className="modal-body">
@@ -200,11 +181,6 @@ const UserProfile = () => {
                                                 <strong> Loading!</strong> Hold on. Uploading your resume...
                                             </div>}
 
-                                            {/* Error Message */}
-                                            {/* <div className="alert alert-danger alert-rounded" ng-show="profile.resumeUploadErrorMsg">
-                                                <i className="ti-face-sad"></i>
-                                                <strong>Oops! </strong> {{ profile.resumeUploadErrorMsg }}
-                                            </div> */}
                                         </div>
                                         <div className="modal-footer">
                                             <button type="submit" disabled={resumeLoading} className="btn btn-success">Upload Now</button>
@@ -410,18 +386,6 @@ const UserProfile = () => {
                                         {loading && <div className="alert alert-primary alert-rounded">
                                             <strong> Loading!</strong> Hold on. We are updating your data!
                                         </div>}
-
-                                        {/* Success Message */}
-                                        {/* <div className="alert alert-success alert-rounded" ng-show="profile.profileUpdateSuccessMsg">
-                                            <i className="ti-face-smile"></i>
-                                            <strong> Yay!</strong> {{ profile.profileUpdateSuccessMsg }}
-                                        </div> */}
-
-                                        {/* Error Message */}
-                                        {/* <div className="alert alert-danger alert-rounded" ng-show="profile.profileUpdateErrorMsg">
-                                            <i className="ti-face-sad"></i>
-                                            <strong>Oops! </strong> {{ profile.profileUpdateErrorMsg }}
-                                        </div> */}
 
                                         <div className="form-group">
                                             <div className="col-sm-12">

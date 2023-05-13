@@ -20,6 +20,20 @@ exports.getAll = catchAsyncErrors(async (req, res, next) => {
     })
 });
 
+exports.getAllAdmin = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findById(req.user.id);
+    const opts = { deadline_date : { $lt: new Date() } };
+    if(req.body.active) {
+        opts.deadline_date = { $gte: new Date() - 1 };
+    }
+    const companies = await Company.find({ passout_batch: req.body.passout_batch, ...opts }).select('company_name job_profile package deadline_date').lean();
+    res.status(200) .json({
+        success: true,
+        companies,
+        numCompanies: companies.length
+    })
+});
+
 // Get One Company
 exports.getOne = catchAsyncErrors(async (req, res, next) => {
     const company = await Company.findById(req.params.company_id).select('-candidates').lean();
@@ -53,6 +67,10 @@ exports.add = async (req, res, next) => {
                 }
             }
         }
+
+        if(emails.length === 0) {
+            return next(new ErrorHandler("Please add eligible courses.", 400));
+        }
     
         //package details
         if(!req.body.package){
@@ -71,7 +89,7 @@ exports.add = async (req, res, next) => {
         company.apply_url = `${req.protocol}://${req.get("host")}/api/company/${company._id}`;
     
         try {
-            // await sendEmail(company, 'companyAdded');
+            await sendEmail(company, 'companyAdded');
             res.status(200).json({
                 success: true,
                 company,

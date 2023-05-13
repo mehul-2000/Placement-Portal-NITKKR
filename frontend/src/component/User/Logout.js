@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, logout } from "../../actions/userAction";
 import { LOGOUT_RESET } from "../../constants/userConstants"
@@ -14,7 +14,6 @@ const Logout = () => {
 
     useEffect(() => {
         if(error) {
-            console.log(error)
             alert.error(error);
             dispatch(clearErrors());
         }

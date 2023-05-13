@@ -1,8 +1,8 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { addNewInterview, clearErrors } from "../../actions/interviewAction"
 import {useSelector, useDispatch} from "react-redux";
 import { useAlert } from 'react-alert';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { CREATE_INTERVIEW_RESET } from "../../constants/interviewConstants"
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState,convertToRaw } from 'draft-js';
@@ -26,7 +26,6 @@ const Compose = () => {
     const addTag = () => {
         if(tag) {
             if(tags.indexOf(tag.toLowerCase()) === -1) {
-                // setTags([...tags, tag.toLowerCase()])
                 const temp = [...tags];
                 temp.push(tag);
                 setTags(temp)
@@ -148,20 +147,6 @@ const Compose = () => {
                     </div>
                 </div>
             </div>
-
-            {/* Experience Add Div */}
-            {/* <div className="row" ng-show="compose.successMsg">
-                <div className="col-lg-12">
-                    <div className="card">
-                        <div className="card-body">
-                            <div className="text-md-center">
-                                <i className="icon-check large-success-icon"></i>
-                                <h3 className="success-text">{{ compose.successMsg }}</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
 
             {/* Preview Modal */}
             <div className="modal fade" id="previewExperienceModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel1">

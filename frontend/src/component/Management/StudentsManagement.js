@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getStudent, updateStudent, clearErrors } from "../../actions/studentAction"
 import {useSelector, useDispatch} from "react-redux";
 import { useAlert } from 'react-alert';
@@ -9,7 +9,7 @@ const StudentsManagement = () => {
     const alert = useAlert();
     const dispatch = useDispatch();
 
-    const { loading, student, error, isFetched, isUpdated } = useSelector((state) => state.student);
+    const { student, error, isFetched, isUpdated } = useSelector((state) => state.student);
 
     const [college_id, setCollegeId] = useState("");
     const searchStudentSubmit = (e) => {
@@ -84,9 +84,7 @@ const StudentsManagement = () => {
                                     
                                         <div className="form-group">
                                             <input type="text" className="form-control form-control-line" placeholder="Enter Students' College ID" value={college_id} onChange={(e) => setCollegeId(e.target.value)} required/>
-                                            {/* <p style="color: red;margin-top: 10px;">{{ studentsManagement.errorMsg }}</p> */}
                                         </div>
-                                    {/* </form> */}
                                 </div>
                                 <div className="col-lg-4 text-center">
                                     <button type="submit" className="btn btn-primary btn-rounded"><i className="ti-crown"></i> &nbsp; Search Student</button>
@@ -231,14 +229,6 @@ const StudentsManagement = () => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                {/* <div className="col-sm-6">
-                                                    <div className="form-group">
-                                                        <label className="col-md-12">Active Backlogs*</label>
-                                                        <div className="col-md-12">
-                                                            <input type="text" placeholder="Enter Active Backlogs" className="form-control form-control-line" value="N/A" disabled />
-                                                        </div>
-                                                    </div>
-                                                </div> */}
                                             </div>
 
                                             <div className="row">
@@ -346,16 +336,6 @@ const StudentsManagement = () => {
                                                     <input type="text" placeholder="Enter your social profile link" className="form-control form-control-line" name="linkedln_link" value={newStudentData.linkedln_link} onChange={handleStudentDataChange} required />
                                                 </div>
                                             </div>
-
-                                            {/* <div className="alert alert-success alert-rounded" ng-show="studentsManagement.profileUpdateSuccessMsg">
-                                                <i className="icon-check"></i>
-                                                <strong> Yay!</strong> {{ studentsManagement.profileUpdateSuccessMsg }}
-                                            </div>
-
-                                            <div className="alert alert-danger alert-rounded" ng-show="studentsManagement.profileUpdateErrorMsg">
-                                                <i className="icon-close"></i>
-                                                <strong>Oops! </strong> {{ studentsManagement.profileUpdateErrorMsg }}
-                                            </div> */}
 
                                             <div className="form-group">
                                                 <div className="col-sm-12">
