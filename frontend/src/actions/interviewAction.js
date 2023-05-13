@@ -20,6 +20,7 @@ import axios from "axios";
 
 // Add new Interview Experience
 export const addNewInterview = (interview) => async (dispatch) => {
+    console.log(interview.get("tags"))
     try {
         dispatch({ type: CREATE_INTERVIEW_REQUEST });
 

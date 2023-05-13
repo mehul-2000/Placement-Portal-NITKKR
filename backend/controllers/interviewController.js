@@ -38,7 +38,7 @@ exports.add = catchAsyncErrors(async (req, res, next) => {
     const interview = await Interview.create({
         title : req.body.title,
         experience : req.body.experience,
-        tags : req.body.tags,
+        tags : req.body.tags.split(',').map(String),
         author_id : req.user.college_id,
         author_name : req.user.name,
         author_email: req.user.college_email,

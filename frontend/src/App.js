@@ -43,6 +43,7 @@ import LandingPage from "./component/Home/Home";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ProtectedRoute from "./component/Route/ProtectedRoute";
+import Visitors from "./component/Visitors/Visitors";
 // import CssBaseline from "@mui/material/CssBaseline";
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -60,53 +61,135 @@ function App() {
   }, []);
 
   return (
+    <div style={{display:"flex",flexDirection:"column"}}>
     <Router>
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex"}}>
         {/* <CssBaseline /> */}
-        <Header />
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Header/>
+        <Box component="main" sx={{ flexGrow: 1, p: 3 ,flexDirection:"column",paddingBottom:"0rem"}}>
           <DrawerHeader />
             <Routes>
-              <Route path="/" element={<Navigate to="/landingPage" />} />
+              <Route path="/" element={<LandingPage />} />
               <Route exact path="/login" element={<Login />} />
+              <Route exact path="/logout" element={<Logout />} />
               <Route exact path="/team" element={<Team />} />
               <Route exact path="/technical" element={<Developer />} />
               <Route exact path="/contact" element={<ContactUs />} />
               
-              <Route exact path="/company-registration" element={<ProtectedRoute />}>
+              <Route element={<ProtectedRoute />}>
                 <Route exact path="/company-registration" element={<CompanyRegistration />} />
               </Route>
 
-              <Route exact path="/company-registration" element={<ProtectedRoute />}>
-                <Route exact path="/company-registration" element={<CompanyRegistration />} />
+              <Route element={<ProtectedRoute />}>
+                <Route exact path="/previous-companies" element={<PreviousCompanies />} />
               </Route>
 
-              <Route exact path="/profile" element={<ProtectedRoute />}>
+              <Route element={<ProtectedRoute/>}>
+                <Route exact path="/company/:company_id" element={<Company />} />
+              </Route>
+
+              <Route element={<ProtectedRoute isAdmin={true}/>}>
+                <Route exact path="/editCompany/:company_id" element={<EditCompany />} />
+              </Route>
+
+              <Route element={<ProtectedRoute isAdmin={true}/>}>
+                <Route exact path="/registeredStudents/:company_id" element={<RegisteredStudents />} />
+              </Route>
+
+              <Route element={<ProtectedRoute isAdmin={true}/>}>
+                <Route exact path="/company-notification/:company_id" element={<CompanyNotification />} />
+              </Route>
+
+              <Route element={<ProtectedRoute />}>
+                <Route exact path="/interview-experiences" element={<InterviewExperiences />} />
+              </Route>
+
+              <Route element={<ProtectedRoute />}>
+                <Route exact path="/experience/:experience_id" element={<Experience />} />
+              </Route>
+
+              <Route element={<ProtectedRoute />}>
+                <Route exact path="/compose" element={<Compose />} />
+              </Route>
+
+              <Route element={<ProtectedRoute isAdmin={true}/>}>
+                <Route exact path="/editExperience/:experience_id" element={<EditExperience />} />
+              </Route>
+
+              <Route element={<ProtectedRoute isAdmin={true}/>}>
+                <Route exact path="/add-new-company" element={<AddNewCompany />} />
+              </Route>
+
+              <Route element={<ProtectedRoute isAdmin={true}/>}>
+                <Route exact path="/admin-management" element={<AdminManagement />} />
+              </Route>
+
+              <Route element={<ProtectedRoute isAdmin={true}/>}>
+                <Route exact path="/coordinator-management" element={<CoordinatorManagement />} />
+              </Route>
+
+              <Route element={<ProtectedRoute isAdmin={true}/>}>
+                <Route exact path="/students-management" element={<StudentsManagement />} />
+              </Route>
+
+              <Route element={<ProtectedRoute isAdmin={true}/>}>
+                <Route exact path="/interviews-management" element={<InterviewsManagaement />} />
+              </Route>
+
+              <Route element={<ProtectedRoute isAdmin={true}/>}>
+                <Route exact path="/placement-management" element={<PlacementManagement />} />
+              </Route>
+
+              <Route element={<ProtectedRoute isAdmin={true}/>}>
+                <Route exact path="/add-placement" element={<AddPlacement />} />
+              </Route>
+
+              <Route element={<ProtectedRoute/>}>
+                <Route exact path="/announcements" element={<Announcement />} />
+              </Route>
+
+              <Route element={<ProtectedRoute />}>
                 <Route exact path="/profile" element={<UserProfile />} />
               </Route>
 
-              <Route exact path="/company-registration" element={<CompanyRegistration />} />
-              <Route exact path="/previous-companies" element={<PreviousCompanies />} />
-              <Route exact path="/company/:company_id" element={<Company />} />
-              <Route exact path="/admin-management" element={<AdminManagement />} />
-              <Route exact path="/interviews-management" element={<InterviewsManagaement />} />
-              <Route exact path="/experience/:experience_id" element={<Experience />} />
-              <Route exact path="/students-management" element={<StudentsManagement />} />
-              <Route exact path="/achievement" element={<Achievement />} />
-              <Route exact path="/announcements" element={<Announcement />} />
-              <Route exact path="/team" element={<Team />} />
-              <Route exact path="/add-new-company" element={<AddNewCompany />} />
+              <Route element={<ProtectedRoute isStudent={true}/>}>
+                <Route exact path="/timeline" element={<Timeline />} />
+              </Route>
+
+              <Route element={<ProtectedRoute />}>
+                <Route exact path="/notifications" element={<Notifications />} />
+              </Route>
+
+              <Route element={<ProtectedRoute isStudent={true}/>}>
+                <Route exact path="/achievement" element={<Achievement />} />
+              </Route>
+
+              <Route element={<ProtectedRoute isStudent={true}/>}>
+                <Route exact path="/contributions" element={<Contributions />} />
+              </Route>
+
+              <Route element={<ProtectedRoute />}>
+                <Route exact path="/settings" element={<Settings />} />
+              </Route>
+
               <Route exact path="/forgot-password" element={<ForgotPassword />} />
               <Route exact path="/reset-password/:token" element={<ResetPassword />} />
-              <Route exact path="/profile" element={<UserProfile />} />
+
+              <Route exact path="/team" element={<Team />} />
               <Route exact path="/developer" element={<Developer />} />
               <Route exact path="/contactus" element={<ContactUs />} />
-              <Route exact path="/" element={<LandingPage />} />
+              <Route exact path="/visitors" element={<Visitors />} />
             </Routes>
-            <Footer />
+            <footer style={{botton:"0",marginLeft:"0rem",marginTop:"0.5rem"}} className="footer text-center">
+          © 2023  Placement & Training Cell, NIT Kurukshetra
+      </footer>
         </Box>
+        
       </Box>
+      
     </Router>
+    
+</div>
   );
 }
 

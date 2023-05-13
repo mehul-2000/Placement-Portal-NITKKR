@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  padding: 0;
   scroll-behavior: smooth;
 }
 
@@ -25,4 +26,8 @@ html {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1rem;
+}
+
+.modal {
+  z-index: 1300;
 }

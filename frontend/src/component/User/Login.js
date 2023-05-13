@@ -26,7 +26,6 @@ const Login = () => {
         dispatch(login(college_id, password, login_otp));
     };
 
-    const redirect = location.search ? location.search.split('=')[1] : "account";
     useEffect(() => {
         if(error) {
             alert.error(error);
@@ -39,9 +38,9 @@ const Login = () => {
         if(isAuthenticated) {
             alert.success("User authenticated");
             dispatch(loadUser());
-            navigate("/" + redirect);
+            navigate("/profile");
         }
-    }, [dispatch, error, alert, isAuthenticated, navigate, redirect, error_code, message])
+    }, [dispatch, error, alert, isAuthenticated, navigate, error_code, message])
 
     return (
         <>

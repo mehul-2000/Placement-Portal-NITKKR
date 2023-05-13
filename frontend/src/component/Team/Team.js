@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Team = () => {
     return (
@@ -9,22 +10,6 @@ const Team = () => {
                     <h4 className="text-themecolor">Faculty In-Charge</h4>
                 </div>
 
-                <div className="col-md-7 align-self-center text-right">
-                    <div className="d-flex justify-content-end align-items-center dropdown">
-
-                        <a className="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i className="ti-user"></i> &nbsp;Placement Teams
-                        </a>
-
-                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a className="dropdown-item" href="/team">Team 2022</a></li>
-                            <li><a className="dropdown-item" href="/team2021">Team 2021</a></li>
-                            <li><a className="dropdown-item" href="/team2020">Team 2020</a></li>
-                        </ul>
-
-                    </div>
-                </div>
-
             </div>
             <div className="row">
                 <div className="col-lg-12">
@@ -32,74 +17,46 @@ const Team = () => {
                         <div className="card-body">
                             <div className="row">
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="http://mnit.ac.in/PortalProfile/images/faculty/mnitjas039.png" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Prof. M M Sharma</h4>
-                                        <h6 className="card-subtitle">Professor In-charge</h6>
+                                    <center className="m-t-30"> <img src={require('./sm gupta.PNG')} className="img-circle" width="150" alt="dp"/>
+                                        <h4 className="card-title m-t-10">Prof. S.M. Gupta</h4>
+                                        <h6 className="card-subtitle">Dean | Industry & International Relations</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-1412713260</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-01744-233301 | 302</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
 
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630567595/team/team2022/sunandha_sinha_qixzkm.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Dr. Sunanda Sinha</h4>
-                                        <h6 className="card-subtitle">Faculty Placement Coordinator</h6>
+                                    <center className="m-t-30"> <img src={require('./shelly.PNG')} className="img-circle" width="150" alt="dp"/>
+                                        <h4 className="card-title m-t-10">Shelly Vadhera</h4>
+                                        <h6 className="card-subtitle">Associate Dean | Industry & International Relations</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-9549650369</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-01744-233304</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
 
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="http://mnit.ac.in/PortalProfile/images/faculty/mnitjas314.png" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Dr. Ila Sharma</h4>
-                                        <h6 className="card-subtitle">Faculty Placement Coordinator</h6>
+                                    <center className="m-t-30"> <img src={require('./panduranga.PNG')} className="img-circle" width="150" alt="dp"/>
+                                        <h4 className="card-title m-t-10">Dr. M.P.R. Prasad</h4>
+                                        <h6 className="card-subtitle">Faculty In-charge| Training & Placement</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-9549650769</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-01744-233303</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
 
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630577671/team/team2022/Tapas_Bajpai_hmnxjs.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Dr. Tapas Bajpai</h4>
-                                        <h6 className="card-subtitle">Faculty Placement Coordinator</h6>
+                                    <center className="m-t-30"> <img src={require('./rajesh.PNG')} className="img-circle" width="150" alt="dp"/>
+                                        <h4 className="card-title m-t-10">Sh. Rakesh Sharma</h4>
+                                        <h6 className="card-subtitle">Office Incharge | Training & Placement</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-9549650603</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-01744-233302</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
 
-                                <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630577816/team/team2022/Ravita_Lamba-1_kekoky.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Dr. Ravita Lamba</h4>
-                                        <h6 className="card-subtitle">Faculty Placement Coordinator</h6>
-                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-9549650797</font></a></div>
-                                        </div>
-                                    </center>
-                                </div>
-
-                                <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1615549353/team/gireendra_hjt55y.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Dr. Gireendra Kumar</h4>
-                                        <h6 className="card-subtitle">Faculty Placement Coordinator</h6>
-                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91 9549650289</font></a></div>
-                                        </div>
-                                    </center>
-                                </div>
-
-                                <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1615549353/team/priyanka_yfhxhx.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Dr. Priyanka Sihag</h4>
-                                        <h6 className="card-subtitle">Faculty Placement Coordinator</h6>
-                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91 7426050343</font></a></div>
-                                        </div>
-                                    </center>
-                                </div>
+                               
                             </div>
 
 
@@ -108,31 +65,6 @@ const Team = () => {
                 </div>
             </div>
 
-            <div className="row page-titles">
-                <div className="col-md-5 align-self-center">
-                    <h4 className="text-themecolor">Student Placement Co-ordinators (PhD)</h4>
-                </div>
-            </div>
-
-            <div className="row">
-                <div className="col-lg-12">
-                    <div className="card">
-                        <div className="card-body">
-                            <div className="row">
-                                <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1652943618/team/team2022/WhatsApp_Image_2022-05-18_at_2.32.25_PM_svovct.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Joohi Garg</h4>
-                                        <h6 className="card-subtitle">Electronics (PhD) </h6>
-                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91 6367171561</font></a></div>
-                                        </div>
-                                    </center>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div className="row page-titles">
                 <div className="col-md-5 align-self-center">
@@ -147,81 +79,126 @@ const Team = () => {
                         <div className="card-body">
                             <div className="row">
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630580091/team/team2022/Sonal_2_axuvur.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Sonal Agrawal</h4>
-                                        <h6 className="card-subtitle">Computer Science</h6>
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Harsh Brar</h4>
+                                        <h6 className="card-subtitle">Civil Engineering</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-6376759316</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">9306255059</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
 
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630580208/team/team2022/Harsh_2_ryecyg.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Harsh Abhinandan</h4>
-                                        <h6 className="card-subtitle">Chemical</h6>
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Potluri Bhavana </h4>
+                                        <h6 className="card-subtitle">Civil Engineering</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-7014059560</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">9848226323</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
 
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630580207/team/team2022/Sanchita_2_tg8mps.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Sanchita Bisaria Nigam</h4>
-                                        <h6 className="card-subtitle">Chemical</h6>
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Raj Vaibhav Siddhant </h4>
+                                        <h6 className="card-subtitle">Mechanical Engineering</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-9779571610</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">7011578047</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
 
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630563812/team/team2022/Rishika_soni_tfrbqb.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Rishika Soni</h4>
-                                        <h6 className="card-subtitle">Architecture</h6>
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Sourabh Mittal </h4>
+                                        <h6 className="card-subtitle">Mechanical Engineering</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-8890148159</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">8570918619</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
 
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630662619/team/team2022/WhatsApp_Image_2021-09-03_at_3.18.17_PM_athczo.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">YASHSWINI KABRA</h4>
-                                        <h6 className="card-subtitle">Mechanical</h6>
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Yaman Kumar</h4>
+                                        <h6 className="card-subtitle">Production & Industrial Engineering</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-96027 14440</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">9306394990</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
 
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630579955/team/team2022/Sakshi_eoyhho.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Sakshi Chandola</h4>
-                                        <h6 className="card-subtitle">Metallurgy</h6>
+                                    <center className="m-t-30">
+                                        <h4 className="card-title m-t-10">Akshat Bindal</h4>
+                                        <h6 className="card-subtitle">Production & Industrial Engineering</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-7618117991</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">8385816865</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
 
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630579751/team/team2022/Anusha_gkrthj.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Anusha Jain</h4>
-                                        <h6 className="card-subtitle">Electrical </h6>
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Saransh Gautam</h4>
+                                        <h6 className="card-subtitle">Information Technology </h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-7974287377</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">7073412759</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
 
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630574600/team/team2022/Abhay_cstply.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Abhay Kumar</h4>
-                                        <h6 className="card-subtitle">Civil</h6>
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Ishita Tandon</h4>
+                                        <h6 className="card-subtitle">Electrical Engineering</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-8210650120</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">8090929947</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Rajat</h4>
+                                        <h6 className="card-subtitle">Electrical Engineering</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">9991160468</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Kunal Sharma</h4>
+                                        <h6 className="card-subtitle">Electronics & Communication Engineering</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">9992796799</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Anoushka Dangi</h4>
+                                        <h6 className="card-subtitle">Electrical Engineering</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">8447000477</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Ayush Ranjan</h4>
+                                        <h6 className="card-subtitle">Computer Engineering</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">9560993912</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Bharat Lulla</h4>
+                                        <h6 className="card-subtitle">Computer Engineering</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">9660677523</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
@@ -244,54 +221,199 @@ const Team = () => {
                         <div className="card-body">
                             <div className="row">
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630563248/team/team2022/Pranay_ladha_jjt6wd.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Pranay Ladha</h4>
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Ayushman Shukla</h4>
                                         <h6 className="card-subtitle">MBA</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-9529929956</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">8318297324</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
 
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630580508/team/team2022/Saksham_ypcnog.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Saksham Pathrol</h4>
-                                        <h6 className="card-subtitle">Chemical (M.Tech.)</h6>
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Aindri Sharma</h4>
+                                        <h6 className="card-subtitle">MBA</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-7746992999</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">8957901228</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
 
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630563246/team/team2022/Piyush_gaur_cnfi56.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Piyush Gaur</h4>
-                                        <h6 className="card-subtitle">Mechanical (M.Tech.)</h6>
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Vishal Kumar Shaw</h4>
+                                        <h6 className="card-subtitle">MCA</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-8147651425</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">7358291024</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
 
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630579448/team/team2022/Shubham_Sharma_ejr4kc.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Shubham Sharma</h4>
-                                        <h6 className="card-subtitle">Computer Science (M.Tech.)</h6>
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Anushika Srivastava</h4>
+                                        <h6 className="card-subtitle">MCA</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-9028275312</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">9506733894</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
 
                                 <div className="col-lg-3">
-                                    <center className="m-t-30"> <img src="https://res.cloudinary.com/placements-mnit/image/upload/v1630579802/team/team2022/Souvik_vhal5n.jpg" className="img-circle" width="150" />
-                                        <h4 className="card-title m-t-10">Souvik Poddar</h4>
-                                        <h6 className="card-subtitle">Electrical Engineering (M.Tech.)</h6>
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Yogesh Kapri</h4>
+                                        <h6 className="card-subtitle">Civil Engineering (Geotechnical)</h6>
                                         <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
-                                            <div className="col-12"><a href="javascript:void(0)" className="link"><i className="icon-call-in"></i> <font className="font-medium">+91-9079164306</font></a></div>
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">8953727816</font></Link></div>
                                         </div>
                                     </center>
                                 </div>
+
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Rajesh</h4>
+                                        <h6 className="card-subtitle">Civil Engineering (Environmental)</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">8222899908</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Akilesh Kumar</h4>
+                                        <h6 className="card-subtitle">Civil Engineering (Structural)</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">6374236953</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Medhavi Gupta</h4>
+                                        <h6 className="card-subtitle">Civil Engineering (Transportation)</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">9506882355</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Shubhendra Kumar</h4>
+                                        <h6 className="card-subtitle">Mechanical Engineering (PIE)</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">9903118311</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Umang Rai</h4>
+                                        <h6 className="card-subtitle">Mechanical Engineering (MD)</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">8871233416</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Chandrakant Tyagi</h4>
+                                        <h6 className="card-subtitle">Mechanical Engineering (Thermal)</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">7895037172</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Mukund Kumar Choudhary</h4>
+                                        <h6 className="card-subtitle">Electrical Engineering (PED)</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">8800858835</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Talib </h4>
+                                        <h6 className="card-subtitle">Electrical Engineering (Power System)</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">8218459842</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Roopshi Gupta </h4>
+                                        <h6 className="card-subtitle">Electrical Engineering (Control System)</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">9650554852</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Abhishek Gautam </h4>
+                                        <h6 className="card-subtitle">Computer Engineering </h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">7237864986</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Utkarsh Upadhyay </h4>
+                                        <h6 className="card-subtitle">Computer Engineering (Cyber Security)</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">8225919593</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Harshika Kumari </h4>
+                                        <h6 className="card-subtitle">Physics</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">9776303596</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Ashish </h4>
+                                        <h6 className="card-subtitle">VLSI</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">9570677876</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Vikas Yadav </h4>
+                                        <h6 className="card-subtitle">ESD</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">7982673855</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div className="col-lg-3">
+                                    <center className="m-t-30"> 
+                                        <h4 className="card-title m-t-10">Satyavrat Pratap Singh </h4>
+                                        <h6 className="card-subtitle">SREE</h6>
+                                        <div className="row text-center justify-content-md-center" ng-show="main.isLoggedIn">
+                                            <div className="col-12"><Link className="link"><i className="icon-call-in"></i> <font className="font-medium">8766805648</font></Link></div>
+                                        </div>
+                                    </center>
+                                </div>
+
+
+
+                                
 
                             </div>
                         </div>

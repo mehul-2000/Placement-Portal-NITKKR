@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { styled, useTheme } from "@mui/material/styles";
+import Menu from '@mui/material/Menu';
+import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
@@ -9,7 +11,11 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from 'react-router-dom';
-import zIndex from '@mui/material/styles/zIndex';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
 const drawerWidth = 260;
 
 const openedMixin = (theme) => ({
@@ -76,7 +82,7 @@ const Header = () => {
     // const theme = useTheme();
     const [open, setOpen] = React.useState(true);
     const [openDropdown, setDropdown] = React.useState(false);
-
+    const [anchorElUser, setAnchorElUser] = React.useState(null);
     const handle = () => {
         if (!openDropdown) setDropdown(true);
         else setDropdown(false);
@@ -84,6 +90,13 @@ const Header = () => {
     const handleDrawerOpen = () => {
         if (!open) setOpen(true);
         else setOpen(false);
+    };
+    
+    const handleOpenUserMenu = () => {
+        setAnchorElUser(true);
+    };
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
     };
     return (
         <>
@@ -105,9 +118,47 @@ const Header = () => {
                         Placement Portal
                         </Typography>}
                     </div>
+                    {isAuthenticated && user && <Box sx={{ flexGrow: 0 }}>
+                        <Tooltip>
+                        <IconButton onClick={() => handleOpenUserMenu()} sx={{ p: 0 }}>
+                            <Avatar alt="Remy Sharp" src={`assets/images/profile/${user.gender}.png`} />
+                        </IconButton>
+                        </Tooltip>
+
+                        <Menu
+                            sx={{ mt: '45px', paddingTop: "0rem", width: "16rem" }}
+                            id="menu-appbar"
+                            anchorEl={anchorElUser}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            open={Boolean(anchorElUser)}
+                            onClose={handleCloseUserMenu}
+                        >
+                            <Box sx={{ backgroundColor: "#6610F2", margin: "0 8px", width: "13rem", color: "white", padding: "2px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+                                <h4><b>{user.name}</b></h4>
+
+                                <h5>{user.permission.toUpperCase()}</h5>
+                            </Box>
+                            <MenuItem><div class="dropdown-divider"></div> </MenuItem>
+                            <MenuItem><Link to="/profile"><i class="ti-user m-r-5 m-l-5"></i> My Profile</Link> </MenuItem>
+                            <MenuItem><Link to="/notifications"><i class="ti-user m-r-5 m-l-5"></i> My Notifications</Link> </MenuItem>
+                            <MenuItem><Link to="/timeline" ng-show="!main.authorized"><i class="ti-stats-up m-r-5 m-l-5"></i> My Timeline</Link> </MenuItem>
+                            <MenuItem><Link to="/achievement" ng-show="!main.authorized"><i class="ti-medall m-r-5 m-l-5"></i> My Achievements</Link> </MenuItem>
+                            <MenuItem><Link to="/announcements"><i class="ti-announcement m-r-5 m-l-5"></i> Announcements</Link> </MenuItem>
+                            <MenuItem><Link to="/settings"><i class="ti-settings m-r-5 m-l-5"></i> Account Settings</Link> </MenuItem>
+                            <MenuItem><div class="p-l-30 p-10"><Link to="/logout" class="btn btn-sm btn-success btn-rounded center">Logout</Link></div> </MenuItem>
+                        </Menu>
+                    </Box>}
                 </Toolbar>
             </AppBar>
-            <Drawer variant="permanent" open={open}>
+            <Drawer variant="permanent" open={open} style={{zIndex: "1 !important"}}>
                 <DrawerHeader></DrawerHeader>
                 <nav class="sidebar-nav">
                 <ul id="sidebarnav">
@@ -132,14 +183,13 @@ const Header = () => {
                     <li> <Link class="nav-toggler waves-effect waves-dark" to="/team" aria-expanded="false"><i class="icon-people"></i>{open && <span class="hide-menu">Team</span>}</Link></li>
                     <li> <Link class="nav-toggler waves-effect waves-dark" to="/technical" aria-expanded="false"><i class="icon-screen-desktop"></i>{open && <span class="hide-menu">Developer</span>}</Link></li>
                     <li> <Link class="nav-toggler waves-effect waves-dark" to="/contact" aria-expanded="false"><i class="icon-phone"></i>{open && <span class="hide-menu">Contact Us </span>}</Link></li>
+                    <li> <Link class="nav-toggler waves-effect waves-dark" to="/visitors" aria-expanded="false"><i class="icon-phone"></i>{open && <span class="hide-menu">Companies Visited </span>}</Link></li>
                     {/* <li> <Link class="nav-toggler waves-effect waves-dark" to="/placements" aria-expanded="false"><i class="ti-crown"></i>{open && <span class="hide-menu">Hall of Fame </span>}</Link></li> */}
                 </ul>
                 </nav>
                 
             </Drawer>  
-            <footer style={{botton:"0", position:"absolute",marginTop:"1rem",zIndex:"1",marginLeft:"0rem"}} className="footer text-center">
-                © 2023  Placement & Training Cell, NIT Kurukshetra
-            </footer>
+            
             </div>
             
         </>

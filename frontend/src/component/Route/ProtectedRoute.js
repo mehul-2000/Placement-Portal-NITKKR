@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from "react-router-dom"
 
@@ -8,10 +8,10 @@ const ProtectedRoute = ({ isAdmin, isStudent }) => {
         if(isAuthenticated === false) {
             return <Navigate to="/login" />;
         }
-        if(isAdmin === true && (user.role !== "admin" && user.role !== "spc")) {
+        if(isAdmin === true && (user.permission !== "admin" && user.permission !== "spc")) {
             return <Navigate to="/login" />;
         }
-        if(isStudent === true && (user.role !== "student" && user.role !== "spc")) {
+        if(isStudent === true && (user.permission !== "student" && user.permission !== "spc")) {
             return <Navigate to="/login" />;
         }
         return <Outlet />
