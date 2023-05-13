@@ -111,9 +111,9 @@ const UserProfile = () => {
                                 </div>
                                 <h4 className="card-title m-t-10">{ user.name }</h4>
                                 <h6 className="card-subtitle">{ user.department }</h6>
-                                <div className="row text-center">
+                                {user.permission!=="admin" && <div className="row text-center">
                                     <div className="col-12"><font className="font-medium">{ user.passout_batch } Batch</font></div>
-                                </div>
+                                </div>}
                             </center>
                         </div>
                         <div>
@@ -430,7 +430,7 @@ const UserProfile = () => {
                                         </div>
                                         <div className="form-group">
                                             <div className="col-sm-12">
-                                                <span className="text-danger">*Non-editable fields. Data directly coming from MNIT ERP.</span>
+                                                <span className="text-danger">*Non-editable fields. Data directly coming from NIT Kurukshetra T&P Cell.</span>
                                             </div>
                                         </div>
                                     </form>

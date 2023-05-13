@@ -56,8 +56,9 @@ const PreviousCompanies = () => {
     }, [search_term, companies])
 
     useEffect(() => {
-        dispatch(updateAdminBatch(passout_batch));
-    }, [dispatch, passout_batch])
+        if(user && user.permission !== "student")
+            dispatch(updateAdminBatch(passout_batch));
+    }, [dispatch, passout_batch, user])
 
     useEffect(() => {
         if(error) {
@@ -75,6 +76,14 @@ const PreviousCompanies = () => {
             })
         }
     }, [dispatch, error, updateBatchError, alert, isUpdated])
+
+    useEffect(() => {
+        dispatch(getAllPreviousCompanies())
+        dispatch({
+            type: UPDATE_BATCH_RESET
+        })
+    }, [dispatch])
+
     return (
         <>
             <div className="row page-titles" id="upcomingCompanies">

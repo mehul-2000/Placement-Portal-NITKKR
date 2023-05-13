@@ -112,9 +112,9 @@ const StudentsManagement = () => {
                                 <center className="m-t-30">
                                     <img src={`assets/images/profile/${student.gender}.png`} className="img-circle" width="150" alt="profile"/>
                                     <h4 className="card-title m-t-10">{ student.name }</h4>
-                                    <h6 className="card-subtitle">{ student.department } STUDENT</h6>
+                                    <h6 className="card-subtitle">{ student.department } { student.permission }</h6>
                                     <div className="row text-center">
-                                        <div className="col-12"><Link className="link"><i className="ti-location-pin"></i> <font className="font-medium">MNIT Jaipur</font></Link></div>
+                                        <div className="col-12"><Link className="link"><i className="ti-location-pin"></i> <font className="font-medium">NIT Kurukshetra</font></Link></div>
                                     </div>
                                 </center>
                             </div>

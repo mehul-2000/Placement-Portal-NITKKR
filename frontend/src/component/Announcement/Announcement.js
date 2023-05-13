@@ -148,8 +148,8 @@ const Announcement = () => {
                 <div class="card">
                     <div class="card-body" ng-show="announcements.fetchedAnnouncements">
 
-                        {/* <!-- Visible to ADMIN,SPC,FACULTY --> */}
-                        <div class="row" ng-if="main.authorized">
+                        {/* <!-- Visible to ADMIN,SPC --> */}
+                        {user.permission!=="student" && <div class="row" ng-if="main.authorized">
                             <div class="col-12">
                                 <div class="form-group">
                                     <select class="form-control" value={passout_batch} onChange={updateBatch}>
@@ -160,7 +160,7 @@ const Announcement = () => {
                                     </select>
                                 </div>
                             </div>
-                        </div>
+                        </div>}
 
                         {/* <!-- If No announcements in database --> */}
                         {(announcements && announcements.length===0) && <div>

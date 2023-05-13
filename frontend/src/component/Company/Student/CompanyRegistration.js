@@ -45,8 +45,9 @@ const CompanyRegistration = () => {
     }
 
     useEffect(() => {
-        dispatch(updateAdminBatch(passout_batch));
-    }, [dispatch, passout_batch])
+        if(user && user.permission !== "student")
+            dispatch(updateAdminBatch(passout_batch));
+    }, [dispatch, passout_batch, user])
 
     useEffect(() => {
         if(error) {
@@ -64,6 +65,14 @@ const CompanyRegistration = () => {
             })
         }
     }, [dispatch, error, updateBatchError, alert, isUpdated])
+
+    useEffect(() => {
+        dispatch(getAllUpcomingCompanies())
+        dispatch({
+            type: UPDATE_BATCH_RESET
+        })
+    }, [dispatch])
+
     return (
         <>
             <div className="row page-titles" id="upcomingCompanies">

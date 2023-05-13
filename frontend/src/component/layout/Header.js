@@ -149,8 +149,8 @@ const Header = () => {
                             <MenuItem><div class="dropdown-divider"></div> </MenuItem>
                             <MenuItem><Link to="/profile"><i class="ti-user m-r-5 m-l-5"></i> My Profile</Link> </MenuItem>
                             <MenuItem><Link to="/notifications"><i class="ti-user m-r-5 m-l-5"></i> My Notifications</Link> </MenuItem>
-                            <MenuItem><Link to="/timeline" ng-show="!main.authorized"><i class="ti-stats-up m-r-5 m-l-5"></i> My Timeline</Link> </MenuItem>
-                            <MenuItem><Link to="/achievement" ng-show="!main.authorized"><i class="ti-medall m-r-5 m-l-5"></i> My Achievements</Link> </MenuItem>
+                            {user.permission !== "admin" && <MenuItem><Link to="/timeline" ng-show="!main.authorized"><i class="ti-stats-up m-r-5 m-l-5"></i> My Timeline</Link> </MenuItem>}
+                            {user.permission !== "admin" && <MenuItem><Link to="/achievement" ng-show="!main.authorized"><i class="ti-medall m-r-5 m-l-5"></i> My Achievements</Link> </MenuItem>}
                             <MenuItem><Link to="/announcements"><i class="ti-announcement m-r-5 m-l-5"></i> Announcements</Link> </MenuItem>
                             <MenuItem><Link to="/settings"><i class="ti-settings m-r-5 m-l-5"></i> Account Settings</Link> </MenuItem>
                             <MenuItem><div class="p-l-30 p-10"><Link to="/logout" class="btn btn-sm btn-success btn-rounded center">Logout</Link></div> </MenuItem>
