@@ -13,12 +13,6 @@ const sendEmail = async (data, mailType) => {
                 pass: process.env.SMPT_PASSWORD
             }
         });
-        // const mailOptions = {
-        //     from: options.from,
-        //     to: options.email,
-        //     subject: options.subject,
-        //     html: options.message
-        // }
         const opts = getEmailOpts(data, mailType);
         await transporter.sendMail(opts);
     }

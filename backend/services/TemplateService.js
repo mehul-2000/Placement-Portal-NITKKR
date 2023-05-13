@@ -1,5 +1,5 @@
 const from = '"Placement Portal" <tnpoffice@nitkkr.ac.in>';
-// const baseUrl = 'http://placements.mnit.ac.in';
+// const baseUrl = 'http://';
 const email_signature = '<br><br>With Regards.<br><br>Training & Placement Cell<br>National Institute of Technology Kurukshetra<br>Email: tnpoffice@nitkkr.ac.in<br>Phone: 01744 233302; 233303';
 
 exports.getEmailOpts = (data, mailType) => {

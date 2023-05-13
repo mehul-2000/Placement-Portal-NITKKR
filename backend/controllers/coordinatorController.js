@@ -36,12 +36,13 @@ exports.add = catchAsyncErrors(async (req, res, next) => {
 exports.getAll = catchAsyncErrors(async (req, res, next) => {
     const coordinators = await User
         .find({ permission : "spc" })
-        .select('student_name college_id college_email contact_no permission')
+        .select('name college_id college_email contact_no permission')
         .lean();
     
     res.status(200).json({
         success : true,
-        coordinators : coordinators
+        coordinators : coordinators,
+        numCoordinators: coordinators.length
     })
 });
 

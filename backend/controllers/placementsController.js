@@ -35,7 +35,7 @@ exports.getAll = catchAsyncErrors(async (req, res, next) => {
     if(req.body.placement_id) {
         pipeline.push({
             $match : {
-                _id : mongoose.Types.ObjectId(req.body.placement_id)
+                _id : new mongoose.Types.ObjectId(req.body.placement_id)
             }
         })
     }
@@ -55,7 +55,7 @@ exports.add = catchAsyncErrors(async (req, res, next) => {
     if(req.body.candidates.length === 0)  {
         return next(new ErrorHandler('Candidates list can not be empty!', 400));
     } else {
-        const placements = await Placements.create(req.body.candidates.map(user => {
+        const placements = await Placements.create(JSON.parse(req.body.candidates).map(user => {
             return {
                 passout_batch : req.body.passout_batch,
                 company_name : req.body.company_name,

@@ -24,7 +24,6 @@ root.render(
   <Provider store={store}>
     <AlertProvider template={AlertTemplate} {...options}>
       <App />
-
     </AlertProvider>
   </Provider>
 );

@@ -9,7 +9,7 @@ exports.add = catchAsyncErrors(async (req, res, next) => {
     const company = await Company.findById(req.body.companyId);
     const users = await User.find({ $or : [
         { passout_batch : company.passout_batch},
-        { permission : { $in : ['spc', 'faculty-coordinator']} }
+        { permission : { $in : ['spc', 'admin']} }
     ]});
     Notification.create(users.map(user => {
         return {

@@ -82,8 +82,6 @@ exports.sendOTP = catchAsyncErrors(async(req, res, next) => {
                 message: `Email sent to ${user.college_email} successfully`
             })
         } catch(error) {
-            // user.login_otp = undefined;
-            // await user.save({ validateBeforeSave: false });
             return next(new ErrorHandler("Some error occured. Please try again later.", 500));
         }
     }
@@ -237,6 +235,9 @@ exports.updateBatch = catchAsyncErrors(async(req, res, next) => {
 
 // Get User's profile
 exports.getOne = catchAsyncErrors(async(req, res, next) => {
+    if(!req.params.college_id) {
+        return next(new ErrorHandler("Field can't be empty.", 400));
+    }
     const user = await User.findOne({ college_id : req.params.college_id.toUpperCase() });
     if(!user) {
         return next(new ErrorHandler('Incorrect College ID. Please try again.', 404));
@@ -249,7 +250,6 @@ exports.getOne = catchAsyncErrors(async(req, res, next) => {
 
 // Update User's Profile
 exports.updateOne = catchAsyncErrors(async(req, res, next) => {
-    // let user = await User.findOne({ college_id : req.body.college_id });
     const user = await User.findOneAndUpdate({ college_id : req.body.college_id }, req.body, {
         new: true,
         runValidators: true,

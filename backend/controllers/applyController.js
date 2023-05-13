@@ -19,7 +19,7 @@ exports.getStatus = catchAsyncErrors(async (req, res, next) => {
     } else {
         res.status(200).json({
             success : false,
-            message : 'Not applied.'
+            message : 'Not applied'
         })
     }
 });

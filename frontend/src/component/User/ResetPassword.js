@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, resetPassword } from "../../actions/userAction";
@@ -38,7 +38,7 @@ const ResetPassword = () => {
         <>
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h4 class="text-themecolor">Welcome to MNIT Placement Portal</h4>
+                    <h4 class="text-themecolor">Welcome to NIT Kurukshetra Placement Portal</h4>
                 </div>
             </div>
             <div class="row">

@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.route("/getStatus/:company_id").get(isAuthenticatedUser, ensureStudent, getStatus);
 router.route("/apply").post(isAuthenticatedUser, ensureStudentWithResume, apply);
-router.route("/withdraw").delete(isAuthenticatedUser, ensureStudent, withdraw);
-router.route("/withdrawOne").delete(isAuthenticatedUser, ensureOfficialPlacementTeam, withdrawOne);
+router.route("/withdraw").post(isAuthenticatedUser, ensureStudent, withdraw);
+router.route("/withdrawOne").post(isAuthenticatedUser, ensureOfficialPlacementTeam, withdrawOne);
 
 module.exports = router;

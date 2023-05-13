@@ -9,11 +9,28 @@ const sendEmail = require("../services/EmailService");
 exports.getAll = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.user.id);
     const opts = { deadline_date : { $lt: new Date() } };
-    if(req.body.active) opts.deadline_date = { $gte: new Date() -1 };
+    if(req.body.active) {
+        opts.deadline_date = { $gte: new Date() - 1 };
+    }
     const companies = await Company.find({ passout_batch: user.passout_batch, ...opts }).select('company_name job_profile package deadline_date').lean();
     res.status(200) .json({
         success: true,
-        companies
+        companies,
+        numCompanies: companies.length
+    })
+});
+
+exports.getAllAdmin = catchAsyncErrors(async (req, res, next) => {
+    const user = await User.findById(req.user.id);
+    const opts = { deadline_date : { $lt: new Date() } };
+    if(req.body.active) {
+        opts.deadline_date = { $gte: new Date() - 1 };
+    }
+    const companies = await Company.find({ passout_batch: req.body.passout_batch, ...opts }).select('company_name job_profile package deadline_date').lean();
+    res.status(200) .json({
+        success: true,
+        companies,
+        numCompanies: companies.length
     })
 });
 
@@ -40,13 +57,19 @@ exports.add = async (req, res, next) => {
         // Getting courses eligible and adding emails
         let emails = [];
         for(let course in req.body.eligibility){
-            if(course === "UG"){
-                emails.push("nitkkr_"+(batch-4)+"_btech@googlegroups.com");
-            } else if(course === "MTech"){
-                emails.push("NITKKR_"+(batch-2)+"_MTECH@googlegroups.com");
-            } else if(course === "MCA"){
-                emails.push("NITKKR_"+(batch-2)+"_MCA@googlegroups.com");
+            if(Object.keys(req.body.eligibility[course]).length > 0) {
+                if(course === "UG"){
+                    emails.push("nitkkr_"+(batch-4)+"_btech@googlegroups.com");
+                } else if(course === "MTech"){
+                    emails.push("NITKKR_"+(batch-2)+"_MTECH@googlegroups.com");
+                } else if(course === "MCA"){
+                    emails.push("NITKKR_"+(batch-2)+"_MCA@googlegroups.com");
+                }
             }
+        }
+
+        if(emails.length === 0) {
+            return next(new ErrorHandler("Please add eligible courses.", 400));
         }
     
         //package details
@@ -66,7 +89,7 @@ exports.add = async (req, res, next) => {
         company.apply_url = `${req.protocol}://${req.get("host")}/api/company/${company._id}`;
     
         try {
-            // await sendEmail(company, 'companyAdded');
+            await sendEmail(company, 'companyAdded');
             res.status(200).json({
                 success: true,
                 company,
@@ -94,13 +117,14 @@ exports.update = catchAsyncErrors(async (req, res, next) => {
     }
     res.status(200).json({
         success: true,
-        company
+        company,
+        message : 'Company updated successfully.'
     });
 });
 
 // Remove Company
 exports.remove = catchAsyncErrors(async (req, res, next) => {
-    await Company.findByIdAndRemove(req.body.company_id);
+    const company = await Company.findByIdAndRemove(req.body.company_id);
     if(!company) {
         return next(new ErrorHandler('Incorrect Company ID. Please try again.', 400));
     }
@@ -135,7 +159,7 @@ exports.appliedStudents = catchAsyncErrors(async (req, res, next) => {
                 "company_name" : true,
                 "registered_candidates.name" : true,
                 "registered_candidates.college_id" : true,
-                "registered_candidates.alternate_contact_no" : true,
+                "registered_candidates.contact_no" : true,
                 "registered_candidates.college_email" : true,
                 "registered_candidates.program" : true,
                 "registered_candidates.degree" : true,

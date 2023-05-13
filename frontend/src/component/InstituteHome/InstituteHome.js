@@ -187,7 +187,7 @@ function InstituteHome() {
                     </ul>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: "center", justifyContent: 'center' }}>
-                    <img src={require("./logo1.png")} alt="Logo-Institute" />
+                    <img alt="Logo-Institute" />
                     <Fab
                         variant="extended"
                         color="primary"
