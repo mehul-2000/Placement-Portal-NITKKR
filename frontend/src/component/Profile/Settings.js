@@ -47,73 +47,73 @@ const Settings = () => {
     }, [dispatch, error, alert, navigate, isUpdated, isAuthenticated])
     return (
         <>
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h4 class="text-themecolor">Account Settings</h4>
+            <div className="row page-titles">
+                <div className="col-md-5 align-self-center">
+                    <h4 className="text-themecolor">Account Settings</h4>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-lg-4 col-xlg-3 col-md-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <center class="m-t-30">
+            <div className="row">
+                <div className="col-lg-4 col-xlg-3 col-md-5">
+                    <div className="card">
+                        <div className="card-body">
+                            <center className="m-t-30">
                                 <img src={`assets/images/profile/${user.gender}.png`} className="img-circle" width="150" alt="profile" />
-                                <h4 class="card-title m-t-10">{ user.name }</h4>
-                                <h6 class="card-subtitle">{ user.department }</h6>
-                                <div class="row text-center">
-                                    <div class="col-12"><Link><i class="ti-location-pin"></i> <font class="font-medium">NIT Kurukshetra</font></Link></div>
+                                <h4 className="card-title m-t-10">{ user.name }</h4>
+                                <h6 className="card-subtitle">{ user.department }</h6>
+                                <div className="row text-center">
+                                    <div className="col-12"><Link><i className="ti-location-pin"></i> <font className="font-medium">NIT Kurukshetra</font></Link></div>
                                 </div>
                             </center>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8 col-xlg-9 col-md-7">
-                    <div class="card">
-                        <ul class="nav nav-tabs profile-tab" role="tablist">
-                            <li class="nav-item"> <Link class="nav-link active" data-toggle="tab" href="#" role="tab">Change Password</Link> </li>
+                <div className="col-lg-8 col-xlg-9 col-md-7">
+                    <div className="card">
+                        <ul className="nav nav-tabs profile-tab" role="tablist">
+                            <li className="nav-item"> <Link className="nav-link active" data-toggle="tab" href="#" role="tab">Change Password</Link> </li>
                         </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="home" role="tabpanel">
-                                <div class="card-body">
+                        <div className="tab-content">
+                            <div className="tab-pane active" id="home" role="tabpanel">
+                                <div className="card-body">
 
-                                    <form class="form-horizontal form-material" onSubmit={changePasswordSubmit}>
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <label class="col-md-12">Your Current Password</label>
-                                                    <div class="col-md-12">
-                                                        <input type="password" placeholder="Enter your current password" class="form-control form-control-line" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} required />
+                                    <form className="form-horizontal form-material" onSubmit={changePasswordSubmit}>
+                                        <div className="row">
+                                            <div className="col-sm-12">
+                                                <div className="form-group">
+                                                    <label className="col-md-12">Your Current Password</label>
+                                                    <div className="col-md-12">
+                                                        <input type="password" placeholder="Enter your current password" className="form-control form-control-line" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} required />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <label class="col-md-12">Your New Password</label>
-                                                    <div class="col-md-12">
-                                                        <input type="password" placeholder="Enter your new password" class="form-control form-control-line" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
+                                            <div className="col-sm-12">
+                                                <div className="form-group">
+                                                    <label className="col-md-12">Your New Password</label>
+                                                    <div className="col-md-12">
+                                                        <input type="password" placeholder="Enter your new password" className="form-control form-control-line" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <label class="col-md-12">Confirm Password</label>
-                                                    <div class="col-md-12">
-                                                        <input type="password" placeholder="Confirm your new password" class="form-control form-control-line" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+                                            <div className="col-sm-12">
+                                                <div className="form-group">
+                                                    <label className="col-md-12">Confirm Password</label>
+                                                    <div className="col-md-12">
+                                                        <input type="password" placeholder="Confirm your new password" className="form-control form-control-line" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        {loading && <div class="alert alert-primary alert-rounded">
-                                            <i class="ti-time"></i>
+                                        {loading && <div className="alert alert-primary alert-rounded">
+                                            <i className="ti-time"></i>
                                             <strong> &nbsp;Loading.....</strong> Updating password details, please wait!
                                         </div>}
 
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <button type="submit" disabled={loading-90} class="btn btn-success">Update Password</button>
+                                        <div className="form-group">
+                                            <div className="col-sm-12">
+                                                <button type="submit" disabled={loading-90} className="btn btn-success">Update Password</button>
                                             </div>
                                         </div>
                                     </form>

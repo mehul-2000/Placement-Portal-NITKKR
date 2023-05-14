@@ -11,7 +11,6 @@ const ResetPassword = () => {
     const {token} = useParams();
 
     const { error, success, loading } = useSelector(state => state.resetPassword);
-
     const [ password, setPassword ] = useState("");
     const [ confirmPassword, setConfirmPassword ] = useState("");
 
@@ -36,19 +35,19 @@ const ResetPassword = () => {
     }, [dispatch, error, alert, navigate, success])
     return (
         <>
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h4 class="text-themecolor">Welcome to NIT Kurukshetra Placement Portal</h4>
+            <div className="row page-titles">
+                <div className="col-md-5 align-self-center">
+                    <h4 className="text-themecolor">Welcome to NIT Kurukshetra Placement Portal</h4>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">NIT Kurukshetra Placement Portal Reset Password</h4>
-                            <h6 class="card-subtitle">Enter new password for your account of the placement session</h6>
-                            <form class="form-material m-t-40" onSubmit={resetPasswordSubmit}>
-                                <div class="form-group">
+            <div className="row">
+                <div className="col-12">
+                    <div className="card">
+                        <div className="card-body">
+                            <h4 className="card-title">NIT Kurukshetra Placement Portal Reset Password</h4>
+                            <h6 className="card-subtitle">Enter new password for your account of the placement session</h6>
+                            <form className="form-material m-t-40" onSubmit={resetPasswordSubmit}>
+                                <div className="form-group">
                                     <label>Password </label>
                                     <input
                                         type="password"
@@ -60,7 +59,7 @@ const ResetPassword = () => {
                                     />
                                 </div>
 
-                                <div class="form-group">
+                                <div className="form-group">
                                     <label>Confirm Password </label>
                                     <input
                                         type="password"
@@ -72,17 +71,17 @@ const ResetPassword = () => {
                                     />
                                 </div>
 
-                                {/* <div class="alert alert-success alert-rounded" ng-show="reset.successMsg">
-                                    <i class="icon-check"></i>
+                                {/* <div className="alert alert-success alert-rounded" ng-show="reset.successMsg">
+                                    <i className="icon-check"></i>
                                     <strong> Yay!</strong> {{ reset.successMsg }}
                                 </div> */}
 
-                                {/* <div class="alert alert-danger alert-rounded" ng-show="reset.errorMsg">
-                                    <i class="icon-close"></i>
+                                {/* <div className="alert alert-danger alert-rounded" ng-show="reset.errorMsg">
+                                    <i className="icon-close"></i>
                                     <strong>Oops! </strong> {{ reset.errorMsg }}
                                 </div> */}
 
-                                <button disabled={loading} type="submit" class="btn btn-success btn-rounded">Reset Password</button>
+                                <button disabled={loading} type="submit" className="btn btn-success btn-rounded">Reset Password</button>
 
                             </form>
                         </div>

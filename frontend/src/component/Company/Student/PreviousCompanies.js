@@ -90,13 +90,13 @@ const PreviousCompanies = () => {
                 </div>
             </div>}
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <form class="form-material">
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-line" placeholder="Type here to Search for Company" value={search_term} onChange={(e) => setSearchTerm(e.target.value)} />
+            <div className="row">
+                <div className="col-12">
+                    <div className="card">
+                        <div className="card-body">
+                            <form className="form-material">
+                                <div className="form-group">
+                                    <input type="text" className="form-control form-control-line" placeholder="Type here to Search for Company" value={search_term} onChange={(e) => setSearchTerm(e.target.value)} />
                                 </div>
                             </form>
                         </div>
@@ -133,11 +133,11 @@ const PreviousCompanies = () => {
                             </div>
                         </div>
                     </div>)})}
-                    {numCompanies === 0 && <div class="col-md-12">
-                        <div class="card text-white bg-danger">
-                            <div class="card-body">
-                                <h3 class="card-title">No previous companies!</h3>
-                                <p class="card-text">No companies visited till now for campus recruitment this session.</p>
+                    {numCompanies === 0 && <div className="col-md-12">
+                        <div className="card text-white bg-danger">
+                            <div className="card-body">
+                                <h3 className="card-title">No previous companies!</h3>
+                                <p className="card-text">No companies visited till now for campus recruitment this session.</p>
                             </div>
                         </div>
                     </div>}

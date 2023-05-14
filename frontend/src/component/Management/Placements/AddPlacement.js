@@ -97,14 +97,14 @@ const AddPlacement = () => {
 
     return (
         <>
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h4 class="text-themecolor">Add New Placements</h4>
+            <div className="row page-titles">
+                <div className="col-md-5 align-self-center">
+                    <h4 className="text-themecolor">Add New Placements</h4>
                 </div>
 
-                <div class="col-md-7 align-self-center text-right">
-                    <div class="d-flex justify-content-end align-items-center">
-                        <Link to="/placement-management" type="button" class="btn btn-primary d-none d-lg-block m-l-15"><i class="ti-calendar"></i> &nbsp;Placement Management</Link>
+                <div className="col-md-7 align-self-center text-right">
+                    <div className="d-flex justify-content-end align-items-center">
+                        <Link to="/placement-management" type="button" className="btn btn-primary d-none d-lg-block m-l-15"><i className="ti-calendar"></i> &nbsp;Placement Management</Link>
                     </div>
                 </div>
             </div>
@@ -112,27 +112,27 @@ const AddPlacement = () => {
             {/* Add New Placement Form */}
             <form onSubmit={postPlacementDetails}>
 
-                <div class="row">
+                <div className="row">
 
                     {/* Company Details Form */}
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Placement Details</h4>
-                                <h6 class="card-subtitle">Enter placement details for placement session</h6>
+                    <div className="col-12">
+                        <div className="card">
+                            <div className="card-body">
+                                <h4 className="card-title">Placement Details</h4>
+                                <h6 className="card-subtitle">Enter placement details for placement session</h6>
 
-                                <div class="row p-t-20">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Company Name</label>
-                                            <input type="text" class="form-control" placeholder="Enter name" name="company_name" value={newPlacementData.company_name} onChange={handlePlacementDataChange} required />
+                                <div className="row p-t-20">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label className="control-label">Company Name</label>
+                                            <input type="text" className="form-control" placeholder="Enter name" name="company_name" value={newPlacementData.company_name} onChange={handlePlacementDataChange} required />
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
                                             <label>Passout Batch</label>
-                                            <select class="form-control" name="passout_batch" value={newPlacementData.passout_batch} onChange={handlePlacementDataChange} required>
+                                            <select className="form-control" name="passout_batch" value={newPlacementData.passout_batch} onChange={handlePlacementDataChange} required>
                                                 <option value="">-- Select Passout Batch --</option>
                                                 <option value="2021">2021</option>
                                                 <option value="2022">2022</option>
@@ -142,25 +142,25 @@ const AddPlacement = () => {
                                     </div>
 
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
                                             <label>Job Profile</label>
-                                            <input type="text" class="form-control" placeholder="Enter Job Profile" name="job_profile" value={newPlacementData.job_profile} onChange={handlePlacementDataChange} required />
+                                            <input type="text" className="form-control" placeholder="Enter Job Profile" name="job_profile" value={newPlacementData.job_profile} onChange={handlePlacementDataChange} required />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
                                             <label>Recruitment Date(when company announced the result)</label>
-                                            <input type="date" class="form-control" name="recruitment_date" value={newPlacementData.recruitment_date} onChange={handlePlacementDataChange} required />
+                                            <input type="date" className="form-control" name="recruitment_date" value={newPlacementData.recruitment_date} onChange={handlePlacementDataChange} required />
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
+                                <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
                                             <label>Recruitment</label>
-                                            <select class="form-control" name="recruitment" value={newPlacementData.recruitment} onChange={handlePlacementDataChange} required>
+                                            <select className="form-control" name="recruitment" value={newPlacementData.recruitment} onChange={handlePlacementDataChange} required>
                                                 <option value="">-- Select Recruitment --</option>
                                                 <option value="Internship">Internship</option>
                                                 <option value="Placement">Placement</option>
@@ -168,10 +168,10 @@ const AddPlacement = () => {
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
                                             <label>Recruitment Type</label>
-                                            <select class="form-control" name="recruitment_type" value={newPlacementData.recruitment_type} onChange={handlePlacementDataChange} required>
+                                            <select className="form-control" name="recruitment_type" value={newPlacementData.recruitment_type} onChange={handlePlacementDataChange} required>
                                                 <option value="">-- Select Recruitment Type --</option>
                                                 <option value="PPO">Pre Placement Offer</option>
                                                 <option value="On-Campus">On-Campus</option>
@@ -181,58 +181,58 @@ const AddPlacement = () => {
                                     </div>
                                 </div>
 
-                                {newPlacementData.recruitment === 'Internship' && <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Internship Duration</label>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" placeholder="Enter internship duration" name="intern_duration" value={newPlacementData.intern_duration} onChange={handlePlacementDataChange} required />
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">Months</span>
+                                {newPlacementData.recruitment === 'Internship' && <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label className="control-label">Internship Duration</label>
+                                            <div className="input-group">
+                                                <input type="number" className="form-control" placeholder="Enter internship duration" name="intern_duration" value={newPlacementData.intern_duration} onChange={handlePlacementDataChange} required />
+                                                <div className="input-group-append">
+                                                    <span className="input-group-text">Months</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Internship Stipend</label>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" placeholder="Enter internship stipend" name="intern_stipend" value={newPlacementData.intern_stipend} onChange={handlePlacementDataChange} required />
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">Per Month</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>}
-
-                                {newPlacementData.recruitment === 'Placement' && <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Duration</label>
-                                            <input type="text" class="form-control" value="Full Time Job - Placement" disabled />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Package</label>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control" placeholder="Enter package" name="package" value={newPlacementData.package} onChange={handlePlacementDataChange} step="any" required />
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">Lakhs Per Annum</span>
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label className="control-label">Internship Stipend</label>
+                                            <div className="input-group">
+                                                <input type="number" className="form-control" placeholder="Enter internship stipend" name="intern_stipend" value={newPlacementData.intern_stipend} onChange={handlePlacementDataChange} required />
+                                                <div className="input-group-append">
+                                                    <span className="input-group-text">Per Month</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>}
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover">
+                                {newPlacementData.recruitment === 'Placement' && <div className="row">
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label className="control-label">Duration</label>
+                                            <input type="text" className="form-control" value="Full Time Job - Placement" disabled />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="form-group">
+                                            <label className="control-label">Package</label>
+                                            <div className="input-group">
+                                                <input type="number" className="form-control" placeholder="Enter package" name="package" value={newPlacementData.package} onChange={handlePlacementDataChange} step="any" required />
+                                                <div className="input-group-append">
+                                                    <span className="input-group-text">Lakhs Per Annum</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>}
+
+                                <div className="row">
+                                    <div className="col-md-12">
+                                        <div className="table-responsive">
+                                            <table className="table table-hover">
                                                 <thead>
                                                 <tr>
-                                                    <th class="text-center">#</th>
+                                                    <th className="text-center">#</th>
                                                     <th>NAME</th>
                                                     <th>COLLEGE ID</th>
                                                     <th>COURSE</th>
@@ -243,12 +243,12 @@ const AddPlacement = () => {
                                                 <tbody>
                                                 {candidates && candidates.map((candidate, index) => {
                                                 return (<tr key={index}>
-                                                    <td class="text-center">{ index+1 }.</td>
-                                                    <td class="txt-oflo">{ candidate.name }</td>
-                                                    <td><span class="text-info">{ candidate.college_id }</span></td>
-                                                    <td class="txt-oflo">{ candidate.degree } - { candidate.department }</td>
-                                                    <td><span class="text-success">{ candidate.alternate_contact_no }</span></td>
-                                                    <td class="txt-oflo" style={{cursor: "pointer"}} onClick={() => removeCandidate(candidate.college_id)}><i class="fa fa-trash text-danger" style={{fontSize: "x-large"}}></i></td>
+                                                    <td className="text-center">{ index+1 }.</td>
+                                                    <td className="txt-oflo">{ candidate.name }</td>
+                                                    <td><span className="text-info">{ candidate.college_id }</span></td>
+                                                    <td className="txt-oflo">{ candidate.degree } - { candidate.department }</td>
+                                                    <td><span className="text-success">{ candidate.alternate_contact_no }</span></td>
+                                                    <td className="txt-oflo" style={{cursor: "pointer"}} onClick={() => removeCandidate(candidate.college_id)}><i className="fa fa-trash text-danger" style={{fontSize: "x-large"}}></i></td>
                                                 </tr>)})}
                                                 </tbody>
                                             </table>
@@ -256,24 +256,24 @@ const AddPlacement = () => {
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label class="control-label">Add Candidate</label>
-                                            <input type="text" class="form-control" placeholder="Enter College ID" value={college_id} onChange={(e) => setCollegeId(e.target.value)} />
-                                            {/* <span class="form-control-feedback text-danger"> {{ addNewPlacement.candidateErrorMsg }} </span> */}
+                                <div className="row">
+                                    <div className="col-md-8">
+                                        <div className="form-group">
+                                            <label className="control-label">Add Candidate</label>
+                                            <input type="text" className="form-control" placeholder="Enter College ID" value={college_id} onChange={(e) => setCollegeId(e.target.value)} />
+                                            {/* <span className="form-control-feedback text-danger"> {{ addNewPlacement.candidateErrorMsg }} </span> */}
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group" style={{marginTop: "25px"}}>
-                                            <button type="button" onClick={addCandidate} class="btn btn-success btn-circle"><i class="fa fa-plus"></i> </button>
+                                    <div className="col-md-4">
+                                        <div className="form-group" style={{marginTop: "25px"}}>
+                                            <button type="button" onClick={addCandidate} className="btn btn-success btn-circle"><i className="fa fa-plus"></i> </button>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label class="control-label">Any Comments</label>
-                                    <textarea type="text" class="form-control" rows="3" name="comments" value={newPlacementData.comments} onChange={handlePlacementDataChange} placeholder="Any comments..."></textarea>
+                                <div className="form-group">
+                                    <label className="control-label">Any Comments</label>
+                                    <textarea type="text" className="form-control" rows="3" name="comments" value={newPlacementData.comments} onChange={handlePlacementDataChange} placeholder="Any comments..."></textarea>
                                 </div>
                             </div>
                         </div>
@@ -281,13 +281,13 @@ const AddPlacement = () => {
                 </div>
 
                 {/* Loading */}
-                {loading && <div class="alert alert-primary alert-rounded text-center" ng-show="addNewPlacement.loading">
+                {loading && <div className="alert alert-primary alert-rounded text-center" ng-show="addNewPlacement.loading">
                     <strong> Hold on!</strong> Please wait, while we add your data...
                 </div>}
 
 
                 <div style={{textAlign: "center"}}>
-                    <button type="submit" class="btn btn-primary btn-rounded"><i class="ti-check-box"></i> &nbsp; Submit Details</button>
+                    <button type="submit" className="btn btn-primary btn-rounded"><i className="ti-check-box"></i> &nbsp; Submit Details</button>
                 </div>
             </form>
         </>

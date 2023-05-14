@@ -31,52 +31,52 @@ const Timeline = () => {
     }, [dispatch])
     return (
         <>
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h4 class="text-themecolor">Your Timeline</h4>
+            <div className="row page-titles">
+                <div className="col-md-5 align-self-center">
+                    <h4 className="text-themecolor">Your Timeline</h4>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-lg-4 col-xlg-3 col-md-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <center class="m-t-30">
+            <div className="row">
+                <div className="col-lg-4 col-xlg-3 col-md-5">
+                    <div className="card">
+                        <div className="card-body">
+                            <center className="m-t-30">
                                 <img src={`assets/images/profile/${user.gender}.png`} className="img-circle" width="150" alt="profile" />
-                                <h4 class="card-title m-t-10">{ user.name }</h4>
-                                <h6 class="card-subtitle">{ user.department }</h6>
-                                <div class="row text-center">
-                                    <div class="col-12"><Link><i class="ti-location-pin"></i> <font class="font-medium">NIT Kurukshetra</font></Link></div>
+                                <h4 className="card-title m-t-10">{ user.name }</h4>
+                                <h6 className="card-subtitle">{ user.department }</h6>
+                                <div className="row text-center">
+                                    <div className="col-12"><Link><i className="ti-location-pin"></i> <font className="font-medium">NIT Kurukshetra</font></Link></div>
                                 </div>
                             </center>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8 col-xlg-9 col-md-7">
-                    <div class="card">
-                        <ul class="nav nav-tabs profile-tab" role="tablist">
-                            <li class="nav-item"> <Link class="nav-link active" data-toggle="tab" href="#" role="tab">Timeline</Link> </li>
+                <div className="col-lg-8 col-xlg-9 col-md-7">
+                    <div className="card">
+                        <ul className="nav nav-tabs profile-tab" role="tablist">
+                            <li className="nav-item"> <Link className="nav-link active" data-toggle="tab" href="#" role="tab">Timeline</Link> </li>
                         </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="home" role="tabpanel">
-                                <div class="card-body">
+                        <div className="tab-content">
+                            <div className="tab-pane active" id="home" role="tabpanel">
+                                <div className="card-body">
                                     {timeline && timeline.map((registration) => {
-                                        return (<div class="profiletimeline">
-                                        <div class="sl-item">
-                                            <div class="sl-left">
-                                                <img src="assets/images/timeline.png" alt="Timeline Icon" class="img-circle" />
+                                        return (<div className="profiletimeline">
+                                        <div className="sl-item">
+                                            <div className="sl-left">
+                                                <img src="assets/images/timeline.png" alt="Timeline Icon" className="img-circle" />
                                             </div>
-                                            <div class="sl-right">
-                                                <div><Link class="link">{registration.company_name}</Link>
-                                                    <div class="row">
-                                                        <div class="col-lg-6"><p class="m-t-10"> <b>Applied :</b> {Moment(registration.timestamp).format('DD MMMM yyyy')}</p></div>
-                                                        <div class="col-lg-6"><p class="m-t-10"> <b>Status :</b> {registration.status}</p></div>
+                                            <div className="sl-right">
+                                                <div><Link className="link">{registration.company_name}</Link>
+                                                    <div className="row">
+                                                        <div className="col-lg-6"><p className="m-t-10"> <b>Applied :</b> {Moment(registration.timestamp).format('DD MMMM yyyy')}</p></div>
+                                                        <div className="col-lg-6"><p className="m-t-10"> <b>Status :</b> {registration.status}</p></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>)})}
-                                    {loading && <div class="alert alert-primary alert-rounded">
+                                    {loading && <div className="alert alert-primary alert-rounded">
                                         <strong> Loading!</strong> Hold on. We are fetching your timeline!
                                     </div>}
                                     {timeline && timeline.length === 0 && <div>

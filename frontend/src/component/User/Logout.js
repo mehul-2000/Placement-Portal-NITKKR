@@ -30,7 +30,7 @@ const Logout = () => {
 
     return (
 		<>
-			{loading && <div class="page-header">
+			{loading && <div className="page-header">
 				<h1>
 					Logging out .... please wait....
 				</h1>

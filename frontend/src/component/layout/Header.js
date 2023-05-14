@@ -174,22 +174,22 @@ const Header = () => {
                     marginRight:"2rem"
                   }}
                 >
-                  <h4 class="m-b-0 m-t-5">{getUnreadCount(notifications)} New</h4>
+                  <h4 className="m-b-0 m-t-5">{getUnreadCount(notifications)} New</h4>
 
                   <h6>Notifications</h6>
                 </Box>
                 <ul style={{listStyleType:"none"}}>
                 {notifications.map((notif,idx)=>
-                    <li class="mt-2">
-                      <div class="message-center" >
+                    <li className="mt-2">
+                      <div className="message-center" >
                           {/* <!-- Message --> */}
                           <Link >
                             <div style={{display:"flex"}}>
-                            <div class="btn btn-danger btn-circle"><i class="fa fa-bell"></i></div>
-                              <div class="mail-contnet" style={{display:"flex",flexDirection:"column",marginLeft:"0.8rem"}}>
+                            <div className="btn btn-danger btn-circle"><i className="fa fa-bell"></i></div>
+                              <div className="mail-contnet" style={{display:"flex",flexDirection:"column",marginLeft:"0.8rem"}}>
                                   <h5 atyle={{fontWeight:"bold",color:"black"}}>{ notif.title } </h5>
-                                  <span class="mail-desc" style={{fontSize:"0.8rem",fontWeight:"lighter",color:"black"}}>{ notif.description }</span>
-                                  <span class="time" style={{fontSize:"0.8rem",fontWeight:"lighter",color:"black"}}> { Moment(notif.timestamp).format('DD MMM yyyy, hh:mm a') } </span>
+                                  <span className="mail-desc" style={{fontSize:"0.8rem",fontWeight:"lighter",color:"black"}}>{ notif.description }</span>
+                                  <span className="time" style={{fontSize:"0.8rem",fontWeight:"lighter",color:"black"}}> { Moment(notif.timestamp).format('DD MMM yyyy, hh:mm a') } </span>
                               </div>
                             </div>
                           </Link>
@@ -198,7 +198,7 @@ const Header = () => {
                 )}
                 <Link>
                 <li>
-                                        <a class="nav-link text-center" style={{color:"black"}}  href="/notifications"> <strong>All notifications</strong> <i class="fa fa-angle-right"></i> </a>
+                                        <a className="nav-link text-center" style={{color:"black"}}  href="/notifications"> <strong>All notifications</strong> <i className="fa fa-angle-right"></i> </a>
                                     </li>
                 </Link>
                 </ul>
@@ -268,47 +268,47 @@ const Header = () => {
                     <h5>{user.permission.toUpperCase()}</h5>
                   </Box>
                   <MenuItem>
-                    <div class="dropdown-divider"></div>{" "}
+                    <div className="dropdown-divider"></div>{" "}
                   </MenuItem>
                   <MenuItem>
                     <Link to="/profile">
-                      <i class="ti-user m-r-5 m-l-5"></i> My Profile
+                      <i className="ti-user m-r-5 m-l-5"></i> My Profile
                     </Link>{" "}
                   </MenuItem>
                   <MenuItem>
                     <Link to="/notifications">
-                      <i class="ti-user m-r-5 m-l-5"></i> My Notifications
+                      <i className="ti-user m-r-5 m-l-5"></i> My Notifications
                     </Link>{" "}
                   </MenuItem>
                   {user.permission !== "admin" && (
                     <MenuItem>
                       <Link to="/timeline" ng-show="!main.authorized">
-                        <i class="ti-stats-up m-r-5 m-l-5"></i> My Timeline
+                        <i className="ti-stats-up m-r-5 m-l-5"></i> My Timeline
                       </Link>{" "}
                     </MenuItem>
                   )}
                   {user.permission !== "admin" && (
                     <MenuItem>
                       <Link to="/achievement" ng-show="!main.authorized">
-                        <i class="ti-medall m-r-5 m-l-5"></i> My Achievements
+                        <i className="ti-medall m-r-5 m-l-5"></i> My Achievements
                       </Link>{" "}
                     </MenuItem>
                   )}
                   <MenuItem>
                     <Link to="/announcements">
-                      <i class="ti-announcement m-r-5 m-l-5"></i> Announcements
+                      <i className="ti-announcement m-r-5 m-l-5"></i> Announcements
                     </Link>{" "}
                   </MenuItem>
                   <MenuItem>
                     <Link to="/settings">
-                      <i class="ti-settings m-r-5 m-l-5"></i> Account Settings
+                      <i className="ti-settings m-r-5 m-l-5"></i> Account Settings
                     </Link>{" "}
                   </MenuItem>
                   <MenuItem>
-                    <div class="p-l-30 p-10">
+                    <div className="p-l-30 p-10">
                       <Link
                         to="/logout"
-                        class="btn btn-sm btn-success btn-rounded center"
+                        className="btn btn-sm btn-success btn-rounded center"
                       >
                         Logout
                       </Link>
@@ -325,18 +325,18 @@ const Header = () => {
           style={{ zIndex: "1 !important" }}
         >
           <DrawerHeader></DrawerHeader>
-          <nav class="sidebar-nav">
+          <nav className="sidebar-nav">
             <ul id="sidebarnav">
               {isAuthenticated && (
                 <li>
                   {" "}
                   <Link
-                    class="nav-toggler waves-effect waves-dark"
+                    className="nav-toggler waves-effect waves-dark"
                     to="/"
                     aria-expanded="false"
                   >
-                    <i class="ti-home"></i>
-                    {open && <span class="hide-menu">Home</span>}
+                    <i className="ti-home"></i>
+                    {open && <span className="hide-menu">Home</span>}
                   </Link>
                 </li>
               )}
@@ -344,12 +344,12 @@ const Header = () => {
                 <li>
                   {" "}
                   <Link
-                    class="nav-toggler waves-effect waves-dark"
+                    className="nav-toggler waves-effect waves-dark"
                     to="/login"
                     aria-expanded="false"
                   >
-                    <i class="icon-login"></i>
-                    {open && <span class="hide-menu">Login </span>}
+                    <i className="icon-login"></i>
+                    {open && <span className="hide-menu">Login </span>}
                   </Link>
                 </li>
               )}
@@ -357,13 +357,13 @@ const Header = () => {
                 <li>
                   {" "}
                   <Link
-                    class="nav-toggler waves-effect waves-dark"
+                    className="nav-toggler waves-effect waves-dark"
                     to="/company-registration"
                     aria-expanded="false"
                   >
-                    <i class="icon-briefcase"></i>
+                    <i className="icon-briefcase"></i>
                     {open && (
-                      <span class="hide-menu">Company Registration</span>
+                      <span className="hide-menu">Company Registration</span>
                     )}
                   </Link>
                 </li>
@@ -372,13 +372,13 @@ const Header = () => {
                 <li>
                   {" "}
                   <Link
-                    class="nav-toggler waves-effect waves-dark"
+                    className="nav-toggler waves-effect waves-dark"
                     to="/interview-experiences"
                     aria-expanded="false"
                   >
-                    <i class="icon-rocket"></i>
+                    <i className="icon-rocket"></i>
                     {open && (
-                      <span class="hide-menu">Interview Experiences </span>
+                      <span className="hide-menu">Interview Experiences </span>
                     )}
                   </Link>
                 </li>
@@ -389,12 +389,12 @@ const Header = () => {
                   <li>
                     {" "}
                     <Link
-                      class="nav-toggler waves-effect waves-dark"
+                      className="nav-toggler waves-effect waves-dark"
                       to="/add-new-company"
                       aria-expanded="false"
                     >
-                      <i class="icon-briefcase"></i>
-                      {open && <span class="hide-menu">Add New Company</span>}
+                      <i className="icon-briefcase"></i>
+                      {open && <span className="hide-menu">Add New Company</span>}
                     </Link>
                   </li>
                 )}
@@ -404,12 +404,12 @@ const Header = () => {
                   <li>
                     {" "}
                     <Link
-                      class="nav-toggler waves-effect waves-dark"
+                      className="nav-toggler waves-effect waves-dark"
                       to="/admin-management"
                       aria-expanded="false"
                     >
-                      <i class="icon-fire"></i>
-                      {open && <span class="hide-menu">Admin Management</span>}
+                      <i className="icon-fire"></i>
+                      {open && <span className="hide-menu">Admin Management</span>}
                     </Link>
                   </li>
                 )}
@@ -417,12 +417,12 @@ const Header = () => {
                 <li>
                   {" "}
                   <Link
-                    class="nav-toggler waves-effect waves-dark"
+                    className="nav-toggler waves-effect waves-dark"
                     to="/announcements"
                     aria-expanded="false"
                   >
-                    <i class="ti-announcement"></i>
-                    {open && <span class="hide-menu">Announcements </span>}
+                    <i className="ti-announcement"></i>
+                    {open && <span className="hide-menu">Announcements </span>}
                   </Link>
                 </li>
               )}
@@ -433,12 +433,12 @@ const Header = () => {
                   <li>
                     {" "}
                     <Link
-                      class="waves-effect waves-dark"
+                      className="waves-effect waves-dark"
                       onClick={handle}
                       aria-expanded="false"
                     >
-                      <i class="icon-user"></i>
-                      {open && <span class="hide-menu">User Profile</span>}
+                      <i className="icon-user"></i>
+                      {open && <span className="hide-menu">User Profile</span>}
                       {open && (
                         <ArrowForwardIosOutlinedIcon
                           style={{ fontSize: "0.9rem" }}
@@ -448,41 +448,41 @@ const Header = () => {
                     {openDropdown && open && (
                       <ul>
                         <li>
-                          <Link class="nav-toggler hide-menu" to="/profile">
-                            Profile Page <i class="ti-user text-success"></i>
+                          <Link className="nav-toggler hide-menu" to="/profile">
+                            Profile Page <i className="ti-user text-success"></i>
                           </Link>
                         </li>
-                        {/* <li><Link class="nav-toggler hide-menu" to="/red-flag-history">Red Flag History <i class="ti-alert text-danger"></i></Link></li> */}
+                        {/* <li><Link className="nav-toggler hide-menu" to="/red-flag-history">Red Flag History <i className="ti-alert text-danger"></i></Link></li> */}
                         <li>
-                          <Link class="nav-toggler hide-menu" to="/timeline">
-                            Timeline <i class="ti-stats-up text-info"></i>
+                          <Link className="nav-toggler hide-menu" to="/timeline">
+                            Timeline <i className="ti-stats-up text-info"></i>
                           </Link>
                         </li>
                         <li>
                           <Link
-                            class="nav-toggler hide-menu"
+                            className="nav-toggler hide-menu"
                             to="/notifications"
                           >
-                            Notifications <i class="ti-bell text-info"></i>
+                            Notifications <i className="ti-bell text-info"></i>
                           </Link>
                         </li>
                         <li>
-                          <Link class="nav-toggler hide-menu" to="/achievement">
-                            Achievement <i class="ti-medall text-danger"></i>
+                          <Link className="nav-toggler hide-menu" to="/achievement">
+                            Achievement <i className="ti-medall text-danger"></i>
                           </Link>
                         </li>
                         <li>
                           <Link
-                            class="nav-toggler hide-menu"
+                            className="nav-toggler hide-menu"
                             to="/contributions"
                           >
-                            Contributions <i class="ti-crown text-success"></i>
+                            Contributions <i className="ti-crown text-success"></i>
                           </Link>
                         </li>
                         <li>
-                          <Link class="nav-toggler hide-menu" to="/settings">
+                          <Link className="nav-toggler hide-menu" to="/settings">
                             Account Settings{" "}
-                            <i class="ti-settings text-success"></i>
+                            <i className="ti-settings text-success"></i>
                           </Link>
                         </li>
                       </ul>
@@ -492,45 +492,45 @@ const Header = () => {
               <li>
                 {" "}
                 <Link
-                  class="nav-toggler waves-effect waves-dark"
+                  className="nav-toggler waves-effect waves-dark"
                   to="/team"
                   aria-expanded="false"
                 >
-                  <i class="icon-people"></i>
-                  {open && <span class="hide-menu">Team</span>}
+                  <i className="icon-people"></i>
+                  {open && <span className="hide-menu">Team</span>}
                 </Link>
               </li>
               <li>
                 {" "}
                 <Link
-                  class="nav-toggler waves-effect waves-dark"
+                  className="nav-toggler waves-effect waves-dark"
                   to="/technical"
                   aria-expanded="false"
                 >
-                  <i class="icon-screen-desktop"></i>
-                  {open && <span class="hide-menu">Developer</span>}
+                  <i className="icon-screen-desktop"></i>
+                  {open && <span className="hide-menu">Developer</span>}
                 </Link>
               </li>
               <li>
                 {" "}
                 <Link
-                  class="nav-toggler waves-effect waves-dark"
+                  className="nav-toggler waves-effect waves-dark"
                   to="/contact"
                   aria-expanded="false"
                 >
-                  <i class="icon-phone"></i>
-                  {open && <span class="hide-menu">Contact Us </span>}
+                  <i className="icon-phone"></i>
+                  {open && <span className="hide-menu">Contact Us </span>}
                 </Link>
               </li>
               <li>
                 {" "}
                 <Link
-                  class="nav-toggler waves-effect waves-dark"
+                  className="nav-toggler waves-effect waves-dark"
                   to="/visitors"
                   aria-expanded="false"
                 >
-                  <i class="icon-briefcase"></i>
-                  {open && <span class="hide-menu">Companies Visited </span>}
+                  <i className="icon-briefcase"></i>
+                  {open && <span className="hide-menu">Companies Visited </span>}
                 </Link>
               </li>
             </ul>
