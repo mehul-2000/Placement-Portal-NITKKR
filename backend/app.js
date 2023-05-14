@@ -11,6 +11,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors())
+app.set('trust proxy', 1);
 
 // Route Imports
 const user = require("./routes/userRoute");
