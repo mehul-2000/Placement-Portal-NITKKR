@@ -12,7 +12,7 @@ const sendToken = (user, statusCode, res) => {
             secure: true, 
             httpOnly: false, 
             sameSite: 'None',
-            domain: 'vercel.app'
+            domain: '.placement-portal-nitkkr.vercel.app'
         })
     };
     res.status(statusCode).cookie('token', token, options).json({
