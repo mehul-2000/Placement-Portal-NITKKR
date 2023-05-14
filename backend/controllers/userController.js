@@ -90,12 +90,12 @@ exports.logout = catchAsyncErrors(async(req, res, next) => {
     res.cookie("token", null, {
         expires: new Date(Date.now()),
         // httpOnly:  process.env.NODE_EN==='development',
-        ...( process.env.NODE_ENV==='development' ?  {
+        ...( process.env.NODE_ENV==='development' ? {}: {
             secure: true, 
             httpOnly: false, 
             sameSite: 'None',
             domain: 'placement-portal-nitkkr.vercel.app'
-        }:{})
+        })
     });
     res.status(200).json({
         success: true,
