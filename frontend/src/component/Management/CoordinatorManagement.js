@@ -56,7 +56,7 @@ const CoordinatorManagement = () => {
             </div>}
 
             {/* <!-- Coordinator add Modal box   --> */}
-            <div className="modal fade" id="addNewCoordinator" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+            <div className="modal fade" id="addNewCoordinator" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
                 <div className="modal-dialog modal-xl" role="document">
                     {/* <!-- Modal Content --> */}
                     <div className="modal-content" ng-show="!coordinator.successMsg">

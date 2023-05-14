@@ -201,14 +201,14 @@ const Company = () => {
                                         <hr />
                                         <div className="row">
                                             {company.eligibility && Object.keys(company.eligibility).map((key, index) => {
-                                            return (Object.keys(company.eligibility[key]).length > 0 && <div className="col-md-12">
-                                                <ul className="list-style-none">
+                                            return (Object.keys(company.eligibility[key]).length > 0 && <div className="col-md-12" key={index}>
+                                                <ul className="list-style-none" key={index}>
                                                     <li className="my-2">
                                                         <span className="font-weight-medium text-dark"><i className="ti-blackboard mr-2 text-primary"></i> <b>{ key }</b></span>
                                                     </li>
                                                     <div className="row">
                                                         {company.eligibility[key] && Object.keys(company.eligibility[key]).map((branch, value) => {
-                                                        return(<div className="col-lg-4">
+                                                        return(<div className="col-lg-4" key={branch}>
                                                             {company.eligibility[key][branch] == true && <li className="my-1">
                                                                 <span><i className="icon-check mr-2 text-success"></i> { branch }</span>
                                                             </li>}
@@ -270,8 +270,8 @@ const Company = () => {
                                     <div className="p-3 border shadow-sm rounded">
                                         <div className="row">
                                             {company.package && Object.keys(company.package).map((key, index) => {
-                                            return (Object.keys(company.eligibility[key]).length > 0 && <div className="col-md-12">
-                                                <ul className="list-style-none">
+                                            return (Object.keys(company.eligibility[key]).length > 0 && <div className="col-md-12" key={index}>
+                                                <ul className="list-style-none" key={index}>
                                                     <li className="my-2">
                                                         <span className="font-weight-medium text-dark"><i className="ti-blackboard mr-2 text-primary"></i> <b>{ key } PACKAGE </b></span>
                                                     </li>
@@ -473,7 +473,7 @@ const Company = () => {
                     </div>
 
 
-                    <div className="modal fade" id="applyNowCompanyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+                    <div className="modal fade" id="applyNowCompanyModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
                         <div className="modal-dialog modal-xl" role="document">
                             <div className="modal-content">
                                 <div className="modal-header">
@@ -491,7 +491,7 @@ const Company = () => {
                 </div>
 
                 {/* Delete Company */}
-                <div className="modal fade" id="deleteCompanyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+                <div className="modal fade" id="deleteCompanyModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
                     <div className="modal-dialog modal-xl" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -507,7 +507,7 @@ const Company = () => {
                 </div>
 
                 {/* Withdraw application Modal box */}
-                <div className="modal fade" id="withdrawApplicationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+                <div className="modal fade" id="withdrawApplicationModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
                     <div className="modal-dialog modal-xl" role="document">
                         <div className="modal-content">
                             <div className="modal-header">

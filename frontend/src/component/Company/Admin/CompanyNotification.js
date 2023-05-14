@@ -76,8 +76,8 @@ const CompanyNotification = () => {
                         </div>
 
                         <div className="m-t-40">
-                            {notifications && notifications.map((notif) => {
-                            return(<div className="message-box">
+                            {notifications && notifications.map((notif, idx) => {
+                            return(<div className="message-box" key={idx}>
                                 <div className="message-widget message-scroll">
                                     <Link>
                                         <div className="user-img">
@@ -99,7 +99,7 @@ const CompanyNotification = () => {
                 </div>
             </div>
 
-            <div className="modal fade" id="addCompanyNotificationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+            <div className="modal fade" id="addCompanyNotificationModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
                 <div className="modal-dialog modal-xl" role="document">
                     <div className="modal-content" ng-show="!companyNotification.successMsg">
                         <form onSubmit={postNotification}>

@@ -107,7 +107,7 @@ const InterviewExperiences = () => {
                             </div>
                         </div>
                         {filterInterviews && filterInterviews.map(filterInterview => {
-                        return (<div className="card cc-widget">
+                        return (<div className="card cc-widget" key={filterInterview._id}>
                             <div className="card-body">
                                 <div className="d-flex no-block flex-row">
                                     <div className="round align-self-center round-primary m-t-10 m-b-10"><i className="icon-rocket"></i></div>
@@ -131,7 +131,7 @@ const InterviewExperiences = () => {
             </div> }
 
             {/* Guide Lines to write a interview experience */}
-            <div className="modal fade" id="guidelinesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+            <div className="modal fade" id="guidelinesModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
                 <div className="modal-dialog modal-xl" role="document">
                     <div className="modal-content">
                         <div className="modal-header">

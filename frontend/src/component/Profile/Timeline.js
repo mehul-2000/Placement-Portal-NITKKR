@@ -60,7 +60,7 @@ const Timeline = () => {
                         <div className="tab-content">
                             <div className="tab-pane active" id="home" role="tabpanel">
                                 <div className="card-body">
-                                    {timeline && timeline.map((registration) => {
+                                    {timeline && timeline.map((registration, idx) => {
                                         return (<div className="profiletimeline">
                                         <div className="sl-item">
                                             <div className="sl-left">

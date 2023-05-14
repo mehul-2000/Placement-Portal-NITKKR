@@ -292,8 +292,8 @@ const AddNewCompany = () => {
                                         <div className="form-group">
                                             <label className="control-label">Eligible Programs</label>
                                             <div className="row">
-                                                {programs.map((program) => (
-                                                    <div className="col-md-2">
+                                                {programs.map((program, idx) => (
+                                                    <div className="col-md-2" key={idx}>
                                                         <label className="custom-control custom-checkbox">
                                                             <input type="checkbox" className="custom-control-input" onChange={(e) => showBranchesDiv(program, e)} />
                                                             <span className="custom-control-label"><b>{ program }</b></span>
@@ -305,15 +305,15 @@ const AddNewCompany = () => {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    {programsDiv && programs.map(program => {
+                                    {programsDiv && programs.map((program, idx) => {
                                         return ( programsDiv[program.toLowerCase()] && 
                                             <div className="col-md-12">
                                                 <div className="form-group">
                                                     <label className="control-label"><b>Select { program } Program Branches</b></label>
                                                     <div className="row">
                                                         <div className="col-md-6">
-                                                            {programsBranches[program.toLowerCase()].map(branch => (    
-                                                                <label className="custom-control custom-checkbox">
+                                                            {programsBranches[program.toLowerCase()].map((branch, idx2) => (    
+                                                                <label className="custom-control custom-checkbox" key={idx2}>
                                                                     <input type="checkbox" className="custom-control-input" name={`eligibility.${program}.${branch}`} checked={newCompanyData.eligibility[program][branch] || false} onChange={handleCompanyDataChange} />
                                                                     <span className="custom-control-label">{ branch }</span>
                                                                 </label>
@@ -414,9 +414,9 @@ const AddNewCompany = () => {
                                 <h6 className="card-subtitle">Enter package details for placement session</h6>
 
                                 <div>
-                                    {programs.map(program => {
+                                    {programs.map((program, idx) => {
                                         return ( programsDiv[program.toLowerCase()] && 
-                                            <>
+                                            <div key={idx}>
                                                 <h4 className="text-center"><b> { program } Package</b></h4>
                                                 <div className="row p-t-20">
                                                     <div className="col-md-2">
@@ -456,7 +456,7 @@ const AddNewCompany = () => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </>
+                                            </div>
                                         )
                                     })}
                                 </div>

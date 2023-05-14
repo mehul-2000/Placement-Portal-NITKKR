@@ -1,3 +1,4 @@
+/* eslint-disable react/no-direct-mutation-state */
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { styled } from "@mui/material/styles";
@@ -81,11 +82,11 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  const { error, notifications } = useSelector((state) => state.notifications);
+  const { notifications } = useSelector((state) => state.notifications);
   const [open, setOpen] = React.useState(true);
   const [openDropdown, setDropdown] = React.useState(false);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [notif, setNotif] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(false);
+  const [notif, setNotif] = React.useState(false);
   const handle = () => {
     if (!openDropdown) setDropdown(true);
     else setDropdown(false);
@@ -179,8 +180,8 @@ const Header = () => {
                   <h6>Notifications</h6>
                 </Box>
                 <ul style={{listStyleType:"none"}}>
-                {notifications.map((notif,idx)=>
-                    <li className="mt-2">
+                {notifications.slice(0, 4).map((notif,idx)=>
+                    <li className="mt-2" key={idx}>
                       <div className="message-center" >
                           {/* <!-- Message --> */}
                           <Link >
@@ -196,11 +197,11 @@ const Header = () => {
                       </div>
                     </li>
                 )}
-                <Link>
-                <li>
-                                        <a className="nav-link text-center" style={{color:"black"}}  href="/notifications"> <strong>All notifications</strong> <i className="fa fa-angle-right"></i> </a>
-                                    </li>
-                </Link>
+                  <Link to='/notifications'>
+                    <li>
+                      <div className="nav-link text-center" style={{color:"black"}}> <strong>All notifications</strong> <i className="fa fa-angle-right"></i> </div>
+                    </li>
+                  </Link>
                 </ul>
               </Menu>
             </Box>}

@@ -157,7 +157,7 @@ const UserProfile = () => {
                         </ul>
 
                         {/* Resume Upload Modal */}
-                        <div className="modal fade" id="myResumeUploadModal" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div className="modal fade" id="myResumeUploadModal" data-backdrop="static" tabIndex="-1" role="dialog" aria-hidden="true">
                             <div className="modal-dialog" role="document">
                                 <div className="modal-content">
                                     <div className="modal-header">

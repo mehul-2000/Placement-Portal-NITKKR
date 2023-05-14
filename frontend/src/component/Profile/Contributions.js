@@ -38,7 +38,7 @@ const Contributions = () => {
             <div>
                 <div className="row">
                     {interviews && interviews.map((experience) => {
-                    return(<div className="col-lg-6">
+                    return(<div className="col-lg-6" key={experience._id}>
                         <div className="card cc-widget">
                             <div className="card-body">
                                 <div className="d-flex no-block flex-row">
@@ -53,7 +53,7 @@ const Contributions = () => {
                                 </div>
                                 <br />
                                 <div>
-                                    {experience.tags.map(tag => {return (<span className="label label-success" style={{marginRight: "10px"}}>{ tag }</span>)})}
+                                    {experience.tags.map((tag, idx) => {return (<span className="label label-success" style={{marginRight: "10px"}} key={idx}>{ tag }</span>)})}
                                 </div>
                             </div>
                         </div>

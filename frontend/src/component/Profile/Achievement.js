@@ -42,8 +42,8 @@ const Achievement = () => {
                 </div>
             </div>}
 
-            {achievements && achievements.map((achievement) => {
-            return (<div className="col-lg-12" ng-show="!achievements.loading">
+            {achievements && achievements.map((achievement, idx) => {
+            return (<div className="col-lg-12" key={idx} ng-show="!achievements.loading">
                 <div className="card"> <img className="card-img" src="../assets/images/celebration.jpg" height="230" alt="Card" />
                     <div className="card-img-overlay card-inverse text-white social-profile d-flex justify-content-center" style={{borderRadius: "15px"}}>
                         <div className="align-self-center">
