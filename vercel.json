@@ -3,14 +3,14 @@
     "installCommand": "cd frontend && yarn && yarn build && cd ../backend && npm install",
     "builds":[
         {
-            "src":"./server.js",
+            "src":"./backend/server.js",
             "use":"@vercel/node"
         }
     ],
     "routes":[
         {
             "src":"/(.*)",
-            "dest":"server.js"
+            "dest":"backend/server.js"
         }
     ]
 }
