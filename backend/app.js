@@ -2,6 +2,7 @@ const express = require('express');
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const app = express();
+const path = require('path')
 
 const errorMiddleware = require("./middleware/error");
 
@@ -31,6 +32,12 @@ app.use("/api/interview", interview);
 app.use("/api/announcement", announcement);
 app.use("/api/placements", placements);
 app.use("/api/notification", notification);
+
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
+});
 
 // Middleware for Errors
 app.use(errorMiddleware)

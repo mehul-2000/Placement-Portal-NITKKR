@@ -86,7 +86,7 @@ exports.add = async (req, res, next) => {
         
         company.package = req.body.package;
         company.emails = emails;
-        company.apply_url = `${req.protocol}://${req.get("host")}/api/company/${company._id}`;
+        company.apply_url = `${req.protocol}://${req.get("host")}/company/${company._id}`;
     
         try {
             await sendEmail(company, 'companyAdded');

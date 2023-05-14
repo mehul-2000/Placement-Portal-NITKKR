@@ -23,10 +23,9 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler("Please Enter College ID & Password", 400));
     }
 
-    // ToDo :- Remove comments
-    // if(!login_otp) {
-    //     return next(new ErrorHandler("Please Enter OTP", 400));
-    // }
+    if(!login_otp) {
+        return next(new ErrorHandler("Please Enter OTP", 400));
+    }
 
     // We had to specify password differently because we had done select: false to password
     const user = await User.findOne({college_id}).select("+password");
@@ -40,14 +39,13 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
         // We can also write invalid password only but it will be risky because any unknown user will gwt to know if a particular email exists or not
         return next(new ErrorHandler("Invalid college ID or password", 401));
     } else {
-        // ToDo :- Remove comments
-        // if(login_otp === user.login_otp) {
-            user.login_otp = undefined;
-            await user.save();
+        if(login_otp === user.login_otp) {
+            // user.login_otp = undefined;
+            // await user.save();
             sendToken(user, 200, res);
-        // } else {
-        //     return next(new ErrorHandler("Incorrect OTP", 401));
-        // }
+        } else {
+            return next(new ErrorHandler("Incorrect OTP", 401));
+        }
     }
 });
 
@@ -113,7 +111,7 @@ exports.forgotPassword = catchAsyncErrors(async(req, res, next) => {
     await user.save({ validateBeforeSave: false });
 
     // As of now, we are changing to frontend, but later, while deploying, we will change as then both frontend and backend will be working on same port
-    user.reset_password_url = `${req.protocol}://${req.get("host")}/api/user/password/reset/${reset_token}`;
+    user.reset_password_url = `${req.protocol}://${req.get("host")}/reset-password/${reset_token}`;
     // const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${reset_token}`;
 
     try {

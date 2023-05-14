@@ -120,7 +120,7 @@ var userSchema = new mongoose.Schema({
 // Do before event 'save'
 userSchema.pre("save", async function(next) {
     if(!this.isModified("password")) {
-        next();
+        return next();
     }
     this.password = await bcrypt.hash(this.password, 10); // 10 -> power (10 character password)
 });
