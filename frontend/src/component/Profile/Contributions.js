@@ -30,30 +30,30 @@ const Contributions = () => {
     }, [dispatch])
     return (
         <>
-            <div class="row page-titles">
-                <div class="col-md-5 align-self-center">
-                    <h4 class="text-themecolor">Your Contributions</h4>
+            <div className="row page-titles">
+                <div className="col-md-5 align-self-center">
+                    <h4 className="text-themecolor">Your Contributions</h4>
                 </div>
             </div>
             <div>
-                <div class="row">
+                <div className="row">
                     {interviews && interviews.map((experience) => {
-                    return(<div class="col-lg-6">
-                        <div class="card cc-widget">
-                            <div class="card-body">
-                                <div class="d-flex no-block flex-row">
-                                    <div class="round align-self-center round-primary m-t-10 m-b-10"><i class="icon-rocket"></i></div>
-                                    <div class="m-l-10 align-self-center">
-                                        <h4 class="m-b-0"><Link to={`/experience/${ experience._id }`} style={{color: "black"}}>{ experience.title }</Link> {experience.status=='approved' && <i class="fa fa-check-circle text-success"></i>}{experience.status=='pending' && <i class="fa fa-exclamation-circle text-danger"></i>} </h4>
-                                        <h5 class="text-muted m-b-0"><i class="fa fa-user"></i> { experience.author_name }</h5>
+                    return(<div className="col-lg-6" key={experience._id}>
+                        <div className="card cc-widget">
+                            <div className="card-body">
+                                <div className="d-flex no-block flex-row">
+                                    <div className="round align-self-center round-primary m-t-10 m-b-10"><i className="icon-rocket"></i></div>
+                                    <div className="m-l-10 align-self-center">
+                                        <h4 className="m-b-0"><Link to={`/experience/${ experience._id }`} style={{color: "black"}}>{ experience.title }</Link> {experience.status=='approved' && <i className="fa fa-check-circle text-success"></i>}{experience.status=='pending' && <i className="fa fa-exclamation-circle text-danger"></i>} </h4>
+                                        <h5 className="text-muted m-b-0"><i className="fa fa-user"></i> { experience.author_name }</h5>
                                     </div>
                                 </div>
-                                <div class="d-flex no-block flex-row m-t-20 cc-details interview">
+                                <div className="d-flex no-block flex-row m-t-20 cc-details interview">
                                     <div dangerouslySetInnerHTML={{ __html: TruncHtml(experience.experience, 200).html }} />
                                 </div>
                                 <br />
                                 <div>
-                                    {experience.tags.map(tag => {return (<span class="label label-success" style={{marginRight: "10px"}}>{ tag }</span>)})}
+                                    {experience.tags.map((tag, idx) => {return (<span className="label label-success" style={{marginRight: "10px"}} key={idx}>{ tag }</span>)})}
                                 </div>
                             </div>
                         </div>
@@ -61,13 +61,13 @@ const Contributions = () => {
                 </div>
             </div>
 
-            {(interviews && interviews.length === 0) && <div class="row">
-                <div class="col-md-12">
-                    <div class="card text-white bg-success">
-                        <div class="card-body">
-                            <h3 class="card-title">Nothing right here!</h3>
-                            <p class="card-text">Start contributing to help your mates out there.Share details about the interview process you have been through.. .</p>
-                            <Link to="/compose" class="btn btn-dark">Contribute Now</Link>
+            {(interviews && interviews.length === 0) && <div className="row">
+                <div className="col-md-12">
+                    <div className="card text-white bg-success">
+                        <div className="card-body">
+                            <h3 className="card-title">Nothing right here!</h3>
+                            <p className="card-text">Start contributing to help your mates out there.Share details about the interview process you have been through.. .</p>
+                            <Link to="/compose" className="btn btn-dark">Contribute Now</Link>
                         </div>
                     </div>
                 </div>

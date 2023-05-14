@@ -82,7 +82,7 @@ const CompanyRegistration = () => {
             {!loading && <div>
                 <div className="row">
                     {companies && companies.map(company => {
-                    return (<div className="col-lg-4 col-md-6">
+                    return (<div className="col-lg-4 col-md-6" key={company._id}>
                         <div className="card cc-widget">
                             <div className="card-body">
                                 <div className="d-flex no-block flex-row">

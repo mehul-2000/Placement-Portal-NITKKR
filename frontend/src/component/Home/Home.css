@@ -1,0 +1,10 @@
+@media screen and (max-width: 1151px) {
+    .ug{
+        width:100vw;
+        overflow-x:scroll;
+    }
+    body {
+        overflow-x:scroll;
+    }
+    
+  }

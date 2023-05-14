@@ -121,8 +121,13 @@ const Compose = () => {
 
                                     <div className="col-md-12">
                                         <div className="form-group">
+<<<<<<< HEAD
                                             {tags && tags.map((tag) => {
                                                 return (<button type="button" onClick={() => removeTag(tag)} className="btn btn-danger" style={{ marginRight: "10px", marginTop: "10px" }}> {tag} &nbsp; &nbsp;<i className="fa fa-close"></i> </button>)
+=======
+                                            {tags && tags.map((tag, idx) => {
+                                                return (<button key={idx} type="button" onClick={() => removeTag(tag)} className="btn btn-danger" style={{marginRight: "10px",marginTop: "10px"}}> { tag } &nbsp; &nbsp;<i className="fa fa-close"></i> </button>)
+>>>>>>> fff0221a71870e33fa5106883821403fd57c49d5
                                             })}
                                         </div>
                                     </div>

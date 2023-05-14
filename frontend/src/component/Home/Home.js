@@ -1,4 +1,5 @@
 import React from 'react'
+import './Home.css';
 
 function LandingPage() {
     return (
@@ -10,7 +11,7 @@ function LandingPage() {
                 </div>
 
                 {/* <!-- UG Placement Stats --> */}
-                <div className="row">
+                <div className="row ug">
                     <div className="col-lg-12">
                         <div className="card">
                             <div className="card-body">
