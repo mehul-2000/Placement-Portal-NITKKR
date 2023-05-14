@@ -87,7 +87,7 @@ exports.sendOTP = catchAsyncErrors(async(req, res, next) => {
 
 // Logout User
 exports.logout = catchAsyncErrors(async(req, res, next) => {
-    res.cookie("token", null, {
+    res.cookie("token", '', {
         expires: new Date(Date.now()),
         // httpOnly:  process.env.NODE_EN==='development',
         // ...( process.env.NODE_ENV==='development' ? {}: {
