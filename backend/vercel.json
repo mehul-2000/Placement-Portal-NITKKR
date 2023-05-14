@@ -3,12 +3,24 @@
         {
             "src":"./server.js",
             "use":"@vercel/node"
+        },
+        {
+            "src": "build/**",
+            "use": "@vercel/static"
         }
     ],
-    "routes":[
+    "routes":[{"handle": "filesystem"},
         {
             "src":"/(.*)",
             "dest":"server.js"
+        },
+        {
+            "src": "/",
+            "dest": "build/index.html"
+        },
+        {
+            "src": "/(.+)",
+            "dest": "build/$1"
         }
     ]
 }
