@@ -13,7 +13,7 @@ import axios from "axios";
 export const getAllCoordinators = () => async (dispatch) => {
     try{
         dispatch({type:GET_COORDINATORS_REQUEST});
-        const {data} = await axios.get('/api/coordinator/getAll');
+        const {data} = await axios.get('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/coordinator/getAll');
         dispatch({
             type: GET_COORDINATORS_SUCCESS,
             payload:data,
@@ -36,7 +36,7 @@ export const addNewCoordinator = (college_id) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const { data } = await axios.post("/api/coordinator/add", {college_id}, config);
+        const { data } = await axios.post("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/coordinator/add", {college_id}, config);
         dispatch({ type: CREATE_COORDINATOR_SUCCESS, payload: data });
     } catch (error) {
         dispatch({

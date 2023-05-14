@@ -19,7 +19,7 @@ export const addNewNotification = (notification) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const { data } = await axios.post("/api/notification/add", notification, config);
+        const { data } = await axios.post("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/notification/add", notification, config);
         dispatch({ type: CREATE_NOTIFICATION_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
@@ -37,7 +37,7 @@ export const getCompanyNotifications = (companyId) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const {data} = await axios.post('/api/notification/getAll', {companyId}, config);
+        const {data} = await axios.post('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/notification/getAll', {companyId}, config);
         dispatch({ type: GET_NOTIFICATIONS_SUCCESS, payload: data });
     } catch(error) {
         dispatch({
@@ -50,7 +50,7 @@ export const getCompanyNotifications = (companyId) => async (dispatch) => {
 export const getAllNotifications = () => async (dispatch) => {
     try{
         dispatch({type:GET_NOTIFICATIONS_REQUEST});
-        const {data} = await axios.post('/api/notification/getAll');
+        const {data} = await axios.post('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/notification/getAll');
         dispatch({ type: GET_NOTIFICATIONS_SUCCESS, payload: data });
     } catch(error) {
         dispatch({
@@ -70,7 +70,7 @@ export const getLimitNotifications = (limit) => async (dispatch) => {
             }
         };
         dispatch({type:GET_NOTIFICATIONS_REQUEST});
-        const {data} = await axios.post('/api/notification/getAll', {limit}, config);
+        const {data} = await axios.post('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/notification/getAll', {limit}, config);
         dispatch({ type: GET_NOTIFICATIONS_SUCCESS, payload: data });
     } catch(error) {
         dispatch({
@@ -82,7 +82,7 @@ export const getLimitNotifications = (limit) => async (dispatch) => {
 
 export const wipeAllNotifications = () => async (dispatch) => {
     try{
-        await axios.put('/api/notification/wipe');
+        await axios.put('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/notification/wipe');
     } catch(error) {}
 };
 

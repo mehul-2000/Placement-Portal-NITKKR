@@ -19,7 +19,7 @@ export const addNewAnnouncement = (announcement) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const { data } = await axios.post("/api/announcement/add", announcement, config);
+        const { data } = await axios.post("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/announcement/add", announcement, config);
         dispatch({ type: CREATE_ANNOUNCEMENT_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
@@ -33,7 +33,7 @@ export const addNewAnnouncement = (announcement) => async (dispatch) => {
 export const getAllAnnouncementsStudent = () => async (dispatch) => {
     try{
         dispatch({type:GET_ANNOUNCEMENTS_REQUEST});
-        const {data} = await axios.post('/api/announcement/getAll');
+        const {data} = await axios.post('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/announcement/getAll');
         dispatch({ type: GET_ANNOUNCEMENTS_SUCCESS, payload: data });
     } catch(error) {
         dispatch({
@@ -51,7 +51,7 @@ export const getAllAnnouncementsAdmin = (passout_batch) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const {data} = await axios.post('/api/announcement/getAll', {passout_batch}, config);
+        const {data} = await axios.post('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/announcement/getAll', {passout_batch}, config);
         dispatch({ type: GET_ANNOUNCEMENTS_SUCCESS, payload: data });
     } catch(error) {
         dispatch({

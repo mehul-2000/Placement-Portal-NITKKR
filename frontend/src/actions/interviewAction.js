@@ -28,7 +28,7 @@ export const addNewInterview = (interview) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const { data } = await axios.post("/api/interview/add", interview, config);
+        const { data } = await axios.post("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/interview/add", interview, config);
         dispatch({ type: CREATE_INTERVIEW_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
@@ -48,7 +48,7 @@ export const editInterview = (interview) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const { data } = await axios.post("/api/interview/edit", interview, config);
+        const { data } = await axios.post("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/interview/edit", interview, config);
         dispatch({ type: EDIT_INTERVIEW_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
@@ -62,7 +62,7 @@ export const editInterview = (interview) => async (dispatch) => {
 export const getAllInterviews = () => async (dispatch) => {
     try{
         dispatch({type:GET_INTERVIEWS_REQUEST});
-        const {data} = await axios.get('/api/interview/getAll');
+        const {data} = await axios.get('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/interview/getAll');
         dispatch({ type: GET_INTERVIEWS_SUCCESS, payload: data });
     } catch(error) {
         dispatch({
@@ -76,7 +76,7 @@ export const getAllInterviews = () => async (dispatch) => {
 export const getAllAdminInterviews = () => async (dispatch) => {
     try{
         dispatch({type:GET_INTERVIEWS_REQUEST});
-        const {data} = await axios.get('/api/interview/getAll_admin');
+        const {data} = await axios.get('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/interview/getAll_admin');
         dispatch({ type: GET_INTERVIEWS_SUCCESS, payload: data });
     } catch(error) {
         dispatch({
@@ -90,7 +90,7 @@ export const getAllAdminInterviews = () => async (dispatch) => {
 export const getInterviewDetails = (interview_id) => async (dispatch) => {
     try{
         dispatch({type:INTERVIEW_DETAILS_REQUEST});
-        const {data} = await axios.get(`/api/interview/getOne/${interview_id}`);
+        const {data} = await axios.get(`https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/interview/getOne/${interview_id}`);
         dispatch({ type: INTERVIEW_DETAILS_SUCCESS, payload: data });
     } catch(error) {
         dispatch({
@@ -109,7 +109,7 @@ export const changeStatus = (experience_id) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const {data} = await axios.post('/api/interview/changeStatus', {experience_id}, config);
+        const {data} = await axios.post('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/interview/changeStatus', {experience_id}, config);
         dispatch({ type: UPDATE_STATUS_SUCCESS, payload: data });
     } catch(error) {
         dispatch({
