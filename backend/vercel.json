@@ -1,6 +1,6 @@
 {
 
-    "installCommand": "npm install",
+    "installCommand": "cd backend && npm install",
     "builds":[
         {
             "src":"./server.js",
