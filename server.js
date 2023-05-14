@@ -10,6 +10,19 @@ process.on("uncaughtException", (err) => {
     console.log("Shutting down the server due to Uncaught Exception");
     process.exit(1);
 })
+// Your code
+if (process.env.NODE_ENV === "production") {
+    const path = require("path");
+    app.use(express.static(path.resolve(__dirname, 'frontend', 'build')));
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'),function (err) {
+            if(err) {
+                res.status(500).send(err)
+            }
+        });
+    })
+}
+// Your code
 
 // Config
 if(process.env.NODE_ENV !== "PRODUCTION") {
