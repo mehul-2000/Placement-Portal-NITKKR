@@ -11,8 +11,8 @@ const sendToken = (user, statusCode, res) => {
        ...( process.env.NODE_ENV==='development' ?{}:  {
             secure: true, 
             httpOnly: false, 
-            sameSite: 'None',
-            domain: '.placement-portal-nitkkr.vercel.app'
+            sameSite: 'none',
+            domain: 'vercel.app'
         })
     };
     res.status(statusCode).cookie('token', token, options).json({
