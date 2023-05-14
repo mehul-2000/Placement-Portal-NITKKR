@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import InstituteHome from './component/InstituteHome/InstituteHome';
 import { Provider } from "react-redux";
 import store from './store';
 import { positions, transitions, Provider as AlertProvider } from "react-alert";
@@ -23,10 +24,6 @@ root.render(
   <Provider store={store}>
     <AlertProvider template={AlertTemplate} {...options}>
       <App />
-      
     </AlertProvider>
-    {/* <footer style={{botton:"0",marginBottom:"0rem"}} className="footer text-center">
-          © 2023  Placement & Training Cell, NIT Kurukshetra
-      </footer> */}
   </Provider>
 );

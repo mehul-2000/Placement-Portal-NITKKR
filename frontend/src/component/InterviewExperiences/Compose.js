@@ -1,14 +1,15 @@
+
 import React, { useEffect, useState } from 'react';
 import { addNewInterview, clearErrors } from "../../actions/interviewAction"
-import {useSelector, useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useAlert } from 'react-alert';
 import { useNavigate } from 'react-router-dom';
 import { CREATE_INTERVIEW_RESET } from "../../constants/interviewConstants"
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState,convertToRaw } from 'draft-js';
+import { EditorState, convertToRaw } from 'draft-js';
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import draftToHtml from "draftjs-to-html";
-import ReactHtmlParser from 'react-html-parser'; 
+import ReactHtmlParser from 'react-html-parser';
 
 const Compose = () => {
     const alert = useAlert();
@@ -24,8 +25,8 @@ const Compose = () => {
     const [tags, setTags] = useState([]);
 
     const addTag = () => {
-        if(tag) {
-            if(tags.indexOf(tag.toLowerCase()) === -1) {
+        if (tag) {
+            if (tags.indexOf(tag.toLowerCase()) === -1) {
                 const temp = [...tags];
                 temp.push(tag);
                 setTags(temp)
@@ -40,7 +41,7 @@ const Compose = () => {
 
     const removeTag = (tag) => {
         const temp = [...tags];
-        temp.splice(temp.indexOf(tag.toLowerCase()),1);
+        temp.splice(temp.indexOf(tag.toLowerCase()), 1);
         setTags(temp)
     }
 
@@ -51,10 +52,10 @@ const Compose = () => {
 
     const submitInterview = (e) => {
         e.preventDefault();
-        if(tags.length === 0) {
+        if (tags.length === 0) {
             alert.error("Tags can't be empty!");
         }
-        else if(!editorState.getCurrentContent().hasText()) {
+        else if (!editorState.getCurrentContent().hasText()) {
             alert.error("Please add your interview experience");
         }
         else {
@@ -67,13 +68,13 @@ const Compose = () => {
     };
 
     useEffect(() => {
-        if(error) {
+        if (error) {
             alert.error(error);
             dispatch(clearErrors());
         }
-        if(success) {
+        if (success) {
             alert.success("Thanks for your contribution! Sit back and relax while our reviewers approves your interview experience.")
-            dispatch({type:CREATE_INTERVIEW_RESET});
+            dispatch({ type: CREATE_INTERVIEW_RESET });
             navigate("/interview-experiences")
         }
     }, [dispatch, error, alert, success, navigate])
@@ -111,7 +112,7 @@ const Compose = () => {
                                             <Editor
                                                 editorState={editorState}
                                                 onEditorStateChange={onEditorStateChange}
-                                                editorStyle={{ border: "2px solid black", borderRadius:"5px", height: "200px", color: "black" }}
+                                                editorStyle={{ border: "2px solid black", borderRadius: "5px", height: "200px", color: "black" }}
                                             />
                                             <br />
                                             {(title && editorState.getCurrentContent().hasText()) && <button type="button" data-bs-toggle="modal" data-bs-target="#previewExperienceModal" className="btn btn-outline-primary d-none d-lg-block m-l-15"><i className="fa fa-eye"></i> Preview</button>}
@@ -120,8 +121,13 @@ const Compose = () => {
 
                                     <div className="col-md-12">
                                         <div className="form-group">
+<<<<<<< HEAD
+                                            {tags && tags.map((tag) => {
+                                                return (<button type="button" onClick={() => removeTag(tag)} className="btn btn-danger" style={{ marginRight: "10px", marginTop: "10px" }}> {tag} &nbsp; &nbsp;<i className="fa fa-close"></i> </button>)
+=======
                                             {tags && tags.map((tag, idx) => {
                                                 return (<button key={idx} type="button" onClick={() => removeTag(tag)} className="btn btn-danger" style={{marginRight: "10px",marginTop: "10px"}}> { tag } &nbsp; &nbsp;<i className="fa fa-close"></i> </button>)
+>>>>>>> fff0221a71870e33fa5106883821403fd57c49d5
                                             })}
                                         </div>
                                     </div>
@@ -137,7 +143,7 @@ const Compose = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div style={{textAlign: "center"}} className="text-center">
+                                <div style={{ textAlign: "center" }} className="text-center">
                                     {/* <p className="text-danger" ng-show="compose.errorMsg">{{ compose.errorMsg }}</p> */}
                                     {loading && <p className="text-primary"> Posing your experience... Please wait!</p>}
                                     {!loading && <button type="submit" className="btn btn-primary btn-rounded"><i className="ti-check-box"></i> &nbsp; Post Interview Experience</button>}
@@ -153,11 +159,11 @@ const Compose = () => {
                 <div className="modal-dialog modal-xl" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h4 className="modal-title" id="exampleModalLabel1">{ title }</h4>
+                            <h4 className="modal-title" id="exampleModalLabel1">{title}</h4>
                             <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div className="modal-body">
-                            <div> { ReactHtmlParser(experience) } </div>
+                            <div> {ReactHtmlParser(experience)} </div>
                             {/* <div ng-bind-html="compose.experienceData.experience"></div> */}
                         </div>
                         <div className="modal-footer">
