@@ -1,6 +1,6 @@
 {
 
-        "installCommand": "cd frontend && yarn && yarn build && cd ../backend && npm install",
+    "installCommand": "cd frontend && yarn && yarn build && cd ../backend && npm install",
     "builds":[
         {
             "src":"./server.js",
