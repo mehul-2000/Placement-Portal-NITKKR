@@ -36,10 +36,10 @@ app.use("/api/announcement", announcement);
 app.use("/api/placements", placements);
 app.use("/api/notification", notification);
 
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.use(express.static(path.join(__dirname, "./build")));
 app.get("*", (req, res) => {
-   // res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
-   res.send("Server is running")
+   res.sendFile(path.resolve(__dirname, "./build/index.html"));
+   // res.send("Server is running")
 })
 
 // Middleware for Errors
