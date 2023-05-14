@@ -1,6 +1,5 @@
 const app = require('./backend/app');
 
-const dotenv = require('dotenv');
 const connectDatabase = require('./backend/config/database');
 
 global.__basedir = __dirname; // Globally Declaring basedir to use in API files
@@ -13,7 +12,9 @@ process.on("uncaughtException", (err) => {
 })
 
 // Config
-dotenv.config({path: "backend/config/config.env"});
+if(process.env.NODE_ENV !== "PRODUCTION") {
+    require('dotenv').config({path: "backend/config/config.env"});
+}
 
 // Connecting to database
 connectDatabase();

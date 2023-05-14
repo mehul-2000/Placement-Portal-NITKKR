@@ -43,7 +43,7 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ProtectedRoute from "./component/Route/ProtectedRoute";
 import Visitors from "./component/Visitors/Visitors";
-
+import Error404 from './component/404Error/404error'
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -67,6 +67,7 @@ function App() {
         <Box component="main" sx={{ flexGrow: 1, p: 3 ,flexDirection:"column",paddingBottom:"0rem"}}>
           <DrawerHeader />
             <Routes>
+            
               <Route path="/" element={<LandingPage />} />
               <Route exact path="/login" element={<Login />} />
               <Route exact path="/logout" element={<Logout />} />
@@ -181,6 +182,7 @@ function App() {
               <Route exact path="/developer" element={<Developer />} />
               <Route exact path="/contactus" element={<ContactUs />} />
               <Route exact path="/visitors" element={<Visitors />} />
+              <Route path="/*" element={<Error404 />} />
             </Routes>
             
         </Box>
