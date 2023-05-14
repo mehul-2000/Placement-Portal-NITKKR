@@ -22,7 +22,7 @@ export const addNewPlacement = (placement) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const { data } = await axios.post("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/placements/add", placement, config);
+        const { data } = await axios.post("https://placement-portal-liart.vercel.app/api/placements/add", placement, config);
         dispatch({ type: CREATE_PLACEMENT_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
@@ -42,7 +42,7 @@ export const editPlacement = (placement) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const { data } = await axios.post("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/placements/update", placement, config);
+        const { data } = await axios.post("https://placement-portal-liart.vercel.app/api/placements/update", placement, config);
         dispatch({ type: EDIT_PLACEMENT_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
@@ -56,7 +56,7 @@ export const editPlacement = (placement) => async (dispatch) => {
 export const getAllPlacements = () => async (dispatch) => {
     try{
         dispatch({type:GET_PLACEMENTS_REQUEST});
-        const {data} = await axios.post('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/placements/getAll');
+        const {data} = await axios.post('https://placement-portal-liart.vercel.app/api/placements/getAll');
         dispatch({ type: GET_PLACEMENTS_SUCCESS, payload: data });
     } catch(error) {
         dispatch({
@@ -75,7 +75,7 @@ export const getOnePlacements = (placement_id) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const {data} = await axios.post('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/placements/getAll', {placement_id}, config);
+        const {data} = await axios.post('https://placement-portal-liart.vercel.app/api/placements/getAll', {placement_id}, config);
         dispatch({ type: GET_PLACEMENTS_SUCCESS, payload: data });
     } catch(error) {
         dispatch({

@@ -16,7 +16,7 @@ import axios from "axios";
 export const getApplicationStatus = (company_id) => async (dispatch) => {
     try{
         dispatch({type:APPLICATION_STATUS_REQUEST});
-        const {data} = await axios.get(`https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/apply/getStatus/${company_id}`);
+        const {data} = await axios.get(`https://placement-portal-liart.vercel.app/api/apply/getStatus/${company_id}`);
         dispatch({ type: APPLICATION_STATUS_SUCCESS, payload: data });
     } catch(error) {
         dispatch({
@@ -35,7 +35,7 @@ export const apply = (company_id) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const {data} = await axios.post("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/apply/apply", {company_id}, config);
+        const {data} = await axios.post("https://placement-portal-liart.vercel.app/api/apply/apply", {company_id}, config);
         dispatch({ type: APPLY_SUCCESS, payload: data });
     } catch(error) {
         dispatch({
@@ -54,7 +54,7 @@ export const withdrawRegistrationAdmin = (college_id, company_id) => async (disp
                 "Content-Type": "application/json"
             }
         }
-        const {data} = await axios.post("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/apply/withdrawOne", {college_id, company_id}, config);
+        const {data} = await axios.post("https://placement-portal-liart.vercel.app/api/apply/withdrawOne", {college_id, company_id}, config);
         dispatch({ type: WITHDRAW_SUCCESS, payload: data });
     } catch(error) {
         dispatch({
@@ -73,7 +73,7 @@ export const withdrawRegistrationStudent = (company_id) => async (dispatch) => {
                 "Content-Type": "application/json"
             }
         }
-        const {data} = await axios.post("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/apply/withdraw", {company_id}, config);
+        const {data} = await axios.post("https://placement-portal-liart.vercel.app/api/apply/withdraw", {company_id}, config);
         dispatch({ type: WITHDRAW_SUCCESS, payload: data });
     } catch(error) {
         dispatch({

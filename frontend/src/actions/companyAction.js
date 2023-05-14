@@ -31,7 +31,7 @@ export const addNewCompany = (company) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const { data } = await axios.post("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/company/add", company, config);
+        const { data } = await axios.post("https://placement-portal-liart.vercel.app/api/company/add", company, config);
         dispatch({ type: CREATE_COMPANY_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
@@ -51,7 +51,7 @@ export const editCompany = (company) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const { data } = await axios.put("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/company/update", company, config);
+        const { data } = await axios.put("https://placement-portal-liart.vercel.app/api/company/update", company, config);
         dispatch({ type: EDIT_COMPANY_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
@@ -70,7 +70,7 @@ export const getAllUpcomingCompanies = () => async (dispatch) => {
                 "Content-Type": "application/json"
             }
         }
-        const {data} = await axios.post('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/company/getAll', {active:true}, config);
+        const {data} = await axios.post('https://placement-portal-liart.vercel.app/api/company/getAll', {active:true}, config);
         dispatch({
             type: UPCOMING_COMPANIES_SUCCESS,
             payload:data,
@@ -92,7 +92,7 @@ export const getAllUpcomingCompaniesAdmin = (passout_batch) => async (dispatch) 
                 "Content-Type": "application/json"
             }
         }
-        const {data} = await axios.post('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/company/getAll_admin', {active:true, passout_batch}, config);
+        const {data} = await axios.post('https://placement-portal-liart.vercel.app/api/company/getAll_admin', {active:true, passout_batch}, config);
         dispatch({
             type: UPCOMING_COMPANIES_SUCCESS,
             payload:data,
@@ -114,7 +114,7 @@ export const getAllPreviousCompanies = () => async (dispatch) => {
                 "Content-Type": "application/json"
             }
         }
-        const {data} = await axios.post('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/company/getAll', {active:false}, config);
+        const {data} = await axios.post('https://placement-portal-liart.vercel.app/api/company/getAll', {active:false}, config);
         dispatch({
             type: UPCOMING_COMPANIES_SUCCESS,
             payload:data,
@@ -136,7 +136,7 @@ export const getAllPreviousCompaniesAdmin = (passout_batch) => async (dispatch) 
                 "Content-Type": "application/json"
             }
         }
-        const {data} = await axios.post('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/company/getAll_admin', {active:false, passout_batch}, config);
+        const {data} = await axios.post('https://placement-portal-liart.vercel.app/api/company/getAll_admin', {active:false, passout_batch}, config);
         dispatch({
             type: UPCOMING_COMPANIES_SUCCESS,
             payload:data,
@@ -152,7 +152,7 @@ export const getAllPreviousCompaniesAdmin = (passout_batch) => async (dispatch) 
 export const getCompanyDetails = (company_id) => async (dispatch) => {
     try{
         dispatch({type:COMPANY_DETAILS_REQUEST});
-        const {data} = await axios.get(`https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/company/getOne/${company_id}`);
+        const {data} = await axios.get(`https://placement-portal-liart.vercel.app/api/company/getOne/${company_id}`);
         dispatch({ type: COMPANY_DETAILS_SUCCESS, payload: data });
     } catch(error) {
         dispatch({
@@ -166,7 +166,7 @@ export const getCompanyDetails = (company_id) => async (dispatch) => {
 export const getRegisteredStudents = (company_id) => async (dispatch) => {
     try{
         dispatch({type:REGISTERED_STUDENTS_REQUEST});
-        const {data} = await axios.get(`https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/company/applied/${company_id}`);
+        const {data} = await axios.get(`https://placement-portal-liart.vercel.app/api/company/applied/${company_id}`);
         dispatch({ type: REGISTERED_STUDENTS_SUCCESS, payload: data });
     } catch(error) {
         dispatch({
@@ -185,7 +185,7 @@ export const deleteCompany = (company_id) => async (dispatch) => {
                 "Content-Type": "application/json"
             }
         }
-        const {data} = await axios.post('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/company/remove', {company_id}, config);
+        const {data} = await axios.post('https://placement-portal-liart.vercel.app/api/company/remove', {company_id}, config);
         dispatch({
             type: DELETE_COMPANY_SUCCESS,
             payload:data,

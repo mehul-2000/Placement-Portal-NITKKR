@@ -13,8 +13,8 @@ import axios from "axios";
 export const getStudent = (college_id) => async (dispatch) => {
     try{
         dispatch({type:GET_STUDENT_REQUEST});
-        let link = `https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/user/getOne?college_id=${college_id}`;
-        const {data} = await axios.get(`https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/user/getOne/${college_id}`);
+        let link = `https://placement-portal-liart.vercel.app/api/user/getOne?college_id=${college_id}`;
+        const {data} = await axios.get(`https://placement-portal-liart.vercel.app/api/user/getOne/${college_id}`);
         dispatch({
             type: GET_STUDENT_SUCCESS,
             payload:data,
@@ -37,7 +37,7 @@ export const updateStudent = (student) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const { data } = await axios.post("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/user/updateOne", student, config);
+        const { data } = await axios.post("https://placement-portal-liart.vercel.app/api/user/updateOne", student, config);
         dispatch({ type: UPDATE_STUDENT_SUCCESS, payload: data });
     } catch (error) {
         dispatch({

@@ -52,7 +52,7 @@ export const sendOTP = (college_id, password) => async (dispatch) => {
             }
         }
         const {data} = await axios.post(
-            'https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/user/sendOTP',
+            'https://placement-portal-liart.vercel.app/api/user/sendOTP',
             {college_id, password},
             config
         );
@@ -78,7 +78,7 @@ export const login = (college_id, password, login_otp) => async (dispatch) => {
             }
         }
         const {data} = await axios.post(
-            'https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/user/login',
+            'https://placement-portal-liart.vercel.app/api/user/login',
             {college_id, password, login_otp},
             config
         );
@@ -98,7 +98,7 @@ export const login = (college_id, password, login_otp) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
     try {
         dispatch({type: LOGOUT_REQUEST});
-        await axios.get('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/user/logout');
+        await axios.get('https://placement-portal-liart.vercel.app/api/user/logout');
         dispatch({
             type: LOGOUT_SUCCESS
         });
@@ -114,7 +114,7 @@ export const logout = () => async (dispatch) => {
 export const loadUser = () => async (dispatch) => {
     try {
         dispatch({type:LOAD_USER_REQUEST});
-        const {data} = await axios.get('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/user/profile');
+        const {data} = await axios.get('https://placement-portal-liart.vercel.app/api/user/profile');
         dispatch({
             type: LOAD_USER_SUCCESS,
             payload:data.user,
@@ -137,7 +137,7 @@ export const updateProfile = (profileData) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const { data } = await axios.post("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/user/updateProfile", profileData, config);
+        const { data } = await axios.post("https://placement-portal-liart.vercel.app/api/user/updateProfile", profileData, config);
         dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
@@ -157,7 +157,7 @@ export const updateResume = (resume) => async (dispatch) => {
                 "Content-Type": "multipart/form-data"
             }
         };
-        const { data } = await axios.post("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/upload/resume", resume, config);
+        const { data } = await axios.post("https://placement-portal-liart.vercel.app/api/upload/resume", resume, config);
         dispatch({ type: UPDATE_RESUME_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
@@ -177,7 +177,7 @@ export const updateAdminBatch = (batch) => async (dispatch) => {
                 "Content-Type": "application/json",
             }
         };
-        const { data } = await axios.post("https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/user/updateBatch", {batch}, config);
+        const { data } = await axios.post("https://placement-portal-liart.vercel.app/api/user/updateBatch", {batch}, config);
         dispatch({ type: UPDATE_BATCH_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
@@ -197,7 +197,7 @@ export const forgotPassword = (college_id) => async (dispatch) => {
             }
         }
         const {data} = await axios.post(
-            'https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/user/password/forgot',
+            'https://placement-portal-liart.vercel.app/api/user/password/forgot',
             {college_id},
             config
         );
@@ -268,7 +268,7 @@ export const changePassword = (passwords) => async (dispatch) => {
 export const getTimeline = () => async (dispatch) => {
     try {
         dispatch({type:GET_TIMELINE_REQUEST});
-        const {data} = await axios.get('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/user/timeline');
+        const {data} = await axios.get('https://placement-portal-liart.vercel.app/api/user/timeline');
         dispatch({
             type: GET_TIMELINE_SUCCESS,
             payload:data,
@@ -284,7 +284,7 @@ export const getTimeline = () => async (dispatch) => {
 export const getAchievements = () => async (dispatch) => {
     try {
         dispatch({type:GET_ACHIEVEMENTS_REQUEST});
-        const {data} = await axios.get('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/user/achievements');
+        const {data} = await axios.get('https://placement-portal-liart.vercel.app/api/user/achievements');
         dispatch({
             type: GET_ACHIEVEMENTS_SUCCESS,
             payload:data,
@@ -300,7 +300,7 @@ export const getAchievements = () => async (dispatch) => {
 export const getContributions = () => async (dispatch) => {
     try {
         dispatch({type:GET_CONTRIBUTIONS_REQUEST});
-        const {data} = await axios.get('https://placement-portal-g2x2cefiv-mehul-2000.vercel.app/api/user/contributions');
+        const {data} = await axios.get('https://placement-portal-liart.vercel.app/api/user/contributions');
         dispatch({
             type: GET_CONTRIBUTIONS_SUCCESS,
             payload:data,
