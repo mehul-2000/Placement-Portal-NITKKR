@@ -19,7 +19,7 @@ function MiniCard(props) {
                 {/* <PeopleIcon /> */}
                 <h3>{props.title}</h3>
                 <div className="container">{props.description}</div>
-                <Button variant="contained" color="error" style={{ marginTop: "1rem" }}>
+                <Button variant="contained" color="error" style={{ marginTop: "1rem" }} onClick={event => window.location.replace('https://www.nitkkr.ac.in')}>
                     Know More
                 </Button>
             </div>

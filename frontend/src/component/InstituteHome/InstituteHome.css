@@ -1,11 +1,11 @@
-nav > ul {
+.nav-ul {
   margin: 0;
   height: 80px;
   text-align: center;
   background-color: #c21717;
 }
 
-nav > ul li {
+nav > .nav-ul .nav-li {
   display: inline-block;
   margin: 0 20px;
   height: 35px;
@@ -13,7 +13,8 @@ nav > ul li {
   position: relative;
   top: -60px;
 }
-nav a {
+
+.nav-a {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.4em;
@@ -26,7 +27,7 @@ nav a {
   }
 }
 
-nav img {
+.pack {
   /* +size(100px) */
   border-radius: 150px 150px;
   border: 5px solid white;

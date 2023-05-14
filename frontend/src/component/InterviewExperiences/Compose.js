@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import React, { useEffect, useState } from 'react';
 import { addNewInterview, clearErrors } from "../../actions/interviewAction"
 import { useSelector, useDispatch } from "react-redux";
