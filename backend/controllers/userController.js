@@ -94,7 +94,7 @@ exports.logout = catchAsyncErrors(async(req, res, next) => {
             secure: true, 
             httpOnly: false, 
             sameSite: 'None',
-            domain: 'placement-portal-nitkkr.vercel.app'
+            domain: 'vercel.app'
         })
     });
     res.status(200).json({
