@@ -142,8 +142,8 @@ const EditExperience = () => {
 
                                     <div className="col-md-12">
                                         <div className="form-group">
-                                            {tags && tags.map((tag) => {
-                                                return (<button type="button" onClick={() => removeTag(tag)} className="btn btn-danger" style={{marginRight: "10px",marginTop: "10px"}}> { tag } &nbsp; &nbsp;<i className="fa fa-close"></i> </button>)
+                                            {tags && tags.map((tag, idx) => {
+                                                return (<button key={idx} type="button" onClick={() => removeTag(tag)} className="btn btn-danger" style={{marginRight: "10px",marginTop: "10px"}}> { tag } &nbsp; &nbsp;<i className="fa fa-close"></i> </button>)
                                             })}
                                         </div>
                                     </div>

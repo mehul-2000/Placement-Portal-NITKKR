@@ -46,8 +46,8 @@ const Notifications = () => {
                         </div>
 
                         <div className="m-t-40">
-                            {notifications && notifications.map((notif) => {
-                            return(<div className="message-box">
+                            {notifications && notifications.map((notif, idx) => {
+                            return(<div className="message-box" key={idx}>
                                 <div className="message-widget message-scroll">
                                     <Link>
                                         <div className="user-img">

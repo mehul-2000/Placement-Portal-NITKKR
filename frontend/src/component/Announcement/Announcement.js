@@ -87,7 +87,7 @@ const Announcement = () => {
                 </div>}
 
                 {/* <!-- Announcement add Modal box   --> */}
-                <div className="modal fade" id="addAnnouncementModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
+                <div className="modal fade" id="addAnnouncementModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
                     <div className="modal-dialog modal-xl" role="document">
 
                         <div className="modal-content">
@@ -174,8 +174,8 @@ const Announcement = () => {
                         </div>}
 
                         {/* <!-- All Announcements --> */}
-                        {announcements && announcements.map(announcement => {
-                        return (<div className="steamline m-t-40" ng-repeat="announcement in announcements.announcements | orderBy : '-timestamp' | limitTo : 10">
+                        {announcements && announcements.map((announcement, idx) => {
+                        return (<div key={idx} className="steamline m-t-40" ng-repeat="announcement in announcements.announcements | orderBy : '-timestamp' | limitTo : 10">
                             <div className="sl-item">
                                 <div className="sl-left"> <img className="img-circle" alt="user" src={`../assets/images/announcements/${announcement.category}.png`}/> </div>
                                 <div className="sl-right">

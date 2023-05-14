@@ -129,7 +129,7 @@ const RegisteredStudents = () => {
                                     <tbody>
                                     {filterCandidates && filterCandidates.map((student, idx) => {
                                         return (
-                                            <tr ng-repeat="student in registeredStudents.company.registered_candidates | filter : studentName">
+                                            <tr key={idx}>
                                                 <td>{ idx + 1 }.</td>
                                                 <td>
                                                 <Link className="text-primary"> { student.name }</Link>

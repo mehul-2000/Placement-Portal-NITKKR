@@ -58,7 +58,7 @@ const InterviewsManagaement = () => {
             <div>
                 <div className="row">
                     {filterInterviews && filterInterviews.map(filterInterview => {
-                    return (<div className="col-lg-6">
+                    return (<div className="col-lg-6" key={filterInterview._id}>
                         <div className="card cc-widget">
                             <div className="card-body">
                                 <div className="d-flex no-block flex-row">
