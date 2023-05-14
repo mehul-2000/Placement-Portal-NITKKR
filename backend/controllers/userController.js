@@ -93,8 +93,6 @@ exports.logout = catchAsyncErrors(async(req, res, next) => {
         ...( process.env.NODE_ENV==='development' ? {}: {
             secure: true, 
             httpOnly: false, 
-            sameSite: 'None',
-            domain: 'vercel.app'
         })
     });
     res.status(200).json({
